@@ -12,6 +12,7 @@ struct CodeCraftApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.font, plusJakartaSans(size: 16))
         }
     }
 }

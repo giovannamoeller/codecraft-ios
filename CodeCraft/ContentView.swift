@@ -13,7 +13,8 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("What's an array?")
+                .font(plusJakartaSans(size: 24, weight: .bold))
         }
         .padding()
     }
