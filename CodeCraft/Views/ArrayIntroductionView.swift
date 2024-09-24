@@ -52,6 +52,54 @@ struct ArrayIntroductionView: View {
                     }
                 }
                 .padding(.horizontal)
+                
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("When to use arrays")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                        
+                        Text("When you need quick access to elements by index.")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                        
+                        Text("For implementing other data structures like stacks and queues.")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                        
+                        Text("When working with sequences of data (e.g., time series).")
+                    }
+                    
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                        
+                        Text("In scenarios where memory locality is important for performance.")
+                    }
+                }
+                .padding(.horizontal)
+                
+                Button {
+                    //
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.right")
+                        
+                        Text("Learn more")
+                            .appFont(AppFont.bodyBold)
+                    }
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(Color("DarkGreen"))
+                    .cornerRadius(24.0)
+                    .frame(maxWidth: .infinity)
+                }
+
             }
         }
         .ignoresSafeArea()
