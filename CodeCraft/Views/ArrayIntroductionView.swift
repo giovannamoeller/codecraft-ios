@@ -9,11 +9,22 @@ import SwiftUI
 
 struct ArrayIntroductionView: View {
     
-    let arrayRealWorldAnalogies = [
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    
+    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    
+    let arrayRealWorldAnalogies: [Analogy] = [
         Analogy(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."),
         Analogy(icon: "book", title: "Bookshelf", description: "Books arranged in order."),
         Analogy(icon: "calendar", title: "Calendar", description: "Days of the month in sequence."),
         Analogy(icon: "tram", title: "Train", description: "A series of connected carriages.")
+    ]
+    
+    let arrayUseCases: [String] = [
+        "When you need quick access to elements by index.",
+        "For implementing other data structures like stacks and queues.",
+        "When working with sequences of data (e.g., time series).",
+        "In scenarios where memory locality is important for performance."
     ]
     
     var body: some View {
@@ -47,9 +58,19 @@ struct ArrayIntroductionView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                     
-                    ForEach(arrayRealWorldAnalogies, id: \.title) { analogy in
-                        AnalogyRow(analogy: analogy)
+                    if horizontalSizeClass == .compact {
+                        ForEach(arrayRealWorldAnalogies, id: \.title) { analogy in
+                            AnalogyRow(analogy: analogy)
+                        }
+                    } else {
+                        LazyVGrid(columns: columns, spacing: 16) {
+                            ForEach(arrayRealWorldAnalogies, id: \.title) { analogy in
+                                AnalogyRow(analogy: analogy)
+                            }
+                        }
                     }
+                    
+                    
                 }
                 .padding(.horizontal)
                 
@@ -58,28 +79,12 @@ struct ArrayIntroductionView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                     
-                    HStack {
-                        Image(systemName: "square.and.pencil")
-                        
-                        Text("When you need quick access to elements by index.")
-                    }
-                    
-                    HStack {
-                        Image(systemName: "square.and.pencil")
-                        
-                        Text("For implementing other data structures like stacks and queues.")
-                    }
-                    
-                    HStack {
-                        Image(systemName: "square.and.pencil")
-                        
-                        Text("When working with sequences of data (e.g., time series).")
-                    }
-                    
-                    HStack {
-                        Image(systemName: "square.and.pencil")
-                        
-                        Text("In scenarios where memory locality is important for performance.")
+                    ForEach(arrayUseCases, id: \.self) { useCase in
+                        HStack {
+                            Image(systemName: "square.and.pencil")
+                            
+                            Text(useCase)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -98,8 +103,9 @@ struct ArrayIntroductionView: View {
                     .background(Color("DarkGreen"))
                     .cornerRadius(24.0)
                     .frame(maxWidth: .infinity)
+                    .padding()
                 }
-
+                
             }
         }
         .ignoresSafeArea()
