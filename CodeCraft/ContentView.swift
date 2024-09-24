@@ -14,11 +14,12 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("What's an array?")
-                .font(plusJakartaSans(size: 24, weight: .bold))
+                .appFont(AppFont.title)
         }
         .padding()
     }
 }
+
 
 #Preview {
     ContentView()

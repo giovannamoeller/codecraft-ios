@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func withAppFont() -> some View {
-        self.modifier(AppFontModifier())
+    func appFont(_ font: Font) -> some View {
+        self.font(font)
     }
 }
