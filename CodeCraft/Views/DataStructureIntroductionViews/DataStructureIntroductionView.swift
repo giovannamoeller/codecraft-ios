@@ -18,7 +18,7 @@ struct DataStructureIntroductionView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 36.0) {
-                Image(dataStructure.imageName)
+                /*Image(dataStructure.imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 264)
@@ -28,7 +28,7 @@ struct DataStructureIntroductionView: View {
                             startPoint: .top,
                             endPoint: .bottom
                         )
-                    )
+                    )*/
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("What is a \(dataStructure.title)?")
@@ -89,7 +89,7 @@ struct DataStructureIntroductionView: View {
                 }
             }
         }
-        .ignoresSafeArea()
+        //.ignoresSafeArea()
     }
 }
 
