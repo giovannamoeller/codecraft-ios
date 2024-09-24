@@ -11,7 +11,7 @@ struct AnalogyRow: View {
     let analogy: Analogy
     
     var body: some View {
-        HStack {
+        HStack(spacing: 16.0) {
             Image(systemName: analogy.icon)
                 .foregroundColor(.white)
                 .frame(width: 30, height: 30)
@@ -20,17 +20,15 @@ struct AnalogyRow: View {
             
             VStack(alignment: .leading) {
                 Text(analogy.title)
-                    .font(.headline)
+                    .appFont(AppFont.headline)
                 Text(analogy.description)
-                    .font(.subheadline)
+                    .appFont(AppFont.subheadline)
                     .foregroundColor(.secondary)
             }
             
             Spacer()
-            
-            Image(systemName: "chevron.right")
-                .foregroundColor(.secondary)
         }
+        .frame(minHeight: 72)
         .padding()
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(10)

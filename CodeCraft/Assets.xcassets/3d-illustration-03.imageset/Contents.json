@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "giovanna.moeller_computer_science_coding_3d_icon_--ar_169_--v_b4adcb0a-b4c7-4989-80f2-ce4c8450dbdc_3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
