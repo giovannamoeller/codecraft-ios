@@ -15,15 +15,15 @@ struct AnalogyRow: View {
             Image(systemName: analogy.icon)
                 .foregroundStyle(.black)
                 .frame(width: 48, height: 48)
-                .background(Color("LightBrown"))
+                .background(AppTheme.Colors.lightBrown)
                 .cornerRadius(8)
             
             VStack(alignment: .leading) {
                 Text(analogy.title)
-                    .appFont(AppFont.headline)
+                    .appFont(AppTheme.Fonts.headline)
                 Text(analogy.description)
-                    .appFont(AppFont.subheadline)
-                    .foregroundStyle(Color("MediumBrown"))
+                    .appFont(AppTheme.Fonts.subheadline)
+                    .foregroundStyle(AppTheme.Colors.mediumBrown)
             }
             
             Spacer()

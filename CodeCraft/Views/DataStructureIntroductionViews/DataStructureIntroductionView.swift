@@ -38,16 +38,16 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("What is a \(dataStructure.title)?")
-                        .appFont(AppFont.title)
+                        .appFont(AppTheme.Fonts.title)
                     
                     Text(dataStructure.definition)
-                        .appFont(AppFont.bodyRegular)
+                        .appFont(AppTheme.Fonts.bodyRegular)
                 }
                 .padding(.horizontal)
                 
                 VStack(alignment: .leading, spacing: 15) {
                     Text("Real-World Analogies")
-                        .appFont(AppFont.title)
+                        .appFont(AppTheme.Fonts.title)
                     
                     if horizontalSizeClass == .compact {
                         ForEach(dataStructure.analogies) { analogy in
@@ -59,7 +59,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                                 AnalogyRow(analogy: analogy)
                                     .overlay {
                                         RoundedRectangle(cornerRadius: 10.0)
-                                            .stroke(Color("LightBrown"), lineWidth: 2.0)
+                                            .stroke(AppTheme.Colors.lightBrown, lineWidth: 2.0)
                                     }
                             }
                         }
@@ -69,13 +69,13 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 
                 VStack(alignment: .leading, spacing: 15) {
                     Text("When to use \(dataStructure.title)")
-                        .appFont(AppFont.title)
+                        .appFont(AppTheme.Fonts.title)
                     
                     ForEach(dataStructure.useCases, id: \.self) { useCase in
                         HStack {
                             Image(systemName: "square.and.pencil")
                             Text(useCase)
-                                .appFont(AppFont.bodyRegular)
+                                .appFont(AppTheme.Fonts.bodyRegular)
                         }
                         .foregroundStyle(.black.opacity(0.75))
                     }
@@ -88,11 +88,11 @@ struct DataStructureIntroductionView<Destination: View>: View {
                     HStack {
                         Image(systemName: "arrow.right")
                         Text("Learn more")
-                            .appFont(AppFont.bodyBold)
+                            .appFont(AppTheme.Fonts.bodyBold)
                     }
                     .padding()
                     .foregroundStyle(.white)
-                    .background(Color("DarkGreen"))
+                    .background(AppTheme.Colors.darkGreen)
                     .cornerRadius(24.0)
                     .frame(maxWidth: .infinity)
                     .padding()

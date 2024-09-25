@@ -66,7 +66,7 @@ struct InteractiveArrayView: View {
         ZStack {
             VStack(alignment: .center, spacing: 16.0) {
                 Text("Visualize how an array works")
-                    .appFont(AppFont.largeTitle)
+                    .appFont(AppTheme.Fonts.largeTitle)
                     .padding()
                 
                 // Array view
@@ -77,14 +77,14 @@ struct InteractiveArrayView: View {
                             VStack(spacing: 4.0) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color("LightBrown"))
+                                        .fill(AppTheme.Colors.lightBrown)
                                         .frame(width: 60, height: 60)
                                     Text("\(element)")
-                                        .appFont(AppFont.title3)
+                                        .appFont(AppTheme.Fonts.title3)
                                 }
                                 Text("\(index)")
-                                    .appFont(AppFont.bodyRegular)
-                                    .foregroundStyle(Color("DarkGreen"))
+                                    .appFont(AppTheme.Fonts.bodyRegular)
+                                    .foregroundStyle(AppTheme.Colors.darkGreen)
                             }
                             .opacity(isRemoving && removingIndex == index ? 0 : 1)
                             .scaleEffect(lastAction == .push && index == array.count - 1 ? 0.5 : 1)
@@ -110,9 +110,9 @@ struct InteractiveArrayView: View {
                         }
                         .frame(minWidth: 88)
                         .padding()
-                        .background(Color("DarkGreen"))
+                        .background(AppTheme.Colors.darkGreen)
                         .foregroundStyle(.white)
-                        .appFont(AppFont.title)
+                        .appFont(AppTheme.Fonts.title)
                         .cornerRadius(28.0)
                         
                         Button {
@@ -122,9 +122,9 @@ struct InteractiveArrayView: View {
                         }
                         .frame(minWidth: 88)
                         .padding()
-                        .background(Color("LightBrown"))
+                        .background(AppTheme.Colors.lightBrown)
                         .foregroundStyle(.black)
-                        .appFont(AppFont.title)
+                        .appFont(AppTheme.Fonts.title)
                         .cornerRadius(28.0)
                     }
                 }
@@ -137,7 +137,7 @@ struct InteractiveArrayView: View {
                         }
                     }) {
                         Image(systemName: "ellipsis")
-                            .foregroundStyle(Color("MediumBrown"))
+                            .foregroundStyle(AppTheme.Colors.mediumBrown)
                             .rotationEffect(.degrees(90))
                     }
                 }

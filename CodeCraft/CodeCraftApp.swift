@@ -13,7 +13,7 @@ struct CodeCraftApp: App {
         WindowGroup {
             NavigationStack {
                 ContentView()
-                    .environment(\.font, AppFont.bodyRegular)
+                    .environment(\.font, AppTheme.Fonts.bodyRegular)
             }
         }
     }
