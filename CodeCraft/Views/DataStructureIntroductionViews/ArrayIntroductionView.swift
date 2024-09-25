@@ -28,7 +28,9 @@ struct ArrayIntroductionView: View {
     )
     
     var body: some View {
-        DataStructureIntroductionView(dataStructure: arrayInformations)
+        DataStructureIntroductionView(dataStructure: arrayInformations) {
+            InteractiveArrayView()
+        }
     }
 }
 

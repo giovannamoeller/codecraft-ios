@@ -9,26 +9,32 @@ import SwiftUI
 
 import SwiftUI
 
-struct DataStructureIntroductionView: View {
+struct DataStructureIntroductionView<Destination: View>: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     let dataStructure: DataStructureInformation
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    let destination: Destination
+    
+    init(dataStructure: DataStructureInformation, @ViewBuilder destination: @escaping () -> Destination) {
+        self.dataStructure = dataStructure
+        self.destination = destination()
+    }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 36.0) {
                 /*Image(dataStructure.imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 264)
-                    .overlay(
-                        LinearGradient(
-                            gradient: Gradient(colors: [.clear, .black.opacity(0.7)]),
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )*/
+                 .resizable()
+                 .aspectRatio(contentMode: .fill)
+                 .frame(height: 264)
+                 .overlay(
+                 LinearGradient(
+                 gradient: Gradient(colors: [.clear, .black.opacity(0.7)]),
+                 startPoint: .top,
+                 endPoint: .bottom
+                 )
+                 )*/
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("What is a \(dataStructure.title)?")
@@ -76,8 +82,8 @@ struct DataStructureIntroductionView: View {
                 }
                 .padding(.horizontal)
                 
-                Button {
-                    // Action
+                NavigationLink {
+                    destination
                 } label: {
                     HStack {
                         Image(systemName: "arrow.right")
@@ -114,5 +120,7 @@ struct DataStructureIntroductionView: View {
             "When working with sequences of data (e.g., time series).",
             "In scenarios where memory locality is important for performance."
         ]
-    ))
+    ), destination: {
+        InteractiveArrayView()
+    })
 }

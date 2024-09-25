@@ -11,8 +11,10 @@ import SwiftUI
 struct CodeCraftApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.font, AppFont.bodyRegular)
+            NavigationStack {
+                ContentView()
+                    .environment(\.font, AppFont.bodyRegular)
+            }
         }
     }
 }

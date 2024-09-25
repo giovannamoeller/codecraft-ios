@@ -23,8 +23,9 @@ enum AppFont {
     
     static let bodyRegular = plusJakartaSans(size: 16)
     static let bodyBold = plusJakartaSans(size: 16, weight: .bold)
+    static let title3 = plusJakartaSans(size: 18, weight: .semibold)
     static let title = plusJakartaSans(size: 22, weight: .bold)
-    static let largeTitle = plusJakartaSans(size: 32, weight: .bold)
+    static let largeTitle = plusJakartaSans(size: 28, weight: .bold)
     static let headline = plusJakartaSans(size: 16, weight: .semibold)
     static let subheadline = plusJakartaSans(size: 14)
 }
