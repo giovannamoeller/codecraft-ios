@@ -51,6 +51,10 @@ struct DataStructureIntroductionView: View {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(dataStructure.analogies) { analogy in
                                 AnalogyRow(analogy: analogy)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 10.0)
+                                            .stroke(Color("LightBrown"), lineWidth: 2.0)
+                                    }
                             }
                         }
                     }
