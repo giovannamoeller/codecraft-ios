@@ -174,7 +174,7 @@ struct InteractiveArrayView: View {
                     }
                     
                     NavigationLink {
-                        CodeCheatsheetView(codeSnippets: Code.arrayCodeSnippet)
+                        ArrayCodeCheatsheetView()
                     } label: {
                         HStack {
                             Image(systemName: "arrow.right")

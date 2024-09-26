@@ -258,6 +258,9 @@
         }
       }
     },
+    "How to work with Arrays" : {
+
+    },
     "In scenarios where memory locality is important for performance." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -372,6 +375,9 @@
           }
         }
       }
+    },
+    "Start Quiz" : {
+
     },
     "Submit answers" : {
 
