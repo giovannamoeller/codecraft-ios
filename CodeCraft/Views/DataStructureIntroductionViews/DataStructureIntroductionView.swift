@@ -89,17 +89,8 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 NavigationLink {
                     destination
                 } label: {
-                    HStack {
-                        Image(systemName: "arrow.right")
-                        Text("Learn More")
-                            .appFont(AppTheme.Fonts.bodyBold)
-                    }
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(AppTheme.Colors.darkGreen)
-                    .cornerRadius(24.0)
-                    .frame(maxWidth: .infinity)
-                    .padding()
+                    CCPrimaryButtonView(text: "Learn More")
+                        .frame(maxWidth: .infinity)
                 }
             }
         }

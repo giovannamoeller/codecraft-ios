@@ -140,7 +140,7 @@ struct InteractiveArrayView: View {
                         .padding()
                         .offset(x: offset)
                     }
-                    .padding(.vertical, 32)
+                    .padding(.vertical)
                     .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: array.count)
                     .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: offset)
                     
@@ -150,47 +150,21 @@ struct InteractiveArrayView: View {
                             Button {
                                 pushElement()
                             } label: {
-                                Text("Push")
+                                CCSecondaryButtonView(text: "Push")
                             }
-                            .frame(minWidth: 88)
-                            .padding()
-                            .background(AppTheme.Colors.darkGreen)
-                            .foregroundStyle(.white)
-                            .appFont(AppTheme.Fonts.title3)
-                            .cornerRadius(28.0)
                             
                             Button {
                                 removeElement(at: array.count - 1)
                             } label: {
-                                Text("Pop")
+                                CCSecondaryButtonView(text: "Pop")
                             }
-                            .frame(minWidth: 88)
-                            .padding()
-                            .background(AppTheme.Colors.lightBrown)
-                            .foregroundStyle(.black)
-                            .appFont(AppTheme.Fonts.title3)
-                            .cornerRadius(28.0)
                         }
                     }
                     
                     NavigationLink {
                         ArrayCodeCheatsheetView()
                     } label: {
-                        HStack {
-                            Image(systemName: "arrow.right")
-                            Text("Pratice")
-                                .appFont(AppTheme.Fonts.bodyBold)
-                        }
-                        .padding()
-                        .foregroundStyle(.black)
-                        .background(Color(AppTheme.Colors.lightBrown))
-                        .cornerRadius(28.0)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 28.0)
-                                .stroke(Color(AppTheme.Colors.mediumBrown), lineWidth: 1.0)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                        CCPrimaryButtonView(text: "Practice")
                     }
                 }
                 .toolbar {

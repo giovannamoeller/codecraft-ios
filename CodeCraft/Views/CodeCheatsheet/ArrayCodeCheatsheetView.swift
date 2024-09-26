@@ -18,17 +18,7 @@ struct ArrayCodeCheatsheetView: View {
             NavigationLink {
                 ArrayQuizView()
             } label: {
-                HStack {
-                    Text("Start Quiz")
-                        .appFont(AppTheme.Fonts.bodyBold)
-                    Image(systemName: "arrow.right")
-                }
-                .padding()
-                .foregroundStyle(.white)
-                .background(AppTheme.Colors.darkGreen)
-                .cornerRadius(24.0)
-                .frame(maxWidth: .infinity)
-                .padding()
+                CCPrimaryButtonView(text: "Start Quiz")
             }
 
         }

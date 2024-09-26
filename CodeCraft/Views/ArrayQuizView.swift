@@ -37,37 +37,17 @@ struct ArrayQuizView: View {
                         .padding(.bottom)
                 }
                 
-                HStack {
+                HStack(spacing: 16.0) {
                     Button {
                         submitAnswers()
                     } label: {
-                        Text("Submit answers")
-                            .appFont(AppTheme.Fonts.bodyBold)
+                        CCPrimaryButtonView(text: "Submit answers")
                     }
-                    .frame(minWidth: 148)
-                    .padding()
-                    .background(AppTheme.Colors.darkGreen)
-                    .foregroundStyle(.white)
-                    .appFont(AppTheme.Fonts.title3)
-                    .cornerRadius(28.0)
-
                     Button {
                         resetAnswers()
                     } label: {
-                        Text("Reset")
-                            .appFont(AppTheme.Fonts.bodyBold)
-                            .foregroundStyle(AppTheme.Colors.mediumBrown)
+                        CCSecondaryButtonView(text: "Reset")
                     }
-                    .frame(minWidth: 148)
-                    .padding()
-                    .foregroundStyle(.black)
-                    .background(Color(AppTheme.Colors.lightBrown))
-                    .cornerRadius(28.0)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 28.0)
-                            .stroke(Color(AppTheme.Colors.mediumBrown), lineWidth: 1.0)
-                    }
-                    .padding()
                 }
             }
             .padding()
