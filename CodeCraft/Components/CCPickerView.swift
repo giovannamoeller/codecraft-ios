@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CCPickerView: View {
+struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
     @Binding var selectedSegment: Int
-    var segments: [CodeLanguage] = CodeLanguage.allCases
+    var array: [T]
     
     var body: some View {
         GeometryReader { geometry in
@@ -21,19 +21,19 @@ struct CCPickerView: View {
                 // Sliding selector
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.white)
-                    .frame(width: max(0, (geometry.size.width / CGFloat(segments.count)) - 8), height: max(0, geometry.size.height - 8))
-                    .offset(x: CGFloat(selectedSegment) * (geometry.size.width / CGFloat(segments.count)) + 4)
+                    .frame(width: max(0, (geometry.size.width / CGFloat(array.count)) - 8), height: max(0, geometry.size.height - 8))
+                    .offset(x: CGFloat(selectedSegment) * (geometry.size.width / CGFloat(array.count)) + 4)
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: selectedSegment)
                 
                 // Segment buttons
                 HStack(spacing: 0) {
-                    ForEach(Array(segments.enumerated()), id: \.offset) { index, segment in
+                    ForEach(Array(array.enumerated()), id: \.offset) { index, segment in
                         Button(action: {
                             selectedSegment = index
                         }) {
                             Text(segment.rawValue)
                                 .font(AppTheme.Fonts.bodyRegular)
-                                .frame(width: geometry.size.width / CGFloat(segments.count), height: geometry.size.height)
+                                .frame(width: geometry.size.width / CGFloat(array.count), height: geometry.size.height)
                                 .foregroundStyle(selectedSegment == index ? .black : .brown)
                         }
                     }
@@ -46,5 +46,5 @@ struct CCPickerView: View {
 }
 
 #Preview {
-    CCPickerView(selectedSegment: .constant(0))
+    CCPickerView(selectedSegment: .constant(0), array: CodeLanguage.allCases)
 }

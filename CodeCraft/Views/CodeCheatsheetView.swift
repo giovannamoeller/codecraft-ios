@@ -25,7 +25,7 @@ struct CodeCheatsheetView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            CCPickerView(selectedSegment: $selectedSegment)
+            CCPickerView(selectedSegment: $selectedSegment, array: programmingLanguages)
                 .padding(.bottom)
             
             VStack {
