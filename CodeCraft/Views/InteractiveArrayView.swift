@@ -172,6 +172,26 @@ struct InteractiveArrayView: View {
                             .cornerRadius(28.0)
                         }
                     }
+                    
+                    NavigationLink {
+                        CodeCheatsheetView(codeSnippets: Code.arrayCodeSnippet)
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.right")
+                            Text("Pratice")
+                                .appFont(AppTheme.Fonts.bodyBold)
+                        }
+                        .padding()
+                        .foregroundStyle(.black)
+                        .background(Color(AppTheme.Colors.lightBrown))
+                        .cornerRadius(28.0)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 28.0)
+                                .stroke(Color(AppTheme.Colors.mediumBrown), lineWidth: 1.0)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
