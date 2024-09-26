@@ -12,6 +12,19 @@ struct ArrayQuizView: View {
     @State private var selectedAnswers: [Int?] = Array(repeating: nil, count: 5)
     @State private var isSubmitted = false
     
+    private func submitAnswers() {
+        withAnimation {
+            isSubmitted = true
+        }
+    }
+    
+    private func resetAnswers() {
+        withAnimation {
+            selectedAnswers = Array(repeating: nil, count: 5)
+            isSubmitted = false
+        }
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
@@ -20,12 +33,13 @@ struct ArrayQuizView: View {
                     .padding()
                 
                 ForEach(0..<arrayQuestions.count, id: \.self) { index in
-                    CCQuestionView(question: arrayQuestions[index], isSubmitted: isSubmitted, selectedAnswer: $selectedAnswers[index])
+                    CCQuestionView(question: arrayQuestions[index], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswers[index])
+                        .padding(.bottom)
                 }
                 
                 HStack {
                     Button {
-                        //
+                        submitAnswers()
                     } label: {
                         Text("Submit answers")
                             .appFont(AppTheme.Fonts.bodyBold)
@@ -38,7 +52,7 @@ struct ArrayQuizView: View {
                     .cornerRadius(28.0)
 
                     Button {
-                        //
+                        resetAnswers()
                     } label: {
                         Text("Reset")
                             .appFont(AppTheme.Fonts.bodyBold)

@@ -10,8 +10,8 @@ import SwiftUI
 struct CCQuestionView: View {
     
     let question: Question
-    let isSubmitted: Bool
     
+    @Binding var isSubmitted: Bool
     @Binding var selectedAnswer: Int?
     
     private func backgroundColor(for index: Int) -> Color {
@@ -62,5 +62,5 @@ struct CCQuestionView: View {
 }
 
 #Preview {
-    CCQuestionView(question: arrayQuestions[0], isSubmitted: false, selectedAnswer: .constant(0))
+    CCQuestionView(question: arrayQuestions[0], isSubmitted: .constant(false), selectedAnswer: .constant(0))
 }
