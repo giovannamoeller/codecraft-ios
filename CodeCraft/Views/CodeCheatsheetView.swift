@@ -26,23 +26,23 @@ struct CodeCheatsheetView: View {
     var body: some View {
         VStack(alignment: .leading) {
             CCPickerView(selectedSegment: $selectedSegment)
-                .frame(maxWidth: .infinity)
+                .padding(.bottom)
             
             VStack {
                 ScrollView {
                     Text(codeSyntaxHighlight.highlightCode(for: code))
                         .font(.system(size: 20, design: .monospaced))
                 }
-                .padding()
                 
             }
             .frame(maxWidth: .infinity, maxHeight: 840, alignment: .topLeading)
             .padding()
             .background(Color(AppTheme.Colors.lightBrown))
             .cornerRadius(16.0)
-            .padding()
             .shadow(color: Color(AppTheme.Colors.mediumBrown.opacity(0.25)), radius: 10.0, x: 0, y: 20)
         }
+        .padding(.horizontal, 32)
+        .padding(.vertical)
     }
 }
 

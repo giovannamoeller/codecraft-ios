@@ -12,29 +12,35 @@ struct CCPickerView: View {
     var segments: [CodeLanguage] = CodeLanguage.allCases
     
     var body: some View {
-        HStack(spacing: 8) {
-            ForEach(Array(segments.enumerated()), id: \.offset) { index, segment in
-                Button(action: {
-                    withAnimation {
-                        selectedSegment = index
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                // Background
+                RoundedRectangle(cornerRadius: 24.0)
+                    .fill(Color(AppTheme.Colors.lightBrown))
+                
+                // Sliding selector
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.white)
+                    .frame(width: max(0, (geometry.size.width / CGFloat(segments.count)) - 8), height: max(0, geometry.size.height - 8))
+                    .offset(x: CGFloat(selectedSegment) * (geometry.size.width / CGFloat(segments.count)) + 4)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.7), value: selectedSegment)
+                
+                // Segment buttons
+                HStack(spacing: 0) {
+                    ForEach(Array(segments.enumerated()), id: \.offset) { index, segment in
+                        Button(action: {
+                            selectedSegment = index
+                        }) {
+                            Text(segment.rawValue)
+                                .font(AppTheme.Fonts.bodyRegular)
+                                .frame(width: geometry.size.width / CGFloat(segments.count), height: geometry.size.height)
+                                .foregroundStyle(selectedSegment == index ? .black : .brown)
+                        }
                     }
-                }) {
-                    Text(segment.rawValue)
-                        .appFont(AppTheme.Fonts.bodyRegular)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 16)
-                        .background(
-                            selectedSegment == index ?
-                            Color.white :
-                                Color.clear
-                        )
-                        .foregroundStyle(selectedSegment == index ? .black : Color(AppTheme.Colors.mediumBrown))
-                        .cornerRadius(20)
                 }
             }
         }
-        .padding(4)
-        .background(Color(AppTheme.Colors.lightBrown))
+        .frame(height: 48)
         .cornerRadius(24)
     }
 }
