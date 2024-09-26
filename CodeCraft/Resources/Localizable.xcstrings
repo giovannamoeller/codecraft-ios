@@ -407,6 +407,17 @@
         }
       }
     },
+    "When to use" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando usar"
+          }
+        }
+      }
+    },
     "When working with sequences of data (e.g., time series)." : {
       "extractionState" : "manual",
       "localizations" : {

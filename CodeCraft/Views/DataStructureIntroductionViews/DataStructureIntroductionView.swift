@@ -68,8 +68,12 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 .padding(.horizontal)
                 
                 VStack(alignment: .leading, spacing: 15) {
-                    Text("When to use \(dataStructure.title)")
-                        .appFont(AppTheme.Fonts.title)
+                    HStack(spacing: 3.0) {
+                        Text("When to use")
+                        Text(dataStructure.title)
+                    }
+                    .appFont(AppTheme.Fonts.title)
+                    
                     
                     ForEach(dataStructure.useCases, id: \.self) { useCase in
                         HStack {
