@@ -5,12 +5,12 @@
 //  Created by Giovanna Moeller on 24/09/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct DataStructureInformation {
-    let title: String
+    let title: LocalizedStringKey
     let imageName: String
-    let definition: String
+    let definition: LocalizedStringKey
     let analogies: [Analogy]
     let useCases: [String]
 }

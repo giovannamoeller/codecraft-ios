@@ -10,7 +10,7 @@ import SwiftUI
 struct ArrayIntroductionView: View {
     
     let arrayInformations = DataStructureInformation(
-        title: "Array",
+        title: "arrays",
         imageName: "arrays-01",
         definition: "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key.",
         analogies: [

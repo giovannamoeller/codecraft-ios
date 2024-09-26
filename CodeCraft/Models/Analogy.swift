@@ -5,11 +5,11 @@
 //  Created by Giovanna Moeller on 24/09/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct Analogy: Identifiable {
     let id = UUID()
     let icon: String
-    let title: String
-    let description: String
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey
 }

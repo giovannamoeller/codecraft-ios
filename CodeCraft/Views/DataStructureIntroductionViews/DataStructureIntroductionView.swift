@@ -37,7 +37,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                  )*/
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("What is a \(dataStructure.title)?")
+                    Text(dataStructure.title)
                         .appFont(AppTheme.Fonts.title)
                     
                     Text(dataStructure.definition)
@@ -46,7 +46,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 .padding(.horizontal)
                 
                 VStack(alignment: .leading, spacing: 15) {
-                    Text("Real-World Analogies")
+                    Text("Real world analogies")
                         .appFont(AppTheme.Fonts.title)
                     
                     if horizontalSizeClass == .compact {
@@ -74,7 +74,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                     ForEach(dataStructure.useCases, id: \.self) { useCase in
                         HStack {
                             Image(systemName: "square.and.pencil")
-                            Text(useCase)
+                            Text(LocalizedStringKey(useCase))
                                 .appFont(AppTheme.Fonts.bodyRegular)
                         }
                         .foregroundStyle(.black.opacity(0.75))
@@ -87,7 +87,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 } label: {
                     HStack {
                         Image(systemName: "arrow.right")
-                        Text("Learn more")
+                        Text("Learn More")
                             .appFont(AppTheme.Fonts.bodyBold)
                     }
                     .padding()
@@ -100,6 +100,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
             }
         }
         //.ignoresSafeArea()
+        .padding(.top, 32)
     }
 }
 

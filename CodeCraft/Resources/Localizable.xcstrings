@@ -1,0 +1,444 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "A series of connected carriages." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uma série de vagões conectados."
+          }
+        }
+      }
+    },
+    "A singly linked list is a linear data structure where each element (node) contains data and a reference to the next node in the sequence. The last node points to null, indicating the end of the list." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uma lista ligada simples é uma estrutura de dados linear onde cada elemento (nó) contém dados e uma referência para o próximo nó na sequência. O último nó aponta para nulo, indicando o fim da lista."
+          }
+        }
+      }
+    },
+    "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um array é uma estrutura de dados que armazena uma coleção de elementos do mesmo tipo em locais de memória contíguos. Cada elemento em um array é identificado por um índice ou uma chave."
+          }
+        }
+      }
+    },
+    "arrays" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arrays"
+          }
+        }
+      }
+    },
+    "Arrays are zero-indexed: The first element is at index 0." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrays são baseados em índice zero: O primeiro elemento está no índice 0."
+          }
+        }
+      }
+    },
+    "Arrays have a fixed size in some languages, but can be dynamic in others." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrays podem possuir tamanho fixo em algumas linguagens, porém dinâmico em outras"
+          }
+        }
+      }
+    },
+    "Books arranged in order." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livros organizados em ordem."
+          }
+        }
+      }
+    },
+    "Bookshelf" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estante de livros"
+          }
+        }
+      }
+    },
+    "Calendar" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendário"
+          }
+        }
+      }
+    },
+    "Choose Your Adventure" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livro jogo"
+          }
+        }
+      }
+    },
+    "Common operations" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operações comuns"
+          }
+        }
+      }
+    },
+    "Common operations: Insertion, deletion, and accessing elements." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operações comuns: inserção, remoção e acesso de elementos."
+          }
+        }
+      }
+    },
+    "Conga line" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fila de Conga"
+          }
+        }
+      }
+    },
+    "Days of the month in sequence." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dias do mês em sequência."
+          }
+        }
+      }
+    },
+    "Each car is connected to the next one." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada vagão está conectado ao próximo."
+          }
+        }
+      }
+    },
+    "Each clue leads to the location of the next clue." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada pista leva à localização da próxima pista."
+          }
+        }
+      }
+    },
+    "Each element has a unique index: Used to access or modify the element." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada elemento possuí um índice único: Usado para acessar ou modificar elementos"
+          }
+        }
+      }
+    },
+    "Each page points to the next part of the story." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada página aponta para a próxima parte da história."
+          }
+        }
+      }
+    },
+    "Each person holds the next person's shoulders." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada pessoa segura os ombros da pessoa à frente."
+          }
+        }
+      }
+    },
+    "Fixed and Dynamic" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixo e dinâmico"
+          }
+        }
+      }
+    },
+    "For implementing forward and backward functionality in music players." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para implementar funcionalidades de avançar e retroceder em players de música."
+          }
+        }
+      }
+    },
+    "For implementing other data structures like stacks and queues." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para implementar outras estruturas de dados como pilhas e filas."
+          }
+        }
+      }
+    },
+    "For implementing undo functionality in applications." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para implementar funcionalidade de desfazer em aplicações."
+          }
+        }
+      }
+    },
+    "In scenarios where memory locality is important for performance." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em cenários onde a localidade de memória é importante para o desempenho."
+          }
+        }
+      }
+    },
+    "In symbol tables of compiler design." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em tabelas de símbolos de compiladores."
+          }
+        }
+      }
+    },
+    "Learn More" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saiba mais"
+          }
+        }
+      }
+    },
+    "Numbered spaces in a row." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vagas numeradas em sequência."
+          }
+        }
+      }
+    },
+    "Observe how the array changes as you perform operations below." : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observe como o array altera enquanto você performa as operações abaixo."
+          }
+        }
+      }
+    },
+    "Parking Lot" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estacionamento"
+          }
+        }
+      }
+    },
+    "Pop" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pop"
+          }
+        }
+      }
+    },
+    "Push" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Push"
+          }
+        }
+      }
+    },
+    "Real world analogies" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analogias do mundo real"
+          }
+        }
+      }
+    },
+    "singly linked lists" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "listas ligadas simples"
+          }
+        }
+      }
+    },
+    "Train" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trem"
+          }
+        }
+      }
+    },
+    "Train cars" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vagões de trem"
+          }
+        }
+      }
+    },
+    "Treasure Hunt" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caça ao tesouro"
+          }
+        }
+      }
+    },
+    "Unique index" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice único"
+          }
+        }
+      }
+    },
+    "Visualize how an array works" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize como um array funciona"
+          }
+        }
+      }
+    },
+    "When frequent insertion and deletion at the beginning is needed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando é necessária inserção e remoção frequente no início."
+          }
+        }
+      }
+    },
+    "When working with sequences of data (e.g., time series)." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao trabalhar com sequências de dados (por exemplo, séries temporais)."
+          }
+        }
+      }
+    },
+    "When you need quick access to elements by index." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando você precisa de acesso rápido aos elementos por índice."
+          }
+        }
+      }
+    },
+    "Zero-indexed" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice 0"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
