@@ -317,7 +317,14 @@
       }
     },
     "Pratice" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Praticar"
+          }
+        }
+      }
     },
     "Push" : {
       "localizations" : {
