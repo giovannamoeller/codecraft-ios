@@ -37,7 +37,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                  )*/
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(dataStructure.title)
+                    Text(dataStructure.title.capitalizedFirst())
                         .appFont(AppTheme.Fonts.title)
                     
                     Text(dataStructure.definition)
