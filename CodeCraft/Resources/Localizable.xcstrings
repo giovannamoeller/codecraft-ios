@@ -41,6 +41,9 @@
         }
       }
     },
+    "Array Quiz" : {
+
+    },
     "arrays" : {
       "localizations" : {
         "pt-BR" : {
@@ -357,6 +360,9 @@
         }
       }
     },
+    "Reset" : {
+
+    },
     "singly linked lists" : {
       "localizations" : {
         "pt-BR" : {
@@ -366,6 +372,9 @@
           }
         }
       }
+    },
+    "Submit answers" : {
+
     },
     "Train" : {
       "localizations" : {
