@@ -31,7 +31,7 @@ struct CodeCheatsheetView: View {
             VStack {
                 ScrollView {
                     Text(codeSyntaxHighlight.highlightCode(for: code))
-                        .font(.system(size: 20, design: .monospaced))
+                        .font(.system(size: 16, design: .monospaced))
                 }
                 
             }
