@@ -244,6 +244,16 @@
         }
       }
     },
+    "Hello, World!" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olá, Mundo!"
+          }
+        }
+      }
+    },
     "In scenarios where memory locality is important for performance." : {
       "extractionState" : "manual",
       "localizations" : {
