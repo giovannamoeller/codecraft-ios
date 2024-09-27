@@ -28,7 +28,7 @@ struct CCQuestionView: View {
                 .padding(.bottom, 5)
             
             OptionLayout(horizontalSizeClass: horizontalSizeClass) {
-                ForEach(0..<4) { index in
+                ForEach(0..<question.options.count, id: \.self) { index in
                     OptionButton(
                         index: index,
                         option: question.options[index],
