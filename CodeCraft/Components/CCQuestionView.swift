@@ -9,9 +9,17 @@ import SwiftUI
 
 struct CCQuestionView: View {
     let question: Question
+    
     @Binding var isSubmitted: Bool
     @Binding var selectedAnswer: Int?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    
+    private func selectAnswer(_ index: Int) {
+        guard !isSubmitted else { return }
+        withAnimation {
+            selectedAnswer = index
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
@@ -35,13 +43,6 @@ struct CCQuestionView: View {
         .padding()
         .background(AppTheme.Colors.lightBrown)
         .cornerRadius(12)
-    }
-    
-    private func selectAnswer(_ index: Int) {
-        guard !isSubmitted else { return }
-        withAnimation {
-            selectedAnswer = index
-        }
     }
 }
 
@@ -73,22 +74,6 @@ struct OptionButton: View {
     let isCorrect: Bool
     let action: () -> Void
     
-    var body: some View {
-        Button(action: action) {
-            HStack {
-                Image(systemName: isSelected ? "checkmark.square.fill" : "square")
-                    .foregroundStyle(foregroundColor)
-                Text(option)
-                    .appFont(isSelected ? AppTheme.Fonts.bodyBold : AppTheme.Fonts.bodyRegular)
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(backgroundColor)
-            .cornerRadius(8)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-    
     private var backgroundColor: Color {
         if isSubmitted {
             if isCorrect {
@@ -107,6 +92,22 @@ struct OptionButton: View {
             return AppTheme.Colors.darkGreen
         }
         return .black
+    }
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: isSelected ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(foregroundColor)
+                Text(option)
+                    .appFont(isSelected ? AppTheme.Fonts.bodyBold : AppTheme.Fonts.bodyRegular)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(backgroundColor)
+            .cornerRadius(8)
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
