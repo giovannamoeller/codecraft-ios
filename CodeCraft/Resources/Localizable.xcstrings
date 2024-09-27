@@ -284,6 +284,7 @@
       }
     },
     "Learn More" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -324,6 +325,7 @@
       }
     },
     "Pop" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -334,6 +336,7 @@
       }
     },
     "Pratice" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -344,6 +347,7 @@
       }
     },
     "Push" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -363,9 +367,6 @@
         }
       }
     },
-    "Reset" : {
-
-    },
     "singly linked lists" : {
       "localizations" : {
         "pt-BR" : {
@@ -375,12 +376,6 @@
           }
         }
       }
-    },
-    "Start Quiz" : {
-
-    },
-    "Submit answers" : {
-
     },
     "Train" : {
       "localizations" : {

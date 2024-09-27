@@ -42,6 +42,7 @@ struct CCQuestionView: View {
                     }) {
                         HStack {
                             Image(systemName: selectedAnswer == index ? "checkmark.square.fill" : "square")
+                                .foregroundStyle(isSubmitted && index == selectedAnswer && index != question.correctAnswerIndex ? Color.red.opacity(0.5) : .black)
                                 .foregroundStyle(selectedAnswer == index ? Color(AppTheme.Colors.darkGreen) : .black)
                             Text(question.options[index])
                                 .appFont(selectedAnswer == index ? AppTheme.Fonts.bodyBold : AppTheme.Fonts.bodyRegular)
@@ -62,5 +63,5 @@ struct CCQuestionView: View {
 }
 
 #Preview {
-    CCQuestionView(question: arrayQuestions[0], isSubmitted: .constant(false), selectedAnswer: .constant(0))
+    CCQuestionView(question: arrayQuestions[0], isSubmitted: .constant(true), selectedAnswer: .constant(1))
 }
