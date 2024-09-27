@@ -100,10 +100,11 @@ struct InteractiveSinglyLinkedListView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 16.0) {
+            VStack(spacing: 16.0) {
                 Text("Visualize how a singly linked list works")
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .appFont(AppTheme.Fonts.largeTitle)
-                    .padding()
+                    .padding(.vertical)
                 
                 CCFlexibleGridView(data: analogies)
                 
@@ -191,7 +192,7 @@ struct InteractiveSinglyLinkedListView: View {
                     }
                 }
             }
-            .padding()
+            .padding(32)
         }
     }
 }
