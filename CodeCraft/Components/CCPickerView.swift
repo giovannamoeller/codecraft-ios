@@ -16,7 +16,7 @@ struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
             ZStack(alignment: .leading) {
                 // Background
                 RoundedRectangle(cornerRadius: 24.0)
-                    .fill(Color(AppTheme.Colors.lightBrown))
+                    .fill(AppTheme.Colors.lightBrown)
                 
                 // Sliding selector
                 RoundedRectangle(cornerRadius: 20)

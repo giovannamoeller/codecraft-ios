@@ -13,7 +13,7 @@ struct CCSecondaryButtonView: View {
     var isAlternateStyle: Bool
     
     init(text: String,
-         backgroundColor: Color = Color(AppTheme.Colors.lightBrown),
+         backgroundColor: Color = AppTheme.Colors.lightBrown,
          isAlternateStyle: Bool = false) {
         self.text = text
         self.backgroundColor = backgroundColor
@@ -28,11 +28,11 @@ struct CCSecondaryButtonView: View {
         }
         .frame(minWidth: 88)
         .padding()
-        .background(isAlternateStyle ? Color(AppTheme.Colors.mediumBrown) : backgroundColor)
+        .background(isAlternateStyle ? AppTheme.Colors.mediumBrown : backgroundColor)
         .cornerRadius(28.0)
         .overlay {
             RoundedRectangle(cornerRadius: 28.0)
-                .stroke(isAlternateStyle ? Color(AppTheme.Colors.lightBrown) : Color(AppTheme.Colors.mediumBrown), lineWidth: 1.0)
+                .stroke(isAlternateStyle ? AppTheme.Colors.lightBrown : AppTheme.Colors.mediumBrown, lineWidth: 1.0)
         }
     }
 }

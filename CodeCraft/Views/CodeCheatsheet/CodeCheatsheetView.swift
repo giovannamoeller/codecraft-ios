@@ -37,9 +37,9 @@ struct CodeCheatsheetView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: 840, alignment: .topLeading)
             .padding()
-            .background(Color(AppTheme.Colors.lightBrown))
+            .background(AppTheme.Colors.lightBrown)
             .cornerRadius(16.0)
-            .shadow(color: Color(AppTheme.Colors.mediumBrown.opacity(0.25)), radius: 10.0, x: 0, y: 20)
+            .shadow(color: AppTheme.Colors.mediumBrown.opacity(0.25), radius: 10.0, x: 0, y: 20)
         }
         .padding(.horizontal, 32)
         .padding(.vertical)
