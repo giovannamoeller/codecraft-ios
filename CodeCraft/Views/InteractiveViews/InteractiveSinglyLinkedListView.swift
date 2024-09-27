@@ -121,9 +121,9 @@ struct InteractiveSinglyLinkedListView: View {
                             ForEach(Array(linkedList.toArray().enumerated()), id: \.0) { index, element in
                                 HStack(spacing: 4.0) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
+                                        Circle()
                                             .fill(AppTheme.Colors.lightLavender)
-                                            .frame(width: 60, height: 60)
+                                            .frame(width: 64, height: 64)
                                         Text("\(element)")
                                             .appFont(AppTheme.Fonts.title3)
                                     }
@@ -139,7 +139,7 @@ struct InteractiveSinglyLinkedListView: View {
                                 .offset(y: (lastAction == .removeFirst && index == 0) || (lastAction == .removeLast && index == linkedList.length - 1) ? 50 : 0)
                             }
                         }
-                        .frame(minHeight: 100)
+                        .frame(minHeight: 164)
                         .padding()
                     }
                     .padding(.vertical, 32)

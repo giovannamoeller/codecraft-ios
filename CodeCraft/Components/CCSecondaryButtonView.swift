@@ -26,7 +26,7 @@ struct CCSecondaryButtonView: View {
                 .appFont(AppTheme.Fonts.bodyBold)
                 .foregroundStyle(isAlternateStyle ? .white : AppTheme.Colors.mediumLavender)
         }
-        .frame(minWidth: 88)
+        .frame(maxWidth: .infinity)
         .padding()
         .background(isAlternateStyle ? AppTheme.Colors.mediumLavender : backgroundColor)
         .cornerRadius(28.0)
