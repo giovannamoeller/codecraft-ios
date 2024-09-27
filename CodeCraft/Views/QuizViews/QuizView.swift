@@ -1,5 +1,5 @@
 //
-//  ArrayQuizView.swift
+//  QuizView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 26/09/24.
@@ -7,13 +7,22 @@
 
 import SwiftUI
 
-struct ArrayQuizView: View {
+struct QuizView<Destination: View>: View {
+    
+    let questions: [Question]
+    let destination: () -> Destination
     
     @State private var selectedAnswers: [Int?] = Array(repeating: nil, count: 5)
     @State private var isSubmitted: Bool = false
     @State private var showResult: Bool = false
     @State private var userScore: Int = 0
     @State private var showMissingAnswerAlert: Bool = false
+    
+    init(questions: [Question],
+         @ViewBuilder destination: @escaping () -> Destination) {
+        self.questions = questions
+        self.destination = destination
+    }
     
     private func submitAnswers() {
         checkForMissingAnswers()
@@ -43,9 +52,9 @@ struct ArrayQuizView: View {
     
     private func calculateUserScore() {
         userScore = 0
-        for i in 0..<arrayQuestions.count {
+        for i in 0..<questions.count {
             if let selectedAnswer = selectedAnswers[i],
-               arrayQuestions[i].correctAnswerIndex == selectedAnswer {
+               questions[i].correctAnswerIndex == selectedAnswer {
                 userScore += 1
             }
         }
@@ -59,8 +68,8 @@ struct ArrayQuizView: View {
                         .appFont(AppTheme.Fonts.largeTitle)
                         .padding()
                     
-                    ForEach(0..<arrayQuestions.count, id: \.self) { index in
-                        CCQuestionView(question: arrayQuestions[index], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswers[index])
+                    ForEach(0..<questions.count, id: \.self) { index in
+                        CCQuestionView(question: questions[index], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswers[index])
                             .padding(.bottom)
                     }
                     
@@ -96,13 +105,11 @@ struct ArrayQuizView: View {
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
                 
-                QuizResultsModal(
+                QuizResultsModalView(
                     correctAnswers: userScore,
-                    totalQuestions: arrayQuestions.count,
+                    totalQuestions: questions.count,
                     isPresented: $showResult,
-                    destination: {
-                        SinglyLinkedListIntroductionView()
-                    }
+                    destination: destination
                 )
                 .transition(.scale.combined(with: .opacity).combined(with: .offset(y: 1000)))
             }
@@ -110,13 +117,13 @@ struct ArrayQuizView: View {
     }
 }
 
-struct QuizResultsModal<Destination: View>: View {
+struct QuizResultsModalView<Destination: View>: View {
     let correctAnswers: Int
     let totalQuestions: Int
-    let destination: Destination
+    let destination: () -> Destination
     @Binding var isPresented: Bool
     
-        
+    
     init(correctAnswers: Int,
          totalQuestions: Int,
          isPresented: Binding<Bool>,
@@ -124,7 +131,7 @@ struct QuizResultsModal<Destination: View>: View {
         self.correctAnswers = correctAnswers
         self.totalQuestions = totalQuestions
         self._isPresented = isPresented
-        self.destination = destination()
+        self.destination = destination
     }
     
     var body: some View {
@@ -142,9 +149,9 @@ struct QuizResultsModal<Destination: View>: View {
                 } label: {
                     CCPrimaryButtonView(text: "View my results", displayIcon: false)
                 }
-                
+                                
                 NavigationLink {
-                    destination
+                    destination()
                 } label: {
                     CCSecondaryButtonView(text: "Next topic")
                 }
@@ -159,6 +166,8 @@ struct QuizResultsModal<Destination: View>: View {
 }
 
 #Preview {
-    ArrayQuizView()
+    QuizView(questions: arrayQuestions) {
+        SinglyLinkedListIntroductionView()
+    }
 }
 
