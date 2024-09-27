@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ArrayIntroductionView()
+        AnimatedArrayIntroView()
     }
 }
 
@@ -17,3 +17,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+ 
