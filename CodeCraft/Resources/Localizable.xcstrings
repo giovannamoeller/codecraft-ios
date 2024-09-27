@@ -560,7 +560,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You você obteve %1$lld de %2$lld quest\u000eões corretas."
+            "value" : "Você obteve %1$lld de %2$lld quest\u000eões corretas."
           }
         }
       }
