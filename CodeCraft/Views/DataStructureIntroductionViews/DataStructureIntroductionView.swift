@@ -39,6 +39,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(dataStructure.title.capitalizedFirst())
                         .appFont(AppTheme.Fonts.title)
+                        .foregroundStyle(AppTheme.Colors.indigo)
                     
                     Text(dataStructure.definition)
                         .appFont(AppTheme.Fonts.bodyRegular)
@@ -47,7 +48,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 
                 VStack(alignment: .leading, spacing: 15) {
                     Text("Real world analogies")
-                        .appFont(AppTheme.Fonts.title)
+                        .appFont(AppTheme.Fonts.title2)
                     
                     if horizontalSizeClass == .compact {
                         ForEach(dataStructure.analogies) { analogy in
@@ -59,7 +60,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                                 CCAnalogyRow(analogy: analogy)
                                     .overlay {
                                         RoundedRectangle(cornerRadius: 10.0)
-                                            .stroke(AppTheme.Colors.lightBrown, lineWidth: 2.0)
+                                            .stroke(AppTheme.Colors.lightLavender, lineWidth: 2.0)
                                     }
                             }
                         }
@@ -72,7 +73,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                         Text("When to use")
                         Text(dataStructure.title)
                     }
-                    .appFont(AppTheme.Fonts.title)
+                    .appFont(AppTheme.Fonts.title2)
                     
                     
                     ForEach(dataStructure.useCases, id: \.self) { useCase in

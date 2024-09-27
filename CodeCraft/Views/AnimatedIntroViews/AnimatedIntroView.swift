@@ -31,7 +31,7 @@ struct AnimatedIntroView<Destination: View>: View {
                     .ignoresSafeArea()
                 
                 Circle()
-                    .fill(AppTheme.Colors.darkGreen)
+                    .fill(AppTheme.Colors.indigo)
                     .scaleEffect(circleScale)
                     .offset(y: circleOffset)
                     .animation(.spring(response: 5, dampingFraction: 0.8, blendDuration: 0), value: circleScale)
@@ -66,7 +66,7 @@ struct AnimatedIntroView<Destination: View>: View {
                         }
                         .frame(minWidth: 188)
                         .padding()
-                        .background(AppTheme.Colors.mediumBrown)
+                        .background(AppTheme.Colors.mediumLavender)
                         .foregroundStyle(.white)
                         .cornerRadius(28.0)
                     }

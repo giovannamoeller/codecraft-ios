@@ -13,9 +13,9 @@ struct CCAnalogyRow: View {
     var body: some View {
         HStack(spacing: 16.0) {
             Image(systemName: analogy.icon)
-                .foregroundStyle(.black)
+                .foregroundStyle(.white)
                 .frame(width: 48, height: 48)
-                .background(AppTheme.Colors.lightBrown)
+                .background(AppTheme.Colors.indigo)
                 .cornerRadius(8)
             
             VStack(alignment: .leading) {
@@ -23,13 +23,15 @@ struct CCAnalogyRow: View {
                     .appFont(AppTheme.Fonts.headline)
                 Text(analogy.description)
                     .appFont(AppTheme.Fonts.subheadline)
-                    .foregroundStyle(AppTheme.Colors.mediumBrown)
+                    .foregroundStyle(.secondary)
             }
             
             Spacer()
         }
-        .frame(minHeight: 72)
+        //.frame(minHeight: 72)
         .padding()
+        .background(AppTheme.Colors.lightLavender.opacity(0.5))
+        .cornerRadius(12.0)
     }
 }
 

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ Quiz" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "pt-BR" : {
@@ -40,9 +43,6 @@
           }
         }
       }
-    },
-    "Array Quiz" : {
-
     },
     "arrays" : {
       "localizations" : {

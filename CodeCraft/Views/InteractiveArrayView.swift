@@ -103,7 +103,7 @@ struct InteractiveArrayView: View {
                                 CCAnalogyRow(analogy: analogy)
                                     .overlay {
                                         RoundedRectangle(cornerRadius: 10.0)
-                                            .stroke(AppTheme.Colors.lightBrown, lineWidth: 2.0)
+                                            .stroke(AppTheme.Colors.lightLavender, lineWidth: 2.0)
                                     }
                             }
                         }
@@ -121,14 +121,14 @@ struct InteractiveArrayView: View {
                                 VStack(spacing: 4.0) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 10)
-                                            .fill(AppTheme.Colors.lightBrown)
+                                            .fill(AppTheme.Colors.lightLavender)
                                             .frame(width: 60, height: 60)
                                         Text("\(element)")
                                             .appFont(AppTheme.Fonts.title3)
                                     }
                                     Text("\(index)")
                                         .appFont(AppTheme.Fonts.bodyRegular)
-                                        .foregroundStyle(AppTheme.Colors.darkGreen)
+                                        .foregroundStyle(AppTheme.Colors.indigo)
                                 }
                                 .opacity(isRemoving && removingIndex == index ? 0 : 1)
                                 .scaleEffect(lastAction == .push && index == array.count - 1 ? 0.5 : 1)
@@ -175,7 +175,7 @@ struct InteractiveArrayView: View {
                             }
                         }) {
                             Image(systemName: "ellipsis")
-                                .foregroundStyle(AppTheme.Colors.mediumBrown)
+                                .foregroundStyle(AppTheme.Colors.mediumLavender)
                                 .rotationEffect(.degrees(90))
                         }
                     }

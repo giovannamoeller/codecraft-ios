@@ -35,8 +35,8 @@ enum AppTheme {
     }
     
     enum Colors {
-        static let lightBrown = Color("LightBrown")
-        static let mediumBrown = Color("MediumBrown")
-        static let darkGreen = Color("DarkGreen")
+        static let lightLavender = Color("LightLavender")
+        static let mediumLavender = Color("MediumLavender")
+        static let indigo = Color("Indigo")
     }
 }

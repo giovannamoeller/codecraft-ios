@@ -26,7 +26,7 @@ struct CCPrimaryButtonView: View {
         }
         .frame(minWidth: 148)
         .padding()
-        .background(AppTheme.Colors.darkGreen)
+        .background(AppTheme.Colors.indigo)
         .foregroundStyle(.white)
         .cornerRadius(28.0)
     }

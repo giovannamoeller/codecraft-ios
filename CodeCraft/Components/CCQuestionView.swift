@@ -41,7 +41,7 @@ struct CCQuestionView: View {
             }
         }
         .padding()
-        .background(AppTheme.Colors.lightBrown)
+        .background(AppTheme.Colors.lightLavender)
         .cornerRadius(12)
     }
 }
@@ -89,7 +89,7 @@ struct OptionButton: View {
         if isSubmitted && isSelected && !isCorrect {
             return Color.red.opacity(0.5)
         } else if isSelected {
-            return AppTheme.Colors.darkGreen
+            return AppTheme.Colors.indigo
         }
         return .black
     }
