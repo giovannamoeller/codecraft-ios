@@ -8,22 +8,10 @@
 import SwiftUI
 
 struct CCQuestionView: View {
-    
     let question: Question
-    
     @Binding var isSubmitted: Bool
     @Binding var selectedAnswer: Int?
-    
-    private func backgroundColor(for index: Int) -> Color {
-        if isSubmitted {
-            if index == question.correctAnswerIndex {
-                return .green.opacity(0.3)
-            } else if index == selectedAnswer && index != question.correctAnswerIndex {
-                return .red.opacity(0.3)
-            }
-        }
-        return .white
-    }
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
@@ -31,34 +19,94 @@ struct CCQuestionView: View {
                 .appFont(AppTheme.Fonts.headline)
                 .padding(.bottom, 5)
             
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+            OptionLayout(horizontalSizeClass: horizontalSizeClass) {
                 ForEach(0..<4) { index in
-                    Button(action: {
-                        if !isSubmitted {
-                            withAnimation {
-                                selectedAnswer = index
-                            }
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: selectedAnswer == index ? "checkmark.square.fill" : "square")
-                                .foregroundStyle(isSubmitted && index == selectedAnswer && index != question.correctAnswerIndex ? Color.red.opacity(0.5) : .black)
-                                .foregroundStyle(selectedAnswer == index ? AppTheme.Colors.darkGreen : .black)
-                            Text(question.options[index])
-                                .appFont(selectedAnswer == index ? AppTheme.Fonts.bodyBold : AppTheme.Fonts.bodyRegular)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(backgroundColor(for: index))
-                        .cornerRadius(8)
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    OptionButton(
+                        index: index,
+                        option: question.options[index],
+                        isSelected: selectedAnswer == index,
+                        isSubmitted: isSubmitted,
+                        isCorrect: index == question.correctAnswerIndex,
+                        action: { selectAnswer(index) }
+                    )
                 }
             }
         }
         .padding()
         .background(AppTheme.Colors.lightBrown)
         .cornerRadius(12)
+    }
+    
+    private func selectAnswer(_ index: Int) {
+        guard !isSubmitted else { return }
+        withAnimation {
+            selectedAnswer = index
+        }
+    }
+}
+
+struct OptionLayout<Content: View>: View {
+    let horizontalSizeClass: UserInterfaceSizeClass?
+    let content: Content
+    
+    init(horizontalSizeClass: UserInterfaceSizeClass?, @ViewBuilder content: () -> Content) {
+        self.horizontalSizeClass = horizontalSizeClass
+        self.content = content()
+    }
+    
+    var body: some View {
+        if horizontalSizeClass == .compact {
+            VStack { content }
+        } else {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                content
+            }
+        }
+    }
+}
+
+struct OptionButton: View {
+    let index: Int
+    let option: String
+    let isSelected: Bool
+    let isSubmitted: Bool
+    let isCorrect: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: isSelected ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(foregroundColor)
+                Text(option)
+                    .appFont(isSelected ? AppTheme.Fonts.bodyBold : AppTheme.Fonts.bodyRegular)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(backgroundColor)
+            .cornerRadius(8)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+    
+    private var backgroundColor: Color {
+        if isSubmitted {
+            if isCorrect {
+                return .green.opacity(0.3)
+            } else if isSelected {
+                return .red.opacity(0.3)
+            }
+        }
+        return .white
+    }
+    
+    private var foregroundColor: Color {
+        if isSubmitted && isSelected && !isCorrect {
+            return Color.red.opacity(0.5)
+        } else if isSelected {
+            return AppTheme.Colors.darkGreen
+        }
+        return .black
     }
 }
 
