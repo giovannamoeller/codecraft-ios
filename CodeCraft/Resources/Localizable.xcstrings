@@ -360,6 +360,9 @@
         }
       }
     },
+    "Quiz completed!" : {
+
+    },
     "Real world analogies" : {
       "localizations" : {
         "pt-BR" : {
@@ -470,6 +473,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quando você precisa de acesso rápido aos elementos por índice."
+          }
+        }
+      }
+    },
+    "You got %lld out of %lld questions correct." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You got %1$lld out of %2$lld questions correct."
           }
         }
       }
