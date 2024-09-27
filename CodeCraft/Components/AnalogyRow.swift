@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnalogyRow: View {
+struct CCAnalogyRow: View {
     let analogy: Analogy
     
     var body: some View {
@@ -34,5 +34,5 @@ struct AnalogyRow: View {
 }
 
 #Preview {
-    AnalogyRow(analogy: Analogy(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."))
+    CCAnalogyRow(analogy: Analogy(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."))
 }

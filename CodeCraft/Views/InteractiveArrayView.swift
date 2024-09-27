@@ -95,12 +95,12 @@ struct InteractiveArrayView: View {
                     
                     if horizontalSizeClass == .compact {
                         ForEach(analogies, id: \.id) { analogy in
-                            AnalogyRow(analogy: analogy)
+                            CCAnalogyRow(analogy: analogy)
                         }
                     } else {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(analogies, id: \.id) { analogy in
-                                AnalogyRow(analogy: analogy)
+                                CCAnalogyRow(analogy: analogy)
                                     .overlay {
                                         RoundedRectangle(cornerRadius: 10.0)
                                             .stroke(AppTheme.Colors.lightBrown, lineWidth: 2.0)

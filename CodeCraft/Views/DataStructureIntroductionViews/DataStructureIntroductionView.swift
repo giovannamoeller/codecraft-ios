@@ -51,12 +51,12 @@ struct DataStructureIntroductionView<Destination: View>: View {
                     
                     if horizontalSizeClass == .compact {
                         ForEach(dataStructure.analogies) { analogy in
-                            AnalogyRow(analogy: analogy)
+                            CCAnalogyRow(analogy: analogy)
                         }
                     } else {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(dataStructure.analogies) { analogy in
-                                AnalogyRow(analogy: analogy)
+                                CCAnalogyRow(analogy: analogy)
                                     .overlay {
                                         RoundedRectangle(cornerRadius: 10.0)
                                             .stroke(AppTheme.Colors.lightBrown, lineWidth: 2.0)
