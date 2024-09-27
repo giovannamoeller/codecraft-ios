@@ -13,12 +13,22 @@ struct ArrayQuizView: View {
     @State private var isSubmitted: Bool = false
     @State private var showResult: Bool = false
     @State private var userScore: Int = 0
+    @State private var showMissingAnswerAlert: Bool = false
     
     private func submitAnswers() {
+        checkForMissingAnswers()
+        guard !showMissingAnswerAlert else { return }
+        
         calculateUserScore()
         withAnimation {
             isSubmitted = true
             showResult = true
+        }
+    }
+    
+    private func checkForMissingAnswers() {
+        withAnimation {
+            showMissingAnswerAlert = selectedAnswers.contains(nil)
         }
     }
     
@@ -71,6 +81,17 @@ struct ArrayQuizView: View {
             }
             .blur(radius: showResult ? 3 : 0)
             
+            if showMissingAnswerAlert {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                
+                CCAlertView(title: "Oops!",
+                            message: "You need to answer all questions in order to proceed.",
+                            buttonTitle: "Go back to quiz",
+                            isPresented: $showMissingAnswerAlert)
+                .transition(.scale.combined(with: .opacity).combined(with: .offset(y: 1000)))
+            }
+            
             if showResult {
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
@@ -83,7 +104,6 @@ struct ArrayQuizView: View {
                         SinglyLinkedListIntroductionView()
                     }
                 )
-                .offset(y: showResult ? 0 : -300)
                 .transition(.scale.combined(with: .opacity).combined(with: .offset(y: 1000)))
             }
         }
@@ -114,7 +134,6 @@ struct QuizResultsModal<Destination: View>: View {
             
             Text("You got \(correctAnswers) out of \(totalQuestions) questions correct.")
                 .appFont(AppTheme.Fonts.bodyRegular)
-                .padding(.vertical)
             
             HStack(spacing: 16) {
                 
