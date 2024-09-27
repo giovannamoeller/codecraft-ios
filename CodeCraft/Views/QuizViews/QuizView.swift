@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizView<Destination: View>: View {
     
+    let title: String
     let questions: [Question]
     let destination: () -> Destination
     
@@ -18,8 +19,10 @@ struct QuizView<Destination: View>: View {
     @State private var userScore: Int = 0
     @State private var showMissingAnswerAlert: Bool = false
     
-    init(questions: [Question],
+    init(title: String,
+         questions: [Question],
          @ViewBuilder destination: @escaping () -> Destination) {
+        self.title = title
         self.questions = questions
         self.destination = destination
     }
@@ -64,7 +67,7 @@ struct QuizView<Destination: View>: View {
         ZStack {
             ScrollView {
                 VStack(spacing: 16.0) {
-                    Text("Array Quiz")
+                    Text("\(title) Quiz")
                         .appFont(AppTheme.Fonts.largeTitle)
                         .padding()
                     
@@ -166,7 +169,7 @@ struct QuizResultsModalView<Destination: View>: View {
 }
 
 #Preview {
-    QuizView(questions: arrayQuestions) {
+    QuizView(title: "Array", questions: arrayQuestions) {
         SinglyLinkedListIntroductionView()
     }
 }

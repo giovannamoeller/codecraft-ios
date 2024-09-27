@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArrayQuizView: View {
     var body: some View {
-        QuizView(questions: arrayQuestions) {
+        QuizView(title: "Array", questions: arrayQuestions) {
             SinglyLinkedListIntroductionView()
         }
     }
