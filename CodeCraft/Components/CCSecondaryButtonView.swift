@@ -22,7 +22,7 @@ struct CCSecondaryButtonView: View {
     
     var body: some View {
         HStack {
-            Text(text)
+            Text(LocalizedStringKey(text))
                 .appFont(AppTheme.Fonts.bodyBold)
                 .foregroundStyle(isAlternateStyle ? .white : AppTheme.Colors.mediumLavender)
         }

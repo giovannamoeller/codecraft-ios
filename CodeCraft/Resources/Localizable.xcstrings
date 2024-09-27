@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@ Quiz" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Quiz"
+          }
+        }
+      }
     },
     "%lld" : {
       "localizations" : {
@@ -248,7 +255,7 @@
       }
     },
     "Hello, World!" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -259,7 +266,14 @@
       }
     },
     "How to work with Arrays" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como trabalhar com arrays"
+          }
+        }
+      }
     },
     "In scenarios where memory locality is important for performance." : {
       "extractionState" : "manual",
@@ -284,7 +298,7 @@
       }
     },
     "Learn More" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -295,7 +309,14 @@
       }
     },
     "Let's get started" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vamos iniciar"
+          }
+        }
+      }
     },
     "Numbered spaces in a row." : {
       "localizations" : {
@@ -328,7 +349,7 @@
       }
     },
     "Pop" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -338,8 +359,8 @@
         }
       }
     },
-    "Pratice" : {
-      "extractionState" : "stale",
+    "Practice" : {
+      "extractionState" : "manual",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -350,7 +371,7 @@
       }
     },
     "Push" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -361,7 +382,14 @@
       }
     },
     "Quiz completed!" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz realizado!"
+          }
+        }
+      }
     },
     "Real world analogies" : {
       "localizations" : {
@@ -373,12 +401,56 @@
         }
       }
     },
+    "Reset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetar"
+          }
+        }
+      }
+    },
+    "Section %$lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seção %$lld"
+          }
+        }
+      }
+    },
     "singly linked lists" : {
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "listas ligadas simples"
+          }
+        }
+      }
+    },
+    "Start Quiz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar Quiz"
+          }
+        }
+      }
+    },
+    "Submit answers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submeter respostas"
           }
         }
       }
@@ -483,6 +555,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "You got %1$lld out of %2$lld questions correct."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You você obteve %1$lld de %2$lld quest\u000eões corretas."
           }
         }
       }

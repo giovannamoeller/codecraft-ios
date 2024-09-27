@@ -18,7 +18,7 @@ struct CCPrimaryButtonView: View {
     
     var body: some View {
         HStack {
-            Text(text)
+            Text(LocalizedStringKey(text))
                 .appFont(AppTheme.Fonts.bodyBold)
             if displayIcon {
                 Image(systemName: "arrow.right")
