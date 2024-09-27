@@ -28,10 +28,16 @@ struct CCAnalogyRow: View {
             
             Spacer()
         }
-        //.frame(minHeight: 72)
         .padding()
-        .background(AppTheme.Colors.lightLavender.opacity(0.5))
-        .cornerRadius(12.0)
+        .background(
+            RoundedRectangle(cornerRadius: 12.0)
+                .fill(AppTheme.Colors.lightLavender)
+                .frame(height: 88.0)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 12.0)
+                        .stroke(AppTheme.Colors.lightLavender, lineWidth: 2.0)
+                }
+        )
     }
 }
 

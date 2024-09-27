@@ -50,21 +50,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                     Text("Real world analogies")
                         .appFont(AppTheme.Fonts.title2)
                     
-                    if horizontalSizeClass == .compact {
-                        ForEach(dataStructure.analogies) { analogy in
-                            CCAnalogyRow(analogy: analogy)
-                        }
-                    } else {
-                        LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(dataStructure.analogies) { analogy in
-                                CCAnalogyRow(analogy: analogy)
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 10.0)
-                                            .stroke(AppTheme.Colors.lightLavender, lineWidth: 2.0)
-                                    }
-                            }
-                        }
-                    }
+                    CCFlexibleGridView(data: dataStructure.analogies)
                 }
                 .padding(.horizontal)
                 

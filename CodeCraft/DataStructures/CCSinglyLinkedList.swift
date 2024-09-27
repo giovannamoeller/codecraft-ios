@@ -78,4 +78,14 @@ public class CCSinglyLinkedList<T: Equatable>: ObservableObject {
             currentNode = currentNode?.next
         }
     }
+    
+    public func toArray() -> [T] {
+        var result: [T] = []
+        var current = head
+        while let node = current {
+            result.append(node.value)
+            current = node.next
+        }
+        return result
+    }
 }

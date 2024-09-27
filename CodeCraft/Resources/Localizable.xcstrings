@@ -161,6 +161,9 @@
         }
       }
     },
+    "Dynamic size" : {
+
+    },
     "Each car is connected to the next one." : {
       "localizations" : {
         "pt-BR" : {
@@ -210,6 +213,12 @@
           }
         }
       }
+    },
+    "Efficient insertions" : {
+
+    },
+    "Elements are accessed sequentially, starting from the head." : {
+
     },
     "Fixed and Dynamic" : {
       "localizations" : {
@@ -297,6 +306,9 @@
         }
       }
     },
+    "Inserting elements at the beginning or end is very efficient (O(1) time)." : {
+
+    },
     "Learn More" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -318,6 +330,18 @@
         }
       }
     },
+    "Linked list is empty!" : {
+
+    },
+    "Linked lists can grow or shrink dynamically as needed." : {
+
+    },
+    "Linked lists consist of nodes, each containing data and a reference to the next node." : {
+
+    },
+    "Node-based" : {
+
+    },
     "Numbered spaces in a row." : {
       "localizations" : {
         "pt-BR" : {
@@ -337,6 +361,9 @@
           }
         }
       }
+    },
+    "Observe how the linked list changes as you perform operations below." : {
+
     },
     "Parking Lot" : {
       "localizations" : {
@@ -423,6 +450,9 @@
         }
       }
     },
+    "Sequential access" : {
+
+    },
     "singly linked lists" : {
       "localizations" : {
         "pt-BR" : {
@@ -494,6 +524,9 @@
           }
         }
       }
+    },
+    "Visualize how a singly linked list works" : {
+
     },
     "Visualize how an array works" : {
       "localizations" : {

@@ -28,7 +28,7 @@ struct SinglyLinkedListIntroductionView: View {
     
     var body: some View {
         DataStructureIntroductionView(dataStructure: singlyLinkedListInformation) {
-            //
+            InteractiveSinglyLinkedListView()
         }
     }
 }

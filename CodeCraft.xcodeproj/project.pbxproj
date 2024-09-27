@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		486C4D1C2CA2FA5B001751D1 /* Exceptions for "CodeCraft" folder in "CodeCraft" target */ = {
+		48AA7A6B2CA6FDB700844F8F /* Exceptions for "CodeCraft" folder in "CodeCraft" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		486C4CC42CA2F6AA001751D1 /* CodeCraft */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				486C4D1C2CA2FA5B001751D1 /* Exceptions for "CodeCraft" folder in "CodeCraft" target */,
+				48AA7A6B2CA6FDB700844F8F /* Exceptions for "CodeCraft" folder in "CodeCraft" target */,
 			);
 			path = CodeCraft;
 			sourceTree = "<group>";
