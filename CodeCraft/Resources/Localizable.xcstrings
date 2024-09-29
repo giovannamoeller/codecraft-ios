@@ -81,6 +81,9 @@
         }
       }
     },
+    "Bidirectional" : {
+
+    },
     "Books arranged in order." : {
       "localizations" : {
         "pt-BR" : {
@@ -161,6 +164,15 @@
         }
       }
     },
+    "Doubly linked list is empty!" : {
+
+    },
+    "Doubly linked lists can grow or shrink dynamically as needed." : {
+
+    },
+    "Doubly linked lists consist of nodes, each containing data and references to both the next and previous nodes." : {
+
+    },
     "Dynamic size" : {
 
     },
@@ -217,7 +229,13 @@
     "Efficient insertions" : {
 
     },
+    "Efficient insertions and deletions" : {
+
+    },
     "Elements are accessed sequentially, starting from the head." : {
+
+    },
+    "Elements can be traversed in both directions." : {
 
     },
     "Fixed and Dynamic" : {
@@ -284,6 +302,9 @@
         }
       }
     },
+    "How to work with singly linked lists" : {
+
+    },
     "In scenarios where memory locality is important for performance." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -307,6 +328,9 @@
       }
     },
     "Inserting elements at the beginning or end is very efficient (O(1) time)." : {
+
+    },
+    "Inserting or removing elements at any position is very efficient (O(1) time)." : {
 
     },
     "Learn More" : {
@@ -361,6 +385,9 @@
           }
         }
       }
+    },
+    "Observe how the doubly linked list changes as you perform operations below." : {
+
     },
     "Observe how the linked list changes as you perform operations below." : {
 
@@ -524,6 +551,9 @@
           }
         }
       }
+    },
+    "Visualize how a doubly linked list works" : {
+
     },
     "Visualize how a singly linked list works" : {
 

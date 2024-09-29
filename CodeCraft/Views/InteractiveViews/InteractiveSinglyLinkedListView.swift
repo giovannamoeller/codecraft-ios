@@ -270,7 +270,7 @@ struct InteractiveSinglyLinkedListView: View {
                 .frame(maxWidth: 320)
                 
                 NavigationLink {
-                    //LinkedListCodeCheatsheetView()
+                    SinglyLinkedListCodeCheatsheetView()
                 } label: {
                     CCPrimaryButtonView(text: "Practice")
                         .padding(.top, 32)
