@@ -32,10 +32,11 @@ struct CodeCheatsheetView: View {
                 ScrollView(showsIndicators: false) {
                     Text(codeSyntaxHighlight.highlightCode(for: code))
                         .font(.system(size: 16, design: .monospaced))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(8)
                 }
-                
             }
-            .frame(maxWidth: .infinity, maxHeight: 840, alignment: .topLeading)
+            .frame(maxHeight: 840)
             .padding()
             .background(AppTheme.Colors.lightLavender)
             .cornerRadius(16.0)
@@ -48,7 +49,7 @@ struct CodeCheatsheetView: View {
 
 #Preview {
     CodeCheatsheetView(
-        codeSnippets: Code.arrayCodeSnippet
+        codeSnippets: Code.singlyLinkedListCodeSnippet
     )
 }
 
