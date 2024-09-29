@@ -34,7 +34,7 @@ struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
                             Text(segment.rawValue)
                                 .font(AppTheme.Fonts.bodyRegular)
                                 .frame(width: geometry.size.width / CGFloat(array.count), height: geometry.size.height)
-                                .foregroundStyle(selectedSegment == index ? .black : .brown)
+                                .foregroundStyle(selectedSegment == index ? AppTheme.Colors.indigo : AppTheme.Colors.mediumLavender)
                         }
                     }
                 }
