@@ -25,10 +25,6 @@ struct CCDoublyNodeView: View {
     
     var body: some View {
         HStack {
-            if !isHead {
-                Image(systemName: "arrow.backward")
-                    .foregroundStyle(.white)
-            }
             ZStack {
                 Circle()
                     .fill(AppTheme.Colors.lightLavender)
@@ -40,9 +36,18 @@ struct CCDoublyNodeView: View {
                     .offset(y: -52)
             }
             if !isTail {
-                Image(systemName: "arrow.forward")
-                    .foregroundStyle(.white)
+                VStack(spacing: 4) {
+                    Image(systemName: "arrow.right")
+                        .foregroundColor(.white)
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(.white)
+                }
+                .padding(.horizontal, 4)
             }
         }
     }
+}
+
+#Preview {
+    CCDoublyNodeView(element: 10)
 }
