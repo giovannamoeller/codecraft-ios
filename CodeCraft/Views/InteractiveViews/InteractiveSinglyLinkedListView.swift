@@ -20,6 +20,7 @@ struct InteractiveSinglyLinkedListView: View {
     @State private var isButtonDisabled: Bool = false
     @State private var isRemovingElement: Bool = false
     @State private var removedElement: Int?
+    @State private var scrollTarget: Int?
     
     let analogies: [Analogy] = [
         Analogy(icon: "link", title: "Node-based", description: "Linked lists consist of nodes, each containing data and a reference to the next node."),
@@ -39,6 +40,7 @@ struct InteractiveSinglyLinkedListView: View {
         
         withAnimation(.spring(duration: 0.5, bounce: 0.3)) {
             newElement = elementToInsert
+            scrollTarget = elementToInsert
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -67,6 +69,7 @@ struct InteractiveSinglyLinkedListView: View {
         
         withAnimation(.spring(duration: 0.5, bounce: 0.3)) {
             newElement = elementToInsert
+            scrollTarget = elementToInsert
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -93,6 +96,7 @@ struct InteractiveSinglyLinkedListView: View {
         isButtonDisabled = true
         lastAction = .removeFirst
         animatingNodeIndex = 0
+        scrollTarget = linkedList.head?.value
         
         // Start the animation for removing the first element
         withAnimation(.easeInOut(duration: 0.5)) {
@@ -117,7 +121,6 @@ struct InteractiveSinglyLinkedListView: View {
                 lastAction = .none
                 isRemovingElement = false
                 removedElement = nil
-                
             }
         }
     }
@@ -128,7 +131,7 @@ struct InteractiveSinglyLinkedListView: View {
         isButtonDisabled = true
         lastAction = .removeLast
         animatingNodeIndex = linkedList.length - 1
-        
+        scrollTarget = linkedList.tail?.value
         
         withAnimation(.easeInOut(duration: 0.5)) {
             isAnimating = true
@@ -175,51 +178,63 @@ struct InteractiveSinglyLinkedListView: View {
                         .appFont(AppTheme.Fonts.bodyBold)
                         .padding(.vertical)
                 } else {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8.0) {
-                            if newElement != nil && lastAction == .insertFirst {
-                                CCSinglyNodeView(
-                                    element: newElement!,
-                                    isHead: true,
-                                    isTail: linkedList.isEmpty
-                                )
-                                .opacity(isAnimating ? 1 : 0)
-                                .scaleEffect(isAnimating ? 1 : 0.5)
-                                .offset(y: isAnimating ? 0 : -50)
-                                .animation(.spring(bounce: 0.5), value: isAnimating)
+                    ScrollViewReader { proxy in
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8.0) {
+                                if newElement != nil && lastAction == .insertFirst {
+                                    CCSinglyNodeView(
+                                        element: newElement!,
+                                        isHead: true,
+                                        isTail: linkedList.isEmpty
+                                    )
+                                    .opacity(isAnimating ? 1 : 0)
+                                    .scaleEffect(isAnimating ? 1 : 0.5)
+                                    .offset(y: isAnimating ? 0 : -50)
+                                    .animation(.spring(bounce: 0.5), value: isAnimating)
+                                    .id(newElement!)
+                                }
+                                
+                                ForEach(Array(linkedList.toArray().enumerated()), id: \.element) { index, element in
+                                    CCSinglyNodeView(
+                                        element: element,
+                                        isHead: index == 0 && (lastAction != .insertFirst || !isAnimating),
+                                        isTail: index == linkedList.length - 1 && (lastAction != .insertLast || !isAnimating)
+                                    )
+                                    .opacity(removedElement == element ? 0 : 1)
+                                    .scaleEffect(removedElement == element ? 0.5 : 1)
+                                    .offset(y: removedElement == element ? -50 : 0)
+                                    .id(element)
+                                }
+                                .animation(.spring(bounce: 0.5), value: removedElement)
+                                //.transition(.asymmetric(insertion: .scale, removal: .opacity))
+                                
+                                if newElement != nil && lastAction == .insertLast {
+                                    CCSinglyNodeView(
+                                        element: newElement!,
+                                        isHead: linkedList.isEmpty,
+                                        isTail: true
+                                    )
+                                    .opacity(isAnimating ? 1 : 0)
+                                    .scaleEffect(isAnimating ? 1 : 0.5)
+                                    .offset(y: isAnimating ? 0 : -50)
+                                    .animation(.spring(bounce: 0.5), value: isAnimating)
+                                    .id(newElement!)
+                                }
                             }
-                            
-                            ForEach(Array(linkedList.toArray().enumerated()), id: \.element) { index, element in
-                                CCSinglyNodeView(
-                                    element: element,
-                                    isHead: index == 0 && (lastAction != .insertFirst || !isAnimating),
-                                    isTail: index == linkedList.length - 1 && (lastAction != .insertLast || !isAnimating)
-                                )
-                                .opacity(removedElement == element ? 0 : 1)
-                                .scaleEffect(removedElement == element ? 0.5 : 1)
-                                .offset(y: removedElement == element ? -50 : 0)
-                            }
-                            .animation(.spring(bounce: 0.5), value: removedElement)
-                            //.transition(.asymmetric(insertion: .scale, removal: .opacity))
-                            
-                            if newElement != nil && lastAction == .insertLast {
-                                CCSinglyNodeView(
-                                    element: newElement!,
-                                    isHead: linkedList.isEmpty,
-                                    isTail: true
-                                )
-                                .opacity(isAnimating ? 1 : 0)
-                                .scaleEffect(isAnimating ? 1 : 0.5)
-                                .offset(y: isAnimating ? 0 : -50)
-                                .animation(.spring(bounce: 0.5), value: isAnimating)
-                            }
+                            .padding(.horizontal, 32)
+                            .padding(.vertical, 32)
+                            .padding(.top)
                         }
-                        .padding(.horizontal, 32)
-                        .padding(.vertical, 32)
-                        .padding(.top)
+                        .background(AppTheme.Colors.indigo)
+                        .padding(.vertical)
+                        .onChange(of: scrollTarget, { _, target in
+                            if let target = target {
+                                withAnimation {
+                                    proxy.scrollTo(target, anchor: .center)
+                                }
+                            }
+                        })
                     }
-                    .background(AppTheme.Colors.indigo)
-                    .padding(.vertical)
                 }
                 
                 HStack {
