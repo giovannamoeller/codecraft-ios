@@ -7,10 +7,20 @@
 
 import Foundation
 
-public class CCStack<T>: ObservableObject {
-    @Published var elements: [T] = []
+public class StackElement<T>: Identifiable {
+    public var id: UUID
+    public var value: T
     
-    var isEmpy: Bool {
+    public init(value: T) {
+        self.id = UUID()
+        self.value = value
+    }
+}
+
+public class CCStack<T>: ObservableObject {
+    @Published var elements: [StackElement<T>] = []
+    
+    var isEmpty: Bool {
         elements.isEmpty
     }
     
@@ -18,15 +28,15 @@ public class CCStack<T>: ObservableObject {
         elements.count
     }
     
-    func push(_ element: T) {
+    func push(_ element: StackElement<T>) {
         elements.append(element)
     }
     
-    func pop() -> T? {
+    func pop() -> StackElement<T>? {
         elements.popLast()
     }
     
-    func peek() -> T? {
+    func peek() -> StackElement<T>? {
         elements.last
     }
 }

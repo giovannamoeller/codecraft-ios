@@ -41,6 +41,9 @@
         }
       }
     },
+    "Add or remove elements to see how a stack operates." : {
+
+    },
     "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key." : {
       "localizations" : {
         "pt-BR" : {
@@ -104,6 +107,9 @@
         }
       }
     },
+    "Browser History" : {
+
+    },
     "Calendar" : {
       "localizations" : {
         "pt-BR" : {
@@ -143,6 +149,9 @@
           }
         }
       }
+    },
+    "Computer memory uses a stack to manage function calls and returns." : {
+
     },
     "Conga line" : {
       "localizations" : {
@@ -281,6 +290,9 @@
         }
       }
     },
+    "Function Call Stack" : {
+
+    },
     "Hello, World!" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -333,6 +345,9 @@
     "Inserting or removing elements at any position is very efficient (O(1) time)." : {
 
     },
+    "Last In, First Out (LIFO)" : {
+
+    },
     "Learn More" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -354,6 +369,9 @@
         }
       }
     },
+    "Like a stack of plates, the last item added is the first one removed." : {
+
+    },
     "Linked list is empty!" : {
 
     },
@@ -361,6 +379,9 @@
 
     },
     "Linked lists consist of nodes, each containing data and a reference to the next node." : {
+
+    },
+    "Navigating back through web pages works like a stack." : {
 
     },
     "Node-based" : {
@@ -490,6 +511,9 @@
         }
       }
     },
+    "Stack is empty!" : {
+
+    },
     "Start Quiz" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -511,6 +535,9 @@
           }
         }
       }
+    },
+    "The undo feature in many applications uses a stack to keep track of actions." : {
+
     },
     "Train" : {
       "localizations" : {
@@ -542,6 +569,9 @@
         }
       }
     },
+    "Undo Functionality" : {
+
+    },
     "Unique index" : {
       "localizations" : {
         "pt-BR" : {
@@ -556,6 +586,9 @@
 
     },
     "Visualize how a singly linked list works" : {
+
+    },
+    "Visualize how a stack works" : {
 
     },
     "Visualize how an array works" : {
