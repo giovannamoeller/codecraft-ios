@@ -12,15 +12,13 @@ struct CCFlexibleGridView: View {
     
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
-    let data: [Analogy]
-    
-    @State private var maxHeight: CGFloat = 420
-    
+    let data: [GridData]
+        
     var body: some View {
         layout {
             ForEach(data, id: \.id) { item in
-                CCAnalogyRow(analogy: item)
-                    .frame(maxHeight: maxHeight) // Apply the max height here
+                CCGridDataRow(data: item)
+                    .frame(maxHeight: 420)
             }
         }
     }
@@ -41,9 +39,9 @@ struct CCFlexibleGridView: View {
 
 #Preview {
     CCFlexibleGridView(data: [
-        Analogy(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."),
-        Analogy(icon: "book", title: "Bookshelf", description: "Books arranged in order."),
-        Analogy(icon: "calendar", title: "Calendar", description: "Days of the month in sequence."),
-        Analogy(icon: "tram", title: "Train", description: "A series of connected carriages.")
+        GridData(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."),
+        GridData(icon: "book", title: "Bookshelf", description: "Books arranged in order."),
+        GridData(icon: "calendar", title: "Calendar", description: "Days of the month in sequence."),
+        GridData(icon: "tram", title: "Train", description: "A series of connected carriages.")
     ])
 }

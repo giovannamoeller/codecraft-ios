@@ -1,5 +1,5 @@
 //
-//  Analogy.swift
+//  GridData.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 24/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Analogy: Identifiable {
+struct GridData: Identifiable {
     let id = UUID()
     let icon: String
     let title: LocalizedStringKey

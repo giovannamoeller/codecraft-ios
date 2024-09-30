@@ -41,6 +41,9 @@
         }
       }
     },
+    "Add or remove elements to see how a queue operates." : {
+
+    },
     "Add or remove elements to see how a stack operates." : {
 
     },
@@ -110,6 +113,9 @@
     "Browser History" : {
 
     },
+    "Bus Stop" : {
+
+    },
     "Calendar" : {
       "localizations" : {
         "pt-BR" : {
@@ -162,6 +168,9 @@
           }
         }
       }
+    },
+    "Data Buffer" : {
+
     },
     "Days of the month in sequence." : {
       "localizations" : {
@@ -247,6 +256,9 @@
     "Elements can be traversed in both directions." : {
 
     },
+    "First In, First Out (FIFO)" : {
+
+    },
     "Fixed and Dynamic" : {
       "localizations" : {
         "pt-BR" : {
@@ -317,6 +329,9 @@
     "How to work with singly linked lists" : {
 
     },
+    "In computing, queues are used to manage data flow between processes." : {
+
+    },
     "In scenarios where memory locality is important for performance." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -368,6 +383,9 @@
           }
         }
       }
+    },
+    "Like a line of people waiting, the first person to join is the first to leave." : {
+
     },
     "Like a stack of plates, the last item added is the first one removed." : {
 
@@ -423,6 +441,9 @@
         }
       }
     },
+    "People board the bus in the order they arrived at the stop." : {
+
+    },
     "Pop" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -445,6 +466,12 @@
         }
       }
     },
+    "Print jobs are processed in the order they are received." : {
+
+    },
+    "Printer Queue" : {
+
+    },
     "Push" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -455,6 +482,9 @@
           }
         }
       }
+    },
+    "Queue is empty!" : {
+
     },
     "Quiz completed!" : {
       "localizations" : {
@@ -583,6 +613,9 @@
       }
     },
     "Visualize how a doubly linked list works" : {
+
+    },
+    "Visualize how a queue works" : {
 
     },
     "Visualize how a singly linked list works" : {

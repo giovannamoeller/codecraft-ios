@@ -14,10 +14,10 @@ struct ArrayIntroductionView: View {
         imageName: "arrays-01",
         definition: "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key.",
         analogies: [
-            Analogy(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."),
-            Analogy(icon: "book", title: "Bookshelf", description: "Books arranged in order."),
-            Analogy(icon: "calendar", title: "Calendar", description: "Days of the month in sequence."),
-            Analogy(icon: "tram", title: "Train", description: "A series of connected carriages.")
+            GridData(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."),
+            GridData(icon: "book", title: "Bookshelf", description: "Books arranged in order."),
+            GridData(icon: "calendar", title: "Calendar", description: "Days of the month in sequence."),
+            GridData(icon: "tram", title: "Train", description: "A series of connected carriages.")
         ],
         useCases: [
             "When you need quick access to elements by index.",

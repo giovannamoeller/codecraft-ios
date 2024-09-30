@@ -16,11 +16,11 @@ struct InteractiveStackView: View {
     @State private var isButtonDisabled: Bool = false
     @State private var peekedElement: StackElement<Int>?
     
-    let analogies: [Analogy] = [
-        Analogy(icon: "tray.and.arrow.up.fill", title: "Last In, First Out (LIFO)", description: "Like a stack of plates, the last item added is the first one removed."),
-        Analogy(icon: "book.closed.fill", title: "Browser History", description: "Navigating back through web pages works like a stack."),
-        Analogy(icon: "arrow.uturn.backward", title: "Undo Functionality", description: "The undo feature in many applications uses a stack to keep track of actions."),
-        Analogy(icon: "cpu", title: "Function Call Stack", description: "Computer memory uses a stack to manage function calls and returns."),
+    let stackUsageExamples: [GridData] = [
+        GridData(icon: "tray.and.arrow.up.fill", title: "Last In, First Out (LIFO)", description: "Like a stack of plates, the last item added is the first one removed."),
+        GridData(icon: "book.closed.fill", title: "Browser History", description: "Navigating back through web pages works like a stack."),
+        GridData(icon: "arrow.uturn.backward", title: "Undo Functionality", description: "The undo feature in many applications uses a stack to keep track of actions."),
+        GridData(icon: "cpu", title: "Function Call Stack", description: "Computer memory uses a stack to manage function calls and returns."),
     ]
     
     private func push() {
@@ -87,7 +87,7 @@ struct InteractiveStackView: View {
                     .appFont(AppTheme.Fonts.largeTitle)
                     .padding(32)
                 
-                CCFlexibleGridView(data: analogies)
+                CCFlexibleGridView(data: stackUsageExamples)
                     .padding()
                 
                 Text("Add or remove elements to see how a stack operates.")

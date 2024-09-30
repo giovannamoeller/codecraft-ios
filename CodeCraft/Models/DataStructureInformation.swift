@@ -11,6 +11,6 @@ struct DataStructureInformation {
     let title: LocalizedStringKey
     let imageName: String
     let definition: LocalizedStringKey
-    let analogies: [Analogy]
+    let analogies: [GridData]
     let useCases: [String]
 }
