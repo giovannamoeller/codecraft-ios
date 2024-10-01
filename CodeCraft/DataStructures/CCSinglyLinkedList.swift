@@ -69,6 +69,13 @@ public class CCSinglyLinkedList<T: Equatable>: ObservableObject {
         return tail?.value
     }
     
+    public func removeAll() {
+        guard !isEmpty else { return }
+        head = nil
+        tail = nil
+        length = 0
+    }
+    
     public func printList() {
         var currentNode = head
         while currentNode != nil {

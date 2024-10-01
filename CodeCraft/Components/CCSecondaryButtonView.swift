@@ -11,13 +11,16 @@ struct CCSecondaryButtonView: View {
     var text: String
     var backgroundColor: Color
     var isAlternateStyle: Bool
+    var isDisabled: Bool
     
     init(text: String,
          backgroundColor: Color = AppTheme.Colors.lightLavender,
-         isAlternateStyle: Bool = false) {
+         isAlternateStyle: Bool = false,
+         isDisabled: Bool = false) {
         self.text = text
         self.backgroundColor = backgroundColor
         self.isAlternateStyle = isAlternateStyle
+        self.isDisabled = isDisabled
     }
     
     var body: some View {
@@ -34,6 +37,8 @@ struct CCSecondaryButtonView: View {
             RoundedRectangle(cornerRadius: 28.0)
                 .stroke(isAlternateStyle ? AppTheme.Colors.lightLavender : AppTheme.Colors.mediumLavender, lineWidth: 1.0)
         }
+        .disabled(isDisabled)
+        .opacity(isDisabled ? 0.5 : 1.0)
     }
 }
 
