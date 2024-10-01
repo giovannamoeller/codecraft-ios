@@ -75,10 +75,6 @@ struct InteractiveStackView: View {
         }
     }
     
-    private func getRandomElement() -> Int {
-        return Int.random(in: 0..<100)
-    }
-    
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {

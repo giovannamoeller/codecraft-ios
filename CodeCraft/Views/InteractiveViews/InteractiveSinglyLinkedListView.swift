@@ -29,10 +29,6 @@ struct InteractiveSinglyLinkedListView: View {
         GridData(icon: "bolt", title: "Efficient insertions", description: "Inserting elements at the beginning or end is very efficient (O(1) time)."),
     ]
     
-    private func getRandomElement() -> Int {
-        return Int.random(in: 0..<100)
-    }
-    
     private func insertFirst() {
         isButtonDisabled = true
         lastAction = .insertFirst

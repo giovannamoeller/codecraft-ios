@@ -34,10 +34,6 @@ struct InteractiveArrayView: View {
     
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
-    private func getRandomElement() -> Int {
-        return Int.random(in: 0..<100)
-    }
-    
     @StateObject private var array = CCDynamicArray<Int>(count: 5) {
         Int.random(in: 0..<100)
     }

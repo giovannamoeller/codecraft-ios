@@ -24,10 +24,6 @@ struct InteractiveDoublyLinkedListView: View {
         GridData(icon: "bolt", title: "Efficient insertions and deletions", description: "Inserting or removing elements at any position is very efficient (O(1) time)."),
     ]
     
-    private func getRandomElement() -> Int {
-        return Int.random(in: 0..<100)
-    }
-    
     private func insertFirst() {
         isButtonDisabled = true
         lastAction = .insertFirst
