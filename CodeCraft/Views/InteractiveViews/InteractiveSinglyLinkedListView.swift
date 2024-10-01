@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum LinkedListAction {
-    case none, insertFirst, insertLast, removeFirst, removeLast
-}
-
 struct InteractiveSinglyLinkedListView: View {
     @StateObject private var linkedList = CCSinglyLinkedList<Int>()
     

@@ -10,7 +10,6 @@ import SwiftUI
 struct InteractiveDoublyLinkedListView: View {
     @StateObject private var linkedList = CCDoublyLinkedList<Int>()
     @State private var animatingNodeIndex: Int = -1
-    @State private var lastAction: LinkedListAction = .none
     @State private var newElement: Int?
     @State private var isAnimating: Bool = false
     @State private var isButtonDisabled: Bool = false
@@ -26,7 +25,6 @@ struct InteractiveDoublyLinkedListView: View {
     
     private func insertFirst() {
         isButtonDisabled = true
-        lastAction = .insertFirst
         let elementToInsert = getRandomElement()
         
         withAnimation(.spring(duration: 0.5, bounce: 0.3)) {
@@ -48,13 +46,11 @@ struct InteractiveDoublyLinkedListView: View {
             withAnimation {
                 isButtonDisabled = false
             }
-            lastAction = .none
         }
     }
     
     private func insertLast() {
         isButtonDisabled = true
-        lastAction = .insertLast
         let elementToInsert = getRandomElement()
         
         withAnimation(.spring(duration: 0.5, bounce: 0.3)) {
@@ -76,14 +72,12 @@ struct InteractiveDoublyLinkedListView: View {
             withAnimation {
                 isButtonDisabled = false
             }
-            lastAction = .none
         }
     }
     
     private func removeFirst() {
         guard !linkedList.isEmpty else { return }
         isButtonDisabled = true
-        lastAction = .removeFirst
         animatingNodeIndex = 0
         
         withAnimation(.easeInOut(duration: 0.5)) {
@@ -103,7 +97,6 @@ struct InteractiveDoublyLinkedListView: View {
                 animatingNodeIndex = -1
                 isAnimating = false
                 isButtonDisabled = false
-                lastAction = .none
                 isRemovingElement = false
                 removedElement = nil
             }
@@ -113,7 +106,6 @@ struct InteractiveDoublyLinkedListView: View {
     private func removeLast() {
         guard !linkedList.isEmpty else { return }
         isButtonDisabled = true
-        lastAction = .removeLast
         animatingNodeIndex = linkedList.length - 1
         
         withAnimation(.easeInOut(duration: 0.5)) {
@@ -134,7 +126,6 @@ struct InteractiveDoublyLinkedListView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             withAnimation {
                 isButtonDisabled = false
-                lastAction = .none
                 removedElement = nil
             }
         }
@@ -163,7 +154,7 @@ struct InteractiveDoublyLinkedListView: View {
                 } else {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8.0) {
-                            if newElement != nil && lastAction == .insertFirst {
+                            if newElement != nil {
                                 CCDoublyNodeView(
                                     element: newElement!,
                                     isHead: true,
@@ -178,8 +169,8 @@ struct InteractiveDoublyLinkedListView: View {
                             ForEach(Array(linkedList.toArray().enumerated()), id: \.element) { index, element in
                                 CCDoublyNodeView(
                                     element: element,
-                                    isHead: index == 0 && (lastAction != .insertFirst || !isAnimating),
-                                    isTail: index == linkedList.length - 1 && (lastAction != .insertLast || !isAnimating)
+                                    isHead: index == 0 && (!isAnimating),
+                                    isTail: index == linkedList.length - 1 && (!isAnimating)
                                 )
                                 .opacity(removedElement == element ? 0 : 1)
                                 .scaleEffect(removedElement == element ? 0.5 : 1)
@@ -187,7 +178,7 @@ struct InteractiveDoublyLinkedListView: View {
                             }
                             .animation(.spring(bounce: 0.5), value: removedElement)
                             
-                            if newElement != nil && lastAction == .insertLast {
+                            if newElement != nil {
                                 CCDoublyNodeView(
                                     element: newElement!,
                                     isHead: linkedList.isEmpty,
