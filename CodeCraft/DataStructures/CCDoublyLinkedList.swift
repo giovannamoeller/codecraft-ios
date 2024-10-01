@@ -68,6 +68,13 @@ public class CCDoublyLinkedList<T: Equatable>: ObservableObject {
         return removedValue
     }
     
+    public func removeAll() {
+        guard !isEmpty else { return }
+        head = nil
+        tail = nil
+        length = 0
+    }
+    
     public func toArray() -> [T] {
         var result: [T] = []
         var current = head
