@@ -25,13 +25,6 @@ struct InteractiveArrayView: View {
     @State private var offset: CGFloat = 0
     @State private var showIndexOffBounds: Bool = false
     
-    let arrayUsageExamples: [GridData] = [
-        GridData(icon: "info.circle", title: "Zero-indexed", description: "Arrays are zero-indexed: The first element is at index 0."),
-        GridData(icon: "info.circle", title: "Unique index", description: "Each element has a unique index: Used to access or modify the element."),
-        GridData(icon: "info.circle", title: "Fixed and Dynamic", description: "Arrays have a fixed size in some languages, but can be dynamic in others."),
-        GridData(icon: "info.circle", title: "Common operations", description: "Common operations: Insertion, deletion, and accessing elements."),
-    ]
-    
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     @StateObject private var array = CCDynamicArray<Int>(count: 5) {
@@ -89,7 +82,7 @@ struct InteractiveArrayView: View {
                     
                     // Informations
                     
-                    CCFlexibleGridView(data: arrayUsageExamples)
+                    CCFlexibleGridView(data: UsageExample.array)
                     
                     // Visualization
                     

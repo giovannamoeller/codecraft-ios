@@ -16,13 +16,6 @@ struct InteractiveQueueView: View {
     @State private var isButtonDisabled: Bool = false
     @State private var frontElement: QueueElement<Int>?
     
-    let queueUsageExamples: [GridData] = [
-        GridData(icon: "person.3", title: "First In, First Out (FIFO)", description: "Like a line of people waiting, the first person to join is the first to leave."),
-        GridData(icon: "printer", title: "Printer Queue", description: "Print jobs are processed in the order they are received."),
-        GridData(icon: "bus", title: "Bus Stop", description: "People board the bus in the order they arrived at the stop."),
-        GridData(icon: "arrow.left.arrow.right", title: "Data Buffer", description: "In computing, queues are used to manage data flow between processes."),
-    ]
-    
     private func enqueue() {
         disableButton()
         newElement = getRandomElement()
@@ -90,7 +83,7 @@ struct InteractiveQueueView: View {
                     .appFont(AppTheme.Fonts.largeTitle)
                     .padding(32)
                 
-                CCFlexibleGridView(data: queueUsageExamples)
+                CCFlexibleGridView(data: UsageExample.queue)
                     .padding()
                 
                 Text("Add or remove elements to see how a queue operates.")

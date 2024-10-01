@@ -16,13 +16,6 @@ struct InteractiveStackView: View {
     @State private var isButtonDisabled: Bool = false
     @State private var peekedElement: StackElement<Int>?
     
-    let stackUsageExamples: [GridData] = [
-        GridData(icon: "tray.and.arrow.up.fill", title: "Last In, First Out (LIFO)", description: "Like a stack of plates, the last item added is the first one removed."),
-        GridData(icon: "book.closed.fill", title: "Browser History", description: "Navigating back through web pages works like a stack."),
-        GridData(icon: "arrow.uturn.backward", title: "Undo Functionality", description: "The undo feature in many applications uses a stack to keep track of actions."),
-        GridData(icon: "cpu", title: "Function Call Stack", description: "Computer memory uses a stack to manage function calls and returns."),
-    ]
-    
     private func push() {
         disableButton()
         newElement = getRandomElement()
@@ -83,7 +76,7 @@ struct InteractiveStackView: View {
                     .appFont(AppTheme.Fonts.largeTitle)
                     .padding(32)
                 
-                CCFlexibleGridView(data: stackUsageExamples)
+                CCFlexibleGridView(data: UsageExample.stack)
                     .padding()
                 
                 Text("Add or remove elements to see how a stack operates.")
