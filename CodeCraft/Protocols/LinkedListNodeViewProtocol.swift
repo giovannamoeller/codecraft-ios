@@ -1,5 +1,5 @@
 //
-//  LinkedListNodeView.swift
+//  LinkedListNodeViewProtocol.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 01/10/24.

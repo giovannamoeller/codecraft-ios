@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InteractiveSinglyLinkedListView: View {
     var body: some View {
-        InteractiveLinkedListView<CCSinglyLinkedList<Int>, CCSinglyNodeView>(
+        InteractiveLinkedListView<CCSinglyLinkedList<Int>, SinglyNodeView>(
             linkedList: CCSinglyLinkedList<Int>(),
             title: "Visualize how a singly linked list works",
             description: "Observe how the linked list changes as you perform operations below.",

@@ -171,7 +171,7 @@ struct InteractiveLinkedListView<T: LinkedListProtocol, NodeView: LinkedListNode
 }
 
 #Preview {
-    InteractiveLinkedListView<CCSinglyLinkedList<Int>, CCSinglyNodeView>(
+    InteractiveLinkedListView<CCSinglyLinkedList<Int>, SinglyNodeView>(
         linkedList: CCSinglyLinkedList<Int>(),
         title: "Visualize how a singly linked list works",
         description: "Observe how the linked list changes as you perform operations below.",

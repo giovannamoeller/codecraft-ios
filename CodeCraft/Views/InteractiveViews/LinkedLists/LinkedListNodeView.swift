@@ -1,24 +1,17 @@
 //
-//  CCSinglyNodeView.swift
+//  LinkedListNodeView.swift
 //  CodeCraft
 //
-//  Created by Giovanna Moeller on 27/09/24.
+//  Created by Giovanna Moeller on 01/10/24.
 //
 
 import SwiftUI
 
-struct CCSinglyNodeView: View, LinkedListNodeViewProtocol {
-    let element: Int
+struct LinkedListNodeView<Element: Hashable>: View {
+    let element: Element
     let isHead: Bool
     let isTail: Bool
-    
-    init(element: Int,
-         isHead: Bool = false,
-         isTail: Bool = false) {
-        self.element = element
-        self.isHead = isHead
-        self.isTail = isTail
-    }
+    let arrowView: AnyView
     
     private var headOrTailText: String {
         isHead && isTail ? "Head/Tail" : (isHead ? "Head" : (isTail ? "Tail" : ""))
@@ -30,20 +23,27 @@ struct CCSinglyNodeView: View, LinkedListNodeViewProtocol {
                 Circle()
                     .fill(AppTheme.Colors.lightLavender)
                     .frame(width: 64, height: 64)
-                Text("\(element)")
+                Text("\(String(describing: element))")
                     .appFont(AppTheme.Fonts.title3)
                 Text(headOrTailText)
                     .foregroundStyle(.white)
                     .offset(y: -52)
             }
             if !isTail {
-                Image(systemName: "arrow.forward")
-                    .foregroundStyle(.white)
+                arrowView
             }
         }
     }
 }
 
 #Preview {
-    CCSinglyNodeView(element: 10)
+    LinkedListNodeView(
+        element: 1,
+        isHead: true,
+        isTail: false,
+        arrowView: AnyView(
+            Image(systemName: "arrow.forward")
+                .foregroundStyle(.white)
+        )
+    )
 }
