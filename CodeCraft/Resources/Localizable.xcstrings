@@ -559,6 +559,9 @@
     "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space." : {
 
     },
+    "Speed:" : {
+
+    },
     "Stack is empty!" : {
 
     },
@@ -632,6 +635,9 @@
           }
         }
       }
+    },
+    "Velocity" : {
+
     },
     "Visualize how a queue works" : {
 

@@ -19,6 +19,7 @@ struct InteractiveBubbleSortView: View {
     @State private var innerIndex: Int = -1
     @State private var sortStatus: SortStatus = .idle
     @State private var sortedIndices: Set<Int> = []
+    @State private var selectedVelocity: SortVelocity = .normal
     
     private let baseSeconds: Double = 0.5
     
@@ -51,6 +52,21 @@ struct InteractiveBubbleSortView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
+                HStack {
+                    Text("Speed:")
+                        .appFont(AppTheme.Fonts.bodyRegular)
+                    Picker("Velocity", selection: $selectedVelocity) {
+                        ForEach(SortVelocity.allCases) { velocity in
+                            Text(velocity.description)
+                                .font(AppTheme.Fonts.bodyRegular)
+                                .tag(velocity)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .disabled(sortStatus == .sorting)
+                }
+                .padding()
+                
                 HStack(spacing: 16) {
                     ForEach(0..<array.count, id: \.self) { index in
                         Text("\(array[index])")
@@ -82,6 +98,14 @@ struct InteractiveBubbleSortView: View {
                 }
                 .padding(.top)
                 .frame(maxWidth: 240)
+                
+                NavigationLink {
+                    //
+                } label: {
+                    CCPrimaryButtonView(text: "Let's check the code")
+                }
+                .frame(maxWidth: 240)
+
             }
         }
     }
@@ -100,62 +124,64 @@ struct InteractiveBubbleSortView: View {
     }
     
     private func bubbleSort() {
-            disableButton()
-            if sortStatus == .sorted { sortAgain() }
-            sortStatus = .sorting
-            sortedIndices.removeAll()
-            
-            Task {
-                for i in 0..<array.count {
-                    for j in 0..<array.count - i - 1 {
-                        await MainActor.run {
-                            withAnimation(.easeInOut(duration: baseSeconds)) {
-                                outerIndex = j
-                                innerIndex = j + 1
-                            }
-                        }
-                        try? await Task.sleep(for: .seconds(baseSeconds))
-                        
-                        if array[j] > array[j + 1] {
-                            await MainActor.run {
-                                withAnimation(.easeInOut(duration: baseSeconds)) {
-                                    isSwapping = true
-                                }
-                            }
-                            try? await Task.sleep(for: .seconds(baseSeconds))
-                            
-                            await MainActor.run {
-                                withAnimation(.easeInOut(duration: baseSeconds)) {
-                                    array.swapAt(j, j + 1)
-                                }
-                            }
-                            try? await Task.sleep(for: .seconds(baseSeconds))
-                            
-                            await MainActor.run {
-                                withAnimation(.easeInOut(duration: baseSeconds)) {
-                                    isSwapping = false
-                                }
-                            }
-                            try? await Task.sleep(for: .seconds(baseSeconds))
-                        }
-                    }
+        disableButton()
+        if sortStatus == .sorted { sortAgain() }
+        sortStatus = .sorting
+        sortedIndices.removeAll()
+        
+        let delayTime = baseSeconds / selectedVelocity.rawValue
+        
+        Task {
+            for i in 0..<array.count {
+                for j in 0..<array.count - i - 1 {
                     await MainActor.run {
-                        withAnimation(.easeInOut(duration: baseSeconds)) {
-                            _ = sortedIndices.insert(array.count - i - 1)
+                        withAnimation(.easeInOut(duration: delayTime)) {
+                            outerIndex = j
+                            innerIndex = j + 1
                         }
                     }
-                }
-                
-                await MainActor.run {
-                    withAnimation(.easeInOut(duration: baseSeconds)) {
-                        sortStatus = .sorted
-                        outerIndex = -1
-                        innerIndex = -1
+                    try? await Task.sleep(for: .seconds(delayTime))
+                    
+                    if array[j] > array[j + 1] {
+                        await MainActor.run {
+                            withAnimation(.easeInOut(duration: delayTime)) {
+                                isSwapping = true
+                            }
+                        }
+                        try? await Task.sleep(for: .seconds(delayTime))
+                        
+                        await MainActor.run {
+                            withAnimation(.easeInOut(duration: delayTime)) {
+                                array.swapAt(j, j + 1)
+                            }
+                        }
+                        try? await Task.sleep(for: .seconds(delayTime))
+                        
+                        await MainActor.run {
+                            withAnimation(.easeInOut(duration: delayTime)) {
+                                isSwapping = false
+                            }
+                        }
+                        try? await Task.sleep(for: .seconds(delayTime))
                     }
                 }
-                enableButton()
+                await MainActor.run {
+                    withAnimation(.easeInOut(duration: delayTime)) {
+                        _ = sortedIndices.insert(array.count - i - 1)
+                    }
+                }
             }
+            
+            await MainActor.run {
+                withAnimation(.easeInOut(duration: delayTime)) {
+                    sortStatus = .sorted
+                    outerIndex = -1
+                    innerIndex = -1
+                }
+            }
+            enableButton()
         }
+    }
     
     private func sortAgain() {
         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {

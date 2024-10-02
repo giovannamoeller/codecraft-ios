@@ -24,8 +24,8 @@ struct CCPrimaryButtonView: View {
                 Image(systemName: "arrow.right")
             }
         }
-        .frame(minWidth: 148)
         .padding()
+        .frame(maxWidth: .infinity)
         .background(AppTheme.Colors.indigo)
         .foregroundStyle(.white)
         .cornerRadius(28.0)
