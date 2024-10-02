@@ -53,6 +53,9 @@
     "Add or remove elements to see how a stack operates." : {
 
     },
+    "Adjacent Comparisons" : {
+
+    },
     "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key." : {
       "localizations" : {
         "pt-BR" : {
@@ -92,6 +95,9 @@
           }
         }
       }
+    },
+    "Best suited for sorting small arrays or lists where simplicity is more important than efficiency." : {
+
     },
     "Bidirectional" : {
 
@@ -332,6 +338,9 @@
     "How to work with singly linked lists" : {
 
     },
+    "Ideal for Small Arrays" : {
+
+    },
     "In computing, queues are used to manage data flow between processes." : {
 
     },
@@ -356,6 +365,9 @@
           }
         }
       }
+    },
+    "In-place Sorting" : {
+
     },
     "Inserting elements at the beginning or end is very efficient (O(1) time)." : {
 
@@ -415,6 +427,9 @@
         }
       }
     },
+    "O(n^2) time complexity in the average and worst cases, where n is the number of items." : {
+
+    },
     "Observe how the array changes as you perform operations below." : {
       "localizations" : {
         "pt-BR" : {
@@ -460,6 +475,9 @@
         }
       }
     },
+    "Press 'start sorting' to see the algorithm in action." : {
+
+    },
     "Print jobs are processed in the order they are received." : {
 
     },
@@ -500,6 +518,9 @@
         }
       }
     },
+    "Repeatedly steps through the list, compares adjacent elements and swaps them if they're in the wrong order." : {
+
+    },
     "Reset" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -535,6 +556,9 @@
         }
       }
     },
+    "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space." : {
+
+    },
     "Stack is empty!" : {
 
     },
@@ -561,6 +585,9 @@
       }
     },
     "The undo feature in many applications uses a stack to keep track of actions." : {
+
+    },
+    "Time Complexity" : {
 
     },
     "Train" : {
@@ -621,6 +648,9 @@
           }
         }
       }
+    },
+    "Visualize how the bubble sort algorithm works" : {
+
     },
     "When frequent insertion and deletion at the beginning is needed." : {
       "extractionState" : "manual",

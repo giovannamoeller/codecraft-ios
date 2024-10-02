@@ -42,4 +42,11 @@ enum UsageExample {
         GridData(icon: "arrow.uturn.backward", title: "Undo Functionality", description: "The undo feature in many applications uses a stack to keep track of actions."),
         GridData(icon: "cpu", title: "Function Call Stack", description: "Computer memory uses a stack to manage function calls and returns."),
     ]
+    
+    static let bubbleSort: [GridData] = [
+        GridData(icon: "arrow.up.arrow.down", title: "Adjacent Comparisons", description: "Repeatedly steps through the list, compares adjacent elements and swaps them if they're in the wrong order."),
+        GridData(icon: "chart.bar.fill", title: "Ideal for Small Arrays", description: "Best suited for sorting small arrays or lists where simplicity is more important than efficiency."),
+        GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n^2) time complexity in the average and worst cases, where n is the number of items."),
+        GridData(icon: "square.and.pencil", title: "In-place Sorting", description: "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space."),
+    ]
 }
