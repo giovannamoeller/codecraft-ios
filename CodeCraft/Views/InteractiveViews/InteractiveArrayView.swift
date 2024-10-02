@@ -29,13 +29,13 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {
-                        ForEach(Array(array.elements.enumerated()), id: \.0) { index, element in
+                        ForEach(0..<array.count, id: \.self) { index in
                             VStack(spacing: 4.0) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(AppTheme.Colors.lightLavender)
                                         .frame(width: 60, height: 60)
-                                    Text("\(element)")
+                                    Text("\(array.elements[index])")
                                         .appFont(AppTheme.Fonts.title3)
                                 }
                                 Text("\(index)")
