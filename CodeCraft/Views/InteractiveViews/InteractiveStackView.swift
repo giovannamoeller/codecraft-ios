@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InteractiveStackView: View {
-    @StateObject private var stack: CCStack<Int> = CCStack<Int>()
+    @StateObject private var stack: Stack<Int> = Stack<Int>()
     @State private var isButtonDisabled = false
     @State private var scrollTarget: Int?
     @State private var peekElement: StackElement<Int>?

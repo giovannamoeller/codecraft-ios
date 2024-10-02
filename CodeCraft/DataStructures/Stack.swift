@@ -1,5 +1,5 @@
 //
-//  CCQueue.swift
+//  CCStack.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 29/09/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class QueueElement<T>: Identifiable {
+public class StackElement<T>: Identifiable {
     public var id: UUID
     public var value: T
     
@@ -17,8 +17,8 @@ public class QueueElement<T>: Identifiable {
     }
 }
 
-public class CCQueue<T>: ObservableObject {
-    @Published var elements: [QueueElement<T>] = []
+public class Stack<T>: ObservableObject {
+    @Published var elements: [StackElement<T>] = []
     
     var isEmpty: Bool {
         elements.isEmpty
@@ -28,16 +28,16 @@ public class CCQueue<T>: ObservableObject {
         elements.count
     }
     
-    func enqueue(_ element: QueueElement<T>) {
+    func push(_ element: StackElement<T>) {
         elements.append(element)
     }
     
-    func dequeue() -> QueueElement<T>? {
-        elements.removeFirst()
+    func pop() -> StackElement<T>? {
+        elements.popLast()
     }
     
-    func front() -> QueueElement<T>? {
-        elements.first
+    func peek() -> StackElement<T>? {
+        elements.last
     }
     
     func removeAll() {

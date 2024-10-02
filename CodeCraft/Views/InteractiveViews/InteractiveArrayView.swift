@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
-    @StateObject private var array: CCDynamicArray<T> = CCDynamicArray<T>()
+    @StateObject private var array: DynamicArray<T> = DynamicArray<T>()
     @State private var isButtonDisabled = false
     @State private var scrollTarget: T?
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InteractiveQueueView: View {
-    @StateObject private var queue: CCQueue<Int> = CCQueue<Int>()
+    @StateObject private var queue: Queue<Int> = Queue<Int>()
     @State private var isButtonDisabled = false
     @State private var scrollTarget: Int?
     @State private var frontElement: QueueElement<Int>?

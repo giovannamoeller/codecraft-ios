@@ -1,5 +1,5 @@
 //
-//  CCDynamicArray.swift
+//  DynamicArray.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 24/09/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CCDynamicArray<T>: ObservableObject {
+public class DynamicArray<T>: ObservableObject {
     @Published public var elements: [T]
     
     init() {

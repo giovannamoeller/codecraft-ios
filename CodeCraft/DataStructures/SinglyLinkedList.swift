@@ -1,17 +1,17 @@
 //
-//  CCDoublyLinkedList.swift
+//  SinglyLinkedList.swift
 //  CodeCraft
 //
-//  Created by Giovanna Moeller on 29/09/24.
+//  Created by Giovanna Moeller on 27/09/24.
 //
 
-import SwiftUI
+import Foundation
 
-public class CCDoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol {
+public class SinglyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol {
     public typealias Element = T
 
-    @Published var head: CCDoublyNode<T>?
-    @Published var tail: CCDoublyNode<T>?
+    @Published var head: SinglyNode<T>?
+    @Published var tail: SinglyNode<T>?
     @Published var length: Int = 0
     
     public var isEmpty: Bool {
@@ -19,7 +19,7 @@ public class CCDoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtoc
     }
     
     public func insertAtHead(_ value: T) {
-        let newNode = CCDoublyNode(value)
+        let newNode = SinglyNode(value)
         guard !isEmpty else {
             head = newNode
             tail = newNode
@@ -27,13 +27,12 @@ public class CCDoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtoc
             return
         }
         newNode.next = head
-        head?.prev = newNode
         head = newNode
         length += 1
     }
     
     public func insertAtTail(_ value: T) {
-        let newNode = CCDoublyNode(value)
+        let newNode = SinglyNode(value)
         guard !isEmpty else {
             head = newNode
             tail = newNode
@@ -41,33 +40,35 @@ public class CCDoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtoc
             return
         }
         tail?.next = newNode
-        newNode.prev = tail
         tail = newNode
         length += 1
     }
     
     public func removeAtHead() -> T? {
         guard !isEmpty else { return nil }
-        let removedValue = head?.value
         head = head?.next
-        head?.prev = nil
         if head == nil {
             tail = nil
         }
         length -= 1
-        return removedValue
+        return head?.value
     }
     
     public func removeAtTail() -> T? {
         guard !isEmpty else { return nil }
-        let removedValue = tail?.value
-        tail = tail?.prev
-        tail?.next = nil
-        if tail == nil {
+        if head == tail {
             head = nil
+            tail = nil
+        } else {
+            var current = head
+            while current?.next !== tail {
+                current = current?.next
+            }
+            current?.next = nil
+            tail = current
         }
         length -= 1
-        return removedValue
+        return tail?.value
     }
     
     public func removeAll() {
@@ -75,6 +76,16 @@ public class CCDoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtoc
         head = nil
         tail = nil
         length = 0
+    }
+    
+    public func printList() {
+        var currentNode = head
+        while currentNode != nil {
+            if let value = currentNode?.value {
+                print("\(value) \(currentNode?.next == nil ? " " : " -> ")")
+            }
+            currentNode = currentNode?.next
+        }
     }
     
     public func toArray() -> [T] {
