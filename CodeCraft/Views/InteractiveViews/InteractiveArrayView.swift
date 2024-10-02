@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InteractiveArrayView<T: Hashable>: View {
+struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
     @StateObject private var array: CCDynamicArray<T> = CCDynamicArray<T>()
     @State private var isButtonDisabled = false
     @State private var scrollTarget: T?
@@ -84,7 +84,7 @@ struct InteractiveArrayView<T: Hashable>: View {
         array.removeAll()
         let numberOfElements = 3
         for _ in 0..<numberOfElements {
-            array.insertAtLastPosition(getRandomElement() as! T)
+            array.insertAtLastPosition(T.getRandomElement())
         }
     }
     
@@ -110,7 +110,7 @@ struct InteractiveArrayView<T: Hashable>: View {
     
     private func insertElement(_ insertionMethod: @escaping (T) -> Void) {
         disableButton()
-        let elementToInsert = getRandomElement() as! T
+        let elementToInsert = T.getRandomElement()
         
         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
             scrollTarget = elementToInsert
@@ -147,5 +147,5 @@ struct InteractiveArrayView<T: Hashable>: View {
 }
 
 #Preview {
-    InteractiveArrayView<Int>()
+    InteractiveArrayView<String>()
 }
