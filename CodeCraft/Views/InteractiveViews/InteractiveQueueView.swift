@@ -8,72 +8,12 @@
 import SwiftUI
 
 struct InteractiveQueueView: View {
-    @StateObject private var queue: CCQueue<Int> = CCQueue()
-    @State private var newElement: Int = -1
-    @State private var isAnimating: Bool = false
-    @State private var animatingElement: QueueElement<Int>?
-    @State private var isDequeuing: Bool = false
-    @State private var isButtonDisabled: Bool = false
+    @StateObject private var queue: CCQueue<Int> = CCQueue<Int>()
+    @State private var isButtonDisabled = false
+    @State private var scrollTarget: Int?
     @State private var frontElement: QueueElement<Int>?
     
-    private func enqueue() {
-        disableButton()
-        newElement = getRandomElement()
-        frontElement = nil
-        let queueElement = QueueElement(value: newElement)
-        withAnimation(.spring(duration: 0.5, bounce: 0.5)) {
-            isAnimating = true
-            isDequeuing = false
-            queue.enqueue(queueElement)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            withAnimation {
-                isAnimating = false
-            }
-            enableButton()
-        }
-    }
-    
-    private func dequeue() {
-        disableButton()
-        frontElement = nil
-        
-        withAnimation(.spring(duration: 0.75, bounce: 0.5)) {
-            guard let removedElement = queue.dequeue() else { return }
-            animatingElement = removedElement
-            isAnimating = true
-            isDequeuing = true
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            withAnimation {
-                isAnimating = false
-                isDequeuing = false
-                animatingElement = nil
-            }
-            enableButton()
-        }
-    }
-    
-    private func front() {
-        withAnimation {
-            animatingElement = queue.front()
-            frontElement = animatingElement
-        }
-    }
-    
-    private func disableButton() {
-        withAnimation {
-            isButtonDisabled = true
-        }
-    }
-    
-    private func enableButton() {
-        withAnimation {
-            isButtonDisabled = false
-        }
-    }
+    private let baseSeconds: Double = 0.5
     
     var body: some View {
         ScrollView {
@@ -106,7 +46,6 @@ struct InteractiveQueueView: View {
                                     .background(frontElement?.id == element.id ? AppTheme.Colors.eletricBlue : AppTheme.Colors.lightLavender)
                                     .foregroundStyle(frontElement?.id == element.id ? .white : .black)
                                     .cornerRadius(12.0)
-                                    .scaleEffect(animatingElement?.id == element.id ? 1.2 : 1.0)
                                     .transition(.asymmetric(insertion: .scale.combined(with: .opacity).combined(with: .slide), removal: .scale.combined(with: .opacity).combined(with: .offset(y: -50))))
                             }
                         }
@@ -118,27 +57,97 @@ struct InteractiveQueueView: View {
                 
                 HStack {
                     Button(action: enqueue) {
-                        CCSecondaryButtonView(text: "Enqueue")
+                        CCSecondaryButtonView(text: "Enqueue",
+                                              isDisabled: isButtonDisabled)
                     }
-                    .disabled(isButtonDisabled)
-                    .opacity(isButtonDisabled ? 0.5 : 1)
                     
                     Button(action: dequeue) {
-                        CCSecondaryButtonView(text: "Dequeue")
+                        CCSecondaryButtonView(text: "Dequeue",
+                                              isDisabled: isButtonDisabled || queue.isEmpty)
                     }
-                    .disabled(isButtonDisabled || queue.isEmpty)
-                    .opacity(isButtonDisabled || queue.isEmpty ? 0.5 : 1)
                 }
                 .padding(.top)
                 .frame(maxWidth: 320)
                 
                 Button(action: front) {
-                    CCSecondaryButtonView(text: "Front")
+                    CCSecondaryButtonView(text: "Front",
+                                          isDisabled: isButtonDisabled || queue.isEmpty)
                 }
-                .disabled(isButtonDisabled || queue.isEmpty)
-                .opacity(isButtonDisabled || queue.isEmpty ? 0.5 : 1)
                 .frame(maxWidth: 320)
             }
+            .onAppear {
+                initializeQueue()
+            }
+        }
+    }
+    
+    private func initializeQueue() {
+        queue.removeAll()
+        let numberOfElements = 3
+        for _ in 0..<numberOfElements {
+            let newElement = getRandomElement()
+            queue.enqueue(QueueElement(value: newElement))
+        }
+    }
+    
+    private func enqueue() {
+        disableButton()
+        let elementToInsert = getRandomElement()
+        
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            scrollTarget = elementToInsert
+        }
+        
+        executeAfter(baseSeconds) {
+            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+                queue.enqueue(QueueElement(value: elementToInsert))
+            }
+        }
+        
+        executeAfter(baseSeconds * 2.0) {
+            enableButton()
+        }
+    }
+    
+    private func dequeue() {
+        disableButton()
+        
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            scrollTarget = queue.front()?.value
+        }
+        
+        executeAfter(baseSeconds) {
+            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+                _ = queue.dequeue()
+            }
+        }
+        
+        executeAfter(baseSeconds * 2.0) {
+            enableButton()
+        }
+    }
+    
+    private func front() {
+        withAnimation(.spring(duration: baseSeconds * 2, bounce: 0.3)) {
+            frontElement = queue.front()
+        }
+        
+        executeAfter(baseSeconds * 4) {
+            withAnimation(.spring(duration: baseSeconds * 2, bounce: 0.3)) {
+                frontElement = nil
+            }
+        }
+    }
+    
+    private func disableButton() {
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            isButtonDisabled = true
+        }
+    }
+    
+    private func enableButton() {
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            isButtonDisabled = false
         }
     }
 }

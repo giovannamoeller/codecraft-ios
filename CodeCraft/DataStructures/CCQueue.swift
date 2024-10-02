@@ -39,4 +39,8 @@ public class CCQueue<T>: ObservableObject {
     func front() -> QueueElement<T>? {
         elements.first
     }
+    
+    func removeAll() {
+        elements.removeAll()
+    }
 }
