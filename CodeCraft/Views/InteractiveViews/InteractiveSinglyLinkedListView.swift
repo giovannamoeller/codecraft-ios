@@ -14,16 +14,7 @@ struct InteractiveSinglyLinkedListView: View {
     @State private var scrollTarget: Int?
     @State private var baseSeconds: Double = 0.5
     
-    private func initializeLinkedList() {
-        linkedList.removeAll()
-        
-        let numberOfElements: Int = 3
-        for _ in 0..<numberOfElements {
-            linkedList.insertAtHead(getRandomElement())
-        }
-    }
-    
-    private func insertFirst() {
+    private func insertElement(_ insertionMethod: @escaping (Int) -> Void) {
         disableButton()
         let elementToInsert: Int = getRandomElement()
         
@@ -33,7 +24,7 @@ struct InteractiveSinglyLinkedListView: View {
         
         executeAfter(baseSeconds) {
             withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-                linkedList.insertAtHead(elementToInsert)
+                insertionMethod(elementToInsert)
             }
         }
         
@@ -42,17 +33,24 @@ struct InteractiveSinglyLinkedListView: View {
         }
     }
     
+    private func insertFirst() {
+        insertElement { linkedList.insertAtHead($0) }
+    }
+    
     private func insertLast() {
+        insertElement { linkedList.insertAtTail($0) }
+    }
+    
+    private func removeElement(_ removalMethod: @escaping () -> Void) {
         disableButton()
-        let elementToInsert: Int = getRandomElement()
         
         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-            scrollTarget = elementToInsert
+            scrollTarget = linkedList.head?.value
         }
         
         executeAfter(baseSeconds) {
             withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-                linkedList.insertAtTail(elementToInsert)
+                removalMethod()
             }
         }
         
@@ -62,39 +60,19 @@ struct InteractiveSinglyLinkedListView: View {
     }
     
     private func removeFirst() {
-        disableButton()
-        
-        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-            scrollTarget = linkedList.head?.value
-        }
-        
-        executeAfter(baseSeconds) {
-            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-                _ = linkedList.removeAtHead()
-            }
-        }
-        
-        executeAfter(baseSeconds * 2.0) {
-            enableButton()
-        }
+        removeElement { _ = linkedList.removeAtHead() }
     }
     
-    
     private func removeLast() {
-        disableButton()
+        removeElement { _ = linkedList.removeAtTail() }
+    }
+    
+    private func initializeLinkedList() {
+        linkedList.removeAll()
         
-        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-            scrollTarget = linkedList.tail?.value
-        }
-        
-        executeAfter(baseSeconds) {
-            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
-                _ = linkedList.removeAtTail()
-            }
-        }
-        
-        executeAfter(baseSeconds * 2.0) {
-            enableButton()
+        let numberOfElements: Int = 3
+        for _ in 0..<numberOfElements {
+            linkedList.insertAtHead(getRandomElement())
         }
     }
     
