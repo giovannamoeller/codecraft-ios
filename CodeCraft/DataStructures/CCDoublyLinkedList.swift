@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-public class CCDoublyLinkedList<T: Equatable>: ObservableObject {
+public class CCDoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol {
+    public typealias Element = T
+
     @Published var head: CCDoublyNode<T>?
     @Published var tail: CCDoublyNode<T>?
     @Published var length: Int = 0

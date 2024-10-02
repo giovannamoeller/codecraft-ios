@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ is empty!" : {
+
+    },
     "%@ Quiz" : {
       "localizations" : {
         "pt-BR" : {
@@ -181,9 +184,6 @@
           }
         }
       }
-    },
-    "Doubly linked list is empty!" : {
-
     },
     "Doubly linked lists can grow or shrink dynamically as needed." : {
 
@@ -390,9 +390,6 @@
     "Like a stack of plates, the last item added is the first one removed." : {
 
     },
-    "Linked list is empty!" : {
-
-    },
     "Linked lists can grow or shrink dynamically as needed." : {
 
     },
@@ -424,12 +421,6 @@
           }
         }
       }
-    },
-    "Observe how the doubly linked list changes as you perform operations below." : {
-
-    },
-    "Observe how the linked list changes as you perform operations below." : {
-
     },
     "Parking Lot" : {
       "localizations" : {
@@ -612,13 +603,7 @@
         }
       }
     },
-    "Visualize how a doubly linked list works" : {
-
-    },
     "Visualize how a queue works" : {
-
-    },
-    "Visualize how a singly linked list works" : {
 
     },
     "Visualize how a stack works" : {

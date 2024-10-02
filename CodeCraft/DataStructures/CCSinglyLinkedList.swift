@@ -7,7 +7,9 @@
 
 import Foundation
 
-public class CCSinglyLinkedList<T: Equatable>: ObservableObject {
+public class CCSinglyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol {
+    public typealias Element = T
+
     @Published var head: CCSinglyNode<T>?
     @Published var tail: CCSinglyNode<T>?
     @Published var length: Int = 0

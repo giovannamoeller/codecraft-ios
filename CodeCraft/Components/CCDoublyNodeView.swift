@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct CCDoublyNodeView: View {
+struct CCDoublyNodeView: View, LinkedListNodeViewProtocol {
     let element: Int
     let isHead: Bool
     let isTail: Bool

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCSinglyNodeView: View {
+struct CCSinglyNodeView: View, LinkedListNodeViewProtocol {
     let element: Int
     let isHead: Bool
     let isTail: Bool
