@@ -104,6 +104,6 @@ struct DataStructureIntroductionView<Destination: View>: View {
             "In scenarios where memory locality is important for performance."
         ]
     ), destination: {
-        InteractiveArrayView()
+        InteractiveArrayView<Int>()
     })
 }

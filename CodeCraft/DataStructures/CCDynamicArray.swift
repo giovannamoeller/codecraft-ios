@@ -10,8 +10,8 @@ import Foundation
 public class CCDynamicArray<T>: ObservableObject {
     @Published public var elements: [T]
     
-    init(count: Int, randomGenerator: () -> T) {
-        self.elements = (0..<count).map { _ in randomGenerator() }
+    init() {
+        self.elements = []
     }
     
     var isEmpty: Bool {
@@ -46,6 +46,10 @@ public class CCDynamicArray<T>: ObservableObject {
     public func removeAt(index: Int) -> T? {
         guard index >= 0, index < count else { return nil }
         return elements.remove(at: index)
+    }
+    
+    public func removeAll() {
+        elements.removeAll()
     }
     
     public func getElement(at index: Int) -> T? {

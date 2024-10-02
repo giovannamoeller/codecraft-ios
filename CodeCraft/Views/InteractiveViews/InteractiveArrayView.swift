@@ -7,160 +7,145 @@
 
 import SwiftUI
 
-enum ArrayAction {
-    case none, push, pop
-}
-
-struct InteractiveArrayView: View {
+struct InteractiveArrayView<T: Hashable>: View {
+    @StateObject private var array: CCDynamicArray<T> = CCDynamicArray<T>()
+    @State private var isButtonDisabled = false
+    @State private var scrollTarget: T?
     
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    
-    @State private var newElementValue: String = ""
-    @State private var insertIndex: String = ""
-    @State private var isInserting: Bool = false
-    @State private var isRemoving: Bool = false
-    @State private var removingIndex: Int?
-    @State private var showInstructions = false
-    @State private var lastAction: ArrayAction = .none
-    @State private var offset: CGFloat = 0
-    @State private var showIndexOffBounds: Bool = false
-    
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-    
-    @StateObject private var array = CCDynamicArray<Int>(count: 5) {
-        Int.random(in: 0..<100)
-    }
-    
-    private func pushElement() {
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3)) {
-            isInserting = true
-            lastAction = .push
-            array.insertAtLastPosition(getRandomElement())
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            withAnimation(.spring()) {
-                isInserting = false
-                lastAction = .none
-            }
-        }
-    }
-    
-    private func removeElement(at index: Int) {
-        guard index >= 0 && index < array.count else {
-            withAnimation {
-                showIndexOffBounds = true
-            }
-            return
-        }
-        
-        withAnimation(.easeInOut(duration: 0.5)) {
-            isRemoving = true
-            removingIndex = index
-            lastAction = .pop
-            offset = 60 // Shift the array to the right
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let _ = array.removeAtLastPosition()
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3)) {
-                isRemoving = false
-                removingIndex = nil
-                lastAction = .none
-                offset = 0 // Smoothly animate back to center
-            }
-        }
-    }
+    private let baseSeconds: Double = 0.5
     
     var body: some View {
-        ZStack {
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .center, spacing: 16.0) {
-                    Text("Visualize how an array works")
-                        .appFont(AppTheme.Fonts.largeTitle)
-                        .padding()
-                    
-                    // Informations
-                    
-                    CCFlexibleGridView(data: UsageExample.array)
-                    
-                    // Visualization
-                    
-                    Text("Observe how the array changes as you perform operations below.")
-                        .appFont(AppTheme.Fonts.bodyRegular)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8.0) {
-                            ForEach(Array(array.elements.enumerated()), id: \.0) { index, element in
-                                
-                                VStack(spacing: 4.0) {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(AppTheme.Colors.lightLavender)
-                                            .frame(width: 60, height: 60)
-                                        Text("\(element)")
-                                            .appFont(AppTheme.Fonts.title3)
-                                    }
-                                    Text("\(index)")
-                                        .appFont(AppTheme.Fonts.bodyRegular)
-                                        .foregroundStyle(AppTheme.Colors.indigo)
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 16.0) {
+                Text("Visualize how an array works")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .appFont(AppTheme.Fonts.largeTitle)
+                
+                CCFlexibleGridView(data: UsageExample.array)
+                
+                Text("Observe how the array changes as you perform operations below.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .appFont(AppTheme.Fonts.bodyRegular)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8.0) {
+                        ForEach(Array(array.elements.enumerated()), id: \.0) { index, element in
+                            VStack(spacing: 4.0) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(AppTheme.Colors.lightLavender)
+                                        .frame(width: 60, height: 60)
+                                    Text("\(element)")
+                                        .appFont(AppTheme.Fonts.title3)
                                 }
-                                .opacity(isRemoving && removingIndex == index ? 0 : 1)
-                                .scaleEffect(lastAction == .push && index == array.count - 1 ? 0.5 : 1)
-                                .offset(x: lastAction == .push && index == array.count - 1 ? 70 : 0)
-                                .offset(y: lastAction == .pop && index == array.count - 1 ? 50 : 0)
+                                Text("\(index)")
+                                    .appFont(AppTheme.Fonts.bodyRegular)
+                                    .foregroundStyle(AppTheme.Colors.indigo)
                             }
                         }
-                        .frame(width: UIScreen.main.bounds.width - 32)
-                        .padding()
-                        .offset(x: offset)
+                        .transition(.asymmetric(insertion: .scale.combined(with: .opacity).combined(with: .slide), removal: .scale.combined(with: .opacity).combined(with: .offset(y: -50)).combined(with: .offset(x: -50))))
                     }
-                    .padding(.vertical)
-                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: array.count)
-                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: offset)
-                    
-                    // Controls view
-                    VStack(spacing: 15) {
-                        HStack {
-                            Button {
-                                pushElement()
-                            } label: {
-                                CCSecondaryButtonView(text: "Push")
-                            }
-                            
-                            Button {
-                                removeElement(at: array.count - 1)
-                            } label: {
-                                CCSecondaryButtonView(text: "Pop")
-                            }
-                        }
-                    }
-                    
-                    NavigationLink {
-                        ArrayCodeCheatsheetView()
+                    .frame(width: UIScreen.main.bounds.width - 32)
+                    .padding()
+                }
+                .padding(.vertical)
+                .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: array.count)
+                
+                HStack {
+                    Button {
+                        push()
                     } label: {
-                        CCPrimaryButtonView(text: "Practice")
+                        CCSecondaryButtonView(text: "Push")
+                    }
+                    
+                    Button {
+                        pop()
+                    } label: {
+                        CCSecondaryButtonView(text: "Pop")
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            withAnimation {
-                                showInstructions = true
-                            }
-                        }) {
-                            Image(systemName: "ellipsis")
-                                .foregroundStyle(AppTheme.Colors.mediumLavender)
-                                .rotationEffect(.degrees(90))
-                        }
-                    }
+                .frame(maxWidth: 320)
+                
+                NavigationLink {
+                    ArrayCodeCheatsheetView()
+                } label: {
+                    CCPrimaryButtonView(text: "Practice")
+                        .padding(.top)
                 }
-                .padding()
             }
+            .padding()
+            .onAppear {
+                initializeArray()
+            }
+        }
+    }
+    
+    private func initializeArray() {
+        array.removeAll()
+        let numberOfElements = 3
+        for _ in 0..<numberOfElements {
+            array.insertAtLastPosition(getRandomElement() as! T)
+        }
+    }
+    
+    private func disableButton() {
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            isButtonDisabled = true
+        }
+    }
+    
+    private func enableButton() {
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            isButtonDisabled = false
+        }
+    }
+    
+    private func push() {
+        insertElement( { array.insertAtLastPosition($0) } )
+    }
+    
+    private func pop() {
+        removeElement( { array.removeAtLastPosition() } )
+    }
+    
+    private func insertElement(_ insertionMethod: @escaping (T) -> Void) {
+        disableButton()
+        let elementToInsert = getRandomElement() as! T
+        
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            scrollTarget = elementToInsert
+        }
+        
+        executeAfter(baseSeconds) {
+            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+                insertionMethod(elementToInsert)
+            }
+        }
+        
+        executeAfter(baseSeconds * 2.0) {
+            enableButton()
+        }
+    }
+    
+    private func removeElement(_ removalMethod: @escaping () -> T?) {
+        disableButton()
+        
+        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+            scrollTarget = array.elements[array.count - 1]
+        }
+        
+        executeAfter(baseSeconds) {
+            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+                _ = removalMethod()
+            }
+        }
+        
+        executeAfter(baseSeconds * 2.0) {
+            enableButton()
         }
     }
 }
 
 #Preview {
-    InteractiveArrayView()
+    InteractiveArrayView<Int>()
 }

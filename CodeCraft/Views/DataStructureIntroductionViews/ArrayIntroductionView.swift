@@ -29,7 +29,7 @@ struct ArrayIntroductionView: View {
     
     var body: some View {
         DataStructureIntroductionView(dataStructure: arrayInformations) {
-            InteractiveArrayView()
+            InteractiveArrayView<Int>()
         }
     }
 }
