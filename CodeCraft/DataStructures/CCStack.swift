@@ -39,4 +39,8 @@ public class CCStack<T>: ObservableObject {
     func peek() -> StackElement<T>? {
         elements.last
     }
+    
+    func removeAll() {
+        elements.removeAll()
+    }
 }
