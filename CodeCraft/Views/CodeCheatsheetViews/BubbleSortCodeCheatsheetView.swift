@@ -1,24 +1,24 @@
 //
-//  ArrayCodeCheatsheetView.swift
+//  BubbleSortCodeCheatsheetView.swift
 //  CodeCraft
 //
-//  Created by Giovanna Moeller on 26/09/24.
+//  Created by Giovanna Moeller on 02/10/24.
 //
 
 import SwiftUI
 
-struct ArrayCodeCheatsheetView: View {
+struct BubbleSortCodeCheatsheetView: View {
     var body: some View {
         ZStack {
             AppTheme.Colors.indigo.ignoresSafeArea()
             
             ScrollView {
-                CodeCheatsheetView(text: "How to work with arrays", codeSnippets: Code.bubbleSortCode)
+                CodeCheatsheetView(text: "How to implement bubble sort", codeSnippets: Code.bubbleSortCode)
                 
                 NavigationLink {
-                    ArrayQuizView()
+                    //ArrayQuizView()
                 } label: {
-                    CCPrimaryButtonView(text: "Start quiz", isAlternateStyle: true)
+                    CCPrimaryButtonView(text: "Next algorithm", isAlternateStyle: true)
                         .frame(maxWidth: 240)
                         .padding(.top, 32)
                 }
@@ -28,5 +28,5 @@ struct ArrayCodeCheatsheetView: View {
 }
 
 #Preview {
-    ArrayCodeCheatsheetView()
+    BubbleSortCodeCheatsheetView()
 }

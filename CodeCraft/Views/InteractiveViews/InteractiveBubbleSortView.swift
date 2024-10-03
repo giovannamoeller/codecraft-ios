@@ -112,7 +112,7 @@ struct InteractiveBubbleSortView: View {
                 .frame(maxWidth: 240)
                 
                 NavigationLink {
-                    //
+                    BubbleSortCodeCheatsheetView()
                 } label: {
                     CCPrimaryButtonView(text: "Let's check the code")
                 }

@@ -10,10 +10,14 @@ import SwiftUI
 struct CCPrimaryButtonView: View {
     var text: String
     var displayIcon: Bool
+    var isAlternateStyle: Bool
     
-    init(text: String, displayIcon: Bool = true) {
+    init(text: String,
+         displayIcon: Bool = true,
+         isAlternateStyle: Bool = false) {
         self.text = text
         self.displayIcon = displayIcon
+        self.isAlternateStyle = isAlternateStyle
     }
     
     var body: some View {
@@ -26,8 +30,8 @@ struct CCPrimaryButtonView: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(AppTheme.Colors.indigo)
-        .foregroundStyle(.white)
+        .background(isAlternateStyle ? .white : AppTheme.Colors.indigo)
+        .foregroundStyle(isAlternateStyle ? AppTheme.Colors.indigo : .white)
         .cornerRadius(28.0)
     }
 }

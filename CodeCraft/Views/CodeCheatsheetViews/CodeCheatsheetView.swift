@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CodeCheatsheetView: View {
     
+    var text: String
     let codeSnippets: [CodeLanguage: String]
     private var codeSyntaxHighlight: CodeSyntaxHighlight = CodeSyntaxHighlight()
     private var code: String {
@@ -19,36 +20,45 @@ struct CodeCheatsheetView: View {
     @State private var selectedLanguage: CodeLanguage = .python
     @State private var selectedSegment: Int = 0
     
-    init(codeSnippets: [CodeLanguage : String]) {
+    init(text: String, codeSnippets: [CodeLanguage : String]) {
+        self.text = text
         self.codeSnippets = codeSnippets
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            CCPickerView(selectedSegment: $selectedSegment, array: programmingLanguages)
-                .padding(.bottom)
-            
-            VStack {
-                ScrollView(showsIndicators: false) {
-                    Text(codeSyntaxHighlight.highlightCode(for: code))
-                        .font(.system(size: 16, design: .monospaced))
-                        .padding(32)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+        ZStack {
+            AppTheme.Colors.indigo.ignoresSafeArea()
+            VStack(alignment: .leading) {
+                Text(text)
+                    .appFont(AppTheme.Fonts.largeTitle)
+                
+                CCPickerView(selectedSegment: $selectedSegment, array: programmingLanguages)
+                    .padding(.vertical, 32)
+                
+                VStack {
+                    ScrollView(showsIndicators: false) {
+                        Text(codeSyntaxHighlight.highlightCode(for: code))
+                            .font(.system(size: 16, design: .monospaced))
+                            .padding(32)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
+                .frame(maxHeight: 840)
+                .background(AppTheme.Colors.darkGray)
+                .background(.ultraThickMaterial)
+                .cornerRadius(16.0)
+                .shadow(color: AppTheme.Colors.darkGray.opacity(0.25), radius: 10.0, x: 0, y: 20)
             }
-            .frame(maxHeight: 840)
-            .background(AppTheme.Colors.lightLavender)
-            .cornerRadius(16.0)
-            .shadow(color: AppTheme.Colors.mediumLavender.opacity(0.25), radius: 10.0, x: 0, y: 20)
+            .padding(.horizontal, 32)
+            .padding(.vertical)
         }
-        .padding(.horizontal, 32)
-        .padding(.vertical)
+        .foregroundStyle(.white)
     }
 }
 
 #Preview {
     CodeCheatsheetView(
-        codeSnippets: Code.singlyLinkedListCodeSnippet
+        text: "Singly linked list", codeSnippets: Code.singlyLinkedListCodeSnippet
     )
 }
 

@@ -9,19 +9,20 @@ import SwiftUI
 
 struct SinglyLinkedListCodeCheatsheetView: View {
     var body: some View {
-        ScrollView {
-            Text("How to work with singly linked lists")
-                .appFont(AppTheme.Fonts.title)
+        ZStack {
+            AppTheme.Colors.indigo.ignoresSafeArea()
             
-            CodeCheatsheetView(codeSnippets: Code.singlyLinkedListCodeSnippet)
-            
-            NavigationLink {
-                ArrayQuizView()
-            } label: {
-                CCPrimaryButtonView(text: "Start Quiz")
-                    .padding(.top, 32)
+            ScrollView {
+                CodeCheatsheetView(text: "How to work with singly linked lists", codeSnippets: Code.bubbleSortCode)
+                
+                NavigationLink {
+                    //ArrayQuizView()
+                } label: {
+                    CCPrimaryButtonView(text: "Start quiz", isAlternateStyle: true)
+                        .frame(maxWidth: 240)
+                        .padding(.top, 32)
+                }
             }
-
         }
     }
 }

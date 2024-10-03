@@ -326,6 +326,7 @@
       }
     },
     "How to work with Arrays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -334,9 +335,6 @@
           }
         }
       }
-    },
-    "How to work with singly linked lists" : {
-
     },
     "Ideal for Small Arrays" : {
 

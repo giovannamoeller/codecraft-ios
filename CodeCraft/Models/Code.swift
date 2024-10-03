@@ -368,4 +368,102 @@ enum Code {
         };
         """
     ]
+    
+    static let bubbleSortCode: [CodeLanguage: String] = [
+        .python: """
+        def bubble_sort(arr):
+            n = len(arr)
+            for i in range(n):
+                for j in range(0, n-i-1):
+                    if arr[j] > arr[j+1]:
+                        # Swap the elements
+                        arr[j], arr[j+1] = arr[j+1], arr[j]
+            return arr
+
+        # Example usage:
+        arr = [64, 34, 25, 12, 22, 11, 90]
+        sorted_arr = bubble_sort(arr)
+        print("Sorted array is:", sorted_arr)
+        """,
+        .cPlusPlus: """
+        #include <iostream>
+        using namespace std;
+
+        void bubbleSort(int arr[], int n) {
+            for (int i = 0; i < n-1; i++) {
+                for (int j = 0; j < n-i-1; j++) {
+                    if (arr[j] > arr[j+1]) {
+                        // Swap the elements
+                        int temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+                }
+            }
+        }
+
+        int main() {
+            int arr[] = {64, 34, 25, 12, 22, 11, 90};
+            int n = sizeof(arr)/sizeof(arr[0]);
+            
+            bubbleSort(arr, n);
+            
+            cout << "Sorted array: \\n";
+            for (int i = 0; i < n; i++) {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+            
+            return 0;
+        }
+        """,
+    .java: """
+    public class BubbleSort {
+        static void bubbleSort(int[] arr) {
+            int n = arr.length;
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        // Swap the elements
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        public static void main(String[] args) {
+            int[] arr = {64, 34, 25, 12, 22, 11, 90};
+            
+            bubbleSort(arr);
+            
+            System.out.println("Sorted array:");
+            for (int i = 0; i < arr.length; i++) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+    """,
+    .swift: """
+    func bubbleSort(_ arr: inout [Int]) {
+        let n = arr.count
+        for i in 0..<n-1 {
+            for j in 0..<n-i-1 {
+                if arr[j] > arr[j + 1] {
+                    // Swap the elements
+                    let temp = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = temp
+                }
+            }
+        }
+    }
+
+    var arr = [64, 34, 25, 12, 22, 11, 90]
+    bubbleSort(&arr)
+
+    print("Sorted array: \\(arr)")
+    """
+    ]
 }

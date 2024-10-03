@@ -16,7 +16,7 @@ struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
             ZStack(alignment: .leading) {
                 // Background
                 RoundedRectangle(cornerRadius: 24.0)
-                    .fill(AppTheme.Colors.lightLavender)
+                    .fill(AppTheme.Colors.mediumLavender)
                 
                 // Sliding selector
                 RoundedRectangle(cornerRadius: 20)
@@ -34,7 +34,7 @@ struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
                             Text(segment.rawValue)
                                 .font(AppTheme.Fonts.bodyRegular)
                                 .frame(width: geometry.size.width / CGFloat(array.count), height: geometry.size.height)
-                                .foregroundStyle(selectedSegment == index ? AppTheme.Colors.indigo : AppTheme.Colors.mediumLavender)
+                                .foregroundStyle(selectedSegment == index ? AppTheme.Colors.indigo : .white)
                         }
                     }
                 }
