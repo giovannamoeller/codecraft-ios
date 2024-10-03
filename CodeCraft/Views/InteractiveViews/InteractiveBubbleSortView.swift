@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+struct Item: Identifiable {
+    let id = UUID()
+    let value: Int
+    var position: CGFloat
+}
+
 enum SortStatus {
     case idle, sorting, stopped, sorted
 }
 
 struct InteractiveBubbleSortView: View {
-    @State private var array: [Int] = [37, 48, 23, 49, 12, 7]
+    @State private var items: [Item] = [37, 48, 23, 49, 12, 7].enumerated().map { Item(value: $1, position: CGFloat($0)) }
     @State private var isButtonDisabled: Bool = false
     @State private var isSwapping: Bool = false
     @State private var outerIndex: Int = -1
@@ -21,7 +27,9 @@ struct InteractiveBubbleSortView: View {
     @State private var sortedIndices: Set<Int> = []
     @State private var selectedVelocity: SortVelocity = .normal
     
-    private let baseSeconds: Double = 0.5
+    private let baseSeconds: Double = 1.0
+    private let itemSize: CGFloat = 64
+    private let spacing: CGFloat = 16
     
     private var buttonText: String {
         switch sortStatus {
@@ -52,6 +60,26 @@ struct InteractiveBubbleSortView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
+                GeometryReader { geometry in
+                    ZStack {
+                        ForEach(items) { item in
+                            Text("\(item.value)")
+                                .appFont(AppTheme.Fonts.bodyBold)
+                                .padding()
+                                .frame(width: itemSize, height: itemSize)
+                                .background(getBackgroundColor(for: Int(item.position)))
+                                .cornerRadius(12.0)
+                                .position(
+                                    x: geometry.size.width / 2 + (item.position - CGFloat(items.count - 1) / 2) * (itemSize + spacing),
+                                    y: geometry.size.height / 2
+                                )
+                                .animation(.spring(), value: item.position)
+                        }
+                    }
+                }
+                .frame(height: 200)  // Ajuste conforme necessário
+                .background(AppTheme.Colors.indigo)
+                
                 HStack {
                     Text("Speed:")
                         .appFont(AppTheme.Fonts.bodyRegular)
@@ -65,23 +93,7 @@ struct InteractiveBubbleSortView: View {
                     .pickerStyle(MenuPickerStyle())
                     .disabled(sortStatus == .sorting)
                 }
-                .padding()
-                
-                HStack(spacing: 16) {
-                    ForEach(0..<array.count, id: \.self) { index in
-                        Text("\(array[index])")
-                            .appFont(AppTheme.Fonts.bodyBold)
-                            .padding()
-                            .frame(width: 64, height: 64)
-                            .background(getBackgroundColor(for: index))
-                            .cornerRadius(12.0)
-                            .offset(y: (index == outerIndex || index == innerIndex) && isSwapping ? -40 : 0)
-                    }
-                    .animation(.spring(), value: isSwapping)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, minHeight: 248)
-                .background(AppTheme.Colors.indigo)
+                .padding(8)
                 
                 HStack {
                     Button(action: bubbleSort) {
@@ -105,7 +117,7 @@ struct InteractiveBubbleSortView: View {
                     CCPrimaryButtonView(text: "Let's check the code")
                 }
                 .frame(maxWidth: 240)
-
+                
             }
         }
     }
@@ -132,48 +144,37 @@ struct InteractiveBubbleSortView: View {
         let delayTime = baseSeconds / selectedVelocity.rawValue
         
         Task {
-            for i in 0..<array.count {
-                for j in 0..<array.count - i - 1 {
+            for i in 0..<items.count {
+                for j in 0..<items.count - i - 1 {
                     await MainActor.run {
-                        withAnimation(.easeInOut(duration: delayTime)) {
+                        withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                             outerIndex = j
                             innerIndex = j + 1
                         }
                     }
                     try? await Task.sleep(for: .seconds(delayTime))
                     
-                    if array[j] > array[j + 1] {
+                    if items[j].value > items[j + 1].value {
                         await MainActor.run {
-                            withAnimation(.easeInOut(duration: delayTime)) {
-                                isSwapping = true
-                            }
-                        }
-                        try? await Task.sleep(for: .seconds(delayTime))
-                        
-                        await MainActor.run {
-                            withAnimation(.easeInOut(duration: delayTime)) {
-                                array.swapAt(j, j + 1)
-                            }
-                        }
-                        try? await Task.sleep(for: .seconds(delayTime))
-                        
-                        await MainActor.run {
-                            withAnimation(.easeInOut(duration: delayTime)) {
-                                isSwapping = false
+                            withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+                                let tempPosition = items[j].position
+                                items[j].position = items[j + 1].position
+                                items[j + 1].position = tempPosition
+                                items.swapAt(j, j + 1)
                             }
                         }
                         try? await Task.sleep(for: .seconds(delayTime))
                     }
                 }
                 await MainActor.run {
-                    withAnimation(.easeInOut(duration: delayTime)) {
-                        _ = sortedIndices.insert(array.count - i - 1)
+                    withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
+                        _ = sortedIndices.insert(items.count - i - 1)
                     }
                 }
             }
             
             await MainActor.run {
-                withAnimation(.easeInOut(duration: delayTime)) {
+                withAnimation(.easeInOut(duration: delayTime / 2)) {
                     sortStatus = .sorted
                     outerIndex = -1
                     innerIndex = -1
@@ -186,7 +187,7 @@ struct InteractiveBubbleSortView: View {
     private func sortAgain() {
         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
             sortStatus = .sorting
-            array = [37, 48, 23, 49, 12, 7]
+            items = [37, 48, 23, 49, 12, 7].enumerated().map { Item(value: $1, position: CGFloat($0)) }
         }
     }
     
