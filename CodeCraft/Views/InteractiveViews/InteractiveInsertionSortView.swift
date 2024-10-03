@@ -136,34 +136,34 @@ struct InteractiveInsertionSortView: View {
             for i in 1..<items.count {
                 var j = i
                 
-                await MainActor.run {
+                await updateOnMainThread {
                     withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                         currentIndex = i
                         comparingIndex = j - 1
                     }
                 }
-                try? await Task.sleep(for: .seconds(delayTime))
+                await delay(delayTime)
                 
                 while j > 0 && items[j].value < items[j - 1].value {
-                    await MainActor.run {
+                    await updateOnMainThread {
                         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                             items.swapAt(j, j - 1)
                             items[j].position = CGFloat(j)
                             items[j - 1].position = CGFloat(j - 1)
                         }
                     }
-                    try? await Task.sleep(for: .seconds(delayTime))
-                    await MainActor.run {
+                    await delay(delayTime)
+                    await updateOnMainThread {
                         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                             j -= 1
                             currentIndex = j
                             comparingIndex = j - 1
                         }
                     }
-                    try? await Task.sleep(for: .seconds(delayTime))
+                    await delay(delayTime)
                 }
                 
-                /*await MainActor.run {
+                /*await updateOnMainThread {
                     withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                         for k in 0...i {
                             sortedIndices.insert(k)
@@ -174,7 +174,7 @@ struct InteractiveInsertionSortView: View {
                 try? await Task.sleep(for: .seconds(delayTime))*/
             }
             
-            await MainActor.run {
+            await updateOnMainThread {
                 withAnimation(.easeInOut(duration: delayTime / 2)) {
                     sortStatus = .sorted
                     currentIndex = -1

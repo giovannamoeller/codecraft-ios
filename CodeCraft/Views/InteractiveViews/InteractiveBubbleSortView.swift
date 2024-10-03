@@ -146,16 +146,16 @@ struct InteractiveBubbleSortView: View {
         Task {
             for i in 0..<items.count {
                 for j in 0..<items.count - i - 1 {
-                    await MainActor.run {
+                    await updateOnMainThread {
                         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                             outerIndex = j
                             innerIndex = j + 1
                         }
                     }
-                    try? await Task.sleep(for: .seconds(delayTime))
-                    
+                    await delay(delayTime)
+
                     if items[j].value > items[j + 1].value {
-                        await MainActor.run {
+                        await updateOnMainThread {
                             withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                                 let tempPosition = items[j].position
                                 items[j].position = items[j + 1].position
@@ -163,17 +163,17 @@ struct InteractiveBubbleSortView: View {
                                 items.swapAt(j, j + 1)
                             }
                         }
-                        try? await Task.sleep(for: .seconds(delayTime))
+                        await delay(delayTime)
                     }
                 }
-                await MainActor.run {
+                await updateOnMainThread {
                     withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
                         _ = sortedIndices.insert(items.count - i - 1)
                     }
                 }
             }
             
-            await MainActor.run {
+            await updateOnMainThread {
                 withAnimation(.easeInOut(duration: delayTime / 2)) {
                     sortStatus = .sorted
                     outerIndex = -1

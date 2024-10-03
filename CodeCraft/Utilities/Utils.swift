@@ -27,23 +27,16 @@ func executeOnMainThread(_ closure: @escaping () -> Void) {
     }
 }
 
-@MainActor
-func updateOnMainThreadWithCustomAnimation<T>(animation: Animation = .easeInOut(duration: 0.3), _ body: @escaping () -> T) async -> T {
-    withAnimation(animation) {
-        body()
+func updateOnMainThreadWithDefaultAnimation(_ animationDuration: Double = 0.5, _ closure: @escaping () -> Void) async {
+    withAnimation(.spring(duration: animationDuration, bounce: 0.3)) {
+        closure()
     }
 }
 
-@MainActor
-func updateOnMainThreadWithDefaultAnimation<T>(_ animationDuration: Double = 0.5, _ body: @escaping () -> T) async -> T {
-    withAnimation(.spring(duration: 0.5, bounce: 0.3)) {
-        body()
+func updateOnMainThread(_ closure: @escaping () -> Void) async {
+    await MainActor.run {
+        closure()
     }
-}
-
-@MainActor
-func updateOnMainThread<T>(_ body: @escaping () -> T) async -> T {
-    body()
 }
 
 func delay(_ seconds: Double) async {
