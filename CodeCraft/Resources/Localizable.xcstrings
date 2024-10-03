@@ -125,6 +125,12 @@
     "Browser History" : {
 
     },
+    "Build Sorted Portion" : {
+
+    },
+    "Builds the final sorted array one item at a time, by inserting each element into its correct position." : {
+
+    },
     "Bus Stop" : {
 
     },
@@ -253,6 +259,9 @@
         }
       }
     },
+    "Efficient for Small Arrays" : {
+
+    },
     "Efficient insertions" : {
 
     },
@@ -364,6 +373,9 @@
         }
       }
     },
+    "In-Place Algorithm" : {
+
+    },
     "In-place Sorting" : {
 
     },
@@ -425,6 +437,9 @@
         }
       }
     },
+    "O(n^2) time complexity in the average and worst cases, but can be O(n) in the best case." : {
+
+    },
     "O(n^2) time complexity in the average and worst cases, where n is the number of items." : {
 
     },
@@ -449,6 +464,9 @@
       }
     },
     "People board the bus in the order they arrived at the stop." : {
+
+    },
+    "Performs well for small data sets or partially sorted arrays." : {
 
     },
     "Pop" : {
@@ -654,6 +672,9 @@
       }
     },
     "Visualize how the bubble sort algorithm works" : {
+
+    },
+    "Visualize how the insertion sort algorithm works" : {
 
     },
     "When frequent insertion and deletion at the beginning is needed." : {

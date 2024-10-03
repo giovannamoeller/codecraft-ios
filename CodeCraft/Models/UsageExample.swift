@@ -49,4 +49,11 @@ enum UsageExample {
         GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n^2) time complexity in the average and worst cases, where n is the number of items."),
         GridData(icon: "square.and.pencil", title: "In-place Sorting", description: "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space."),
     ]
+    
+    static let insertionSort: [GridData] = [
+        GridData(icon: "arrow.right.to.line", title: "Build Sorted Portion", description: "Builds the final sorted array one item at a time, by inserting each element into its correct position."),
+        GridData(icon: "chart.bar.fill", title: "Efficient for Small Arrays", description: "Performs well for small data sets or partially sorted arrays."),
+        GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n^2) time complexity in the average and worst cases, but can be O(n) in the best case."),
+        GridData(icon: "square.and.pencil", title: "In-Place Algorithm", description: "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space."),
+    ]
 }
