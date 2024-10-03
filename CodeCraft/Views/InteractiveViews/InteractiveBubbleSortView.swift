@@ -18,7 +18,7 @@ enum SortStatus {
 }
 
 struct InteractiveBubbleSortView: View {
-    @State private var items: [Item] = [37, 48, 23, 49, 12, 7].enumerated().map { Item(value: $1, position: CGFloat($0)) }
+    @State private var items: [Item] = generateRandomArray().enumerated().map { Item(value: $1, position: CGFloat($0)) }
     @State private var isButtonDisabled: Bool = false
     @State private var isSwapping: Bool = false
     @State private var outerIndex: Int = -1
@@ -187,7 +187,7 @@ struct InteractiveBubbleSortView: View {
     private func sortAgain() {
         withAnimation(.spring(duration: baseSeconds, bounce: 0.3)) {
             sortStatus = .sorting
-            items = [37, 48, 23, 49, 12, 7].enumerated().map { Item(value: $1, position: CGFloat($0)) }
+            items = generateRandomArray().enumerated().map { Item(value: $1, position: CGFloat($0)) }
         }
     }
     
