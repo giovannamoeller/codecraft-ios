@@ -27,11 +27,15 @@ enum AppTheme {
         static let title = plusJakartaSans(size: 22, weight: .bold)
         static let title2 = plusJakartaSans(size: 20, weight: .bold)
         static let title3 = plusJakartaSans(size: 18, weight: .bold)
-        static let headline = plusJakartaSans(size: 16, weight: .semibold)
-        static let subheadline = plusJakartaSans(size: 14)
-        static let bodyRegular = plusJakartaSans(size: 16)
-        static let bodyBold = plusJakartaSans(size: 16, weight: .bold)
-        static let bodySemibold = plusJakartaSans(size: 16, weight: .semibold)
+        static let bodyRegular = plusJakartaSans(size: 18)
+        static let bodyBold = plusJakartaSans(size: 18, weight: .bold)
+        static let bodySemibold = plusJakartaSans(size: 18, weight: .semibold)
+        static let captionRegular = plusJakartaSans(size: 14)
+        static let captionBold = plusJakartaSans(size: 14, weight: .bold)
+        static let captionSemibold = plusJakartaSans(size: 14, weight: .semibold)
+        static let footnoteRegular = plusJakartaSans(size: 12)
+        static let footnoteBold = plusJakartaSans(size: 12, weight: .bold)
+        static let footnoteSemibold = plusJakartaSans(size: 12, weight: .semibold)
     }
     
     enum Colors {

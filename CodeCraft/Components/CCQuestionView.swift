@@ -23,9 +23,9 @@ struct CCQuestionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text(question.title)
-                .appFont(AppTheme.Fonts.headline)
-                .padding(.bottom, 5)
+            ResponsiveTextView(text: question.title,
+                               style: .bodyBold)
+            .padding(.bottom, 5)
             
             OptionLayout(horizontalSizeClass: horizontalSizeClass) {
                 ForEach(0..<question.options.count, id: \.self) { index in
@@ -99,8 +99,7 @@ struct OptionButton: View {
             HStack {
                 Image(systemName: isSelected ? "checkmark.square.fill" : "square")
                     .foregroundStyle(foregroundColor)
-                Text(option)
-                    .appFont(isSelected ? AppTheme.Fonts.bodyBold : AppTheme.Fonts.bodyRegular)
+                ResponsiveTextView(text: option, style: isSelected ? .bodyBold : .bodyRegular)
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

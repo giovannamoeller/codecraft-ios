@@ -21,11 +21,12 @@ struct CCGridDataRow: View {
                 .cornerRadius(8)
             
             VStack(alignment: .leading) {
-                Text(data.title)
-                    .appFont(AppTheme.Fonts.headline)
-                Text(data.description)
-                    .appFont(AppTheme.Fonts.subheadline)
-                    .foregroundStyle(.secondary)
+                ResponsiveTextView(text: data.title,
+                                   style: .bodySemibold)
+                
+                ResponsiveTextView(text: data.description,
+                                   style: .captionRegular,
+                                   foregroundStyle: .secondary)
             }
             
             Spacer()

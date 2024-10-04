@@ -14,26 +14,27 @@ struct CCAlertView: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text(title)
-                .appFont(AppTheme.Fonts.title)
+        VStack(spacing: 16.0) {
+            ResponsiveTextView(text: title,
+                               style: .title,
+                               alignment: .center)
             
-            Text(message)
-                .appFont(AppTheme.Fonts.bodyRegular)
-                .frame(maxWidth: 264)
-                .multilineTextAlignment(.center)
+            ResponsiveTextView(text: message,
+                               style: .bodyRegular,
+                               alignment: .center)
             
             Button {
                 isPresented = false
             } label: {
                 CCPrimaryButtonView(text: buttonTitle, displayIcon: false)
+                    .padding(.top)
             }
         }
         .padding()
         .background(Color.white)
-        .cornerRadius(20)
-        .shadow(radius: 10)
-        .padding()
+        .cornerRadius(22.0)
+        .shadow(radius: 12.0)
+        .frame(maxWidth: 424)
     }
 }
 

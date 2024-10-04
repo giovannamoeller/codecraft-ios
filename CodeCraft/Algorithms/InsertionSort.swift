@@ -5,11 +5,11 @@
 //  Created by Giovanna Moeller on 03/10/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct InsertionSort: SortAlgorithmProtocol {
-    let name = "Insertion Sort"
-    let description = "Visualize how the insertion sort algorithm works"
+    let name: String = "Insertion Sort"
+    let description: String = "Visualize how the insertion sort algorithm works"
     
     func sort(items: [ArrayItem]) async -> AsyncStream<SortingStep> {
         return AsyncStream { continuation in

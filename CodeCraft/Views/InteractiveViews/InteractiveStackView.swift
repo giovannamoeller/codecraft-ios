@@ -18,28 +18,22 @@ struct InteractiveStackView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Visualize how a stack works")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .appFont(AppTheme.Fonts.largeTitle)
-                    .padding(32)
+                ResponsiveTextView(text: "Visualize how a stack works", style: .title)
+                    .padding(.horizontal)
                 
                 CCFlexibleGridView(data: UsageExample.stack)
-                    .padding()
+                    .padding(.horizontal)
                 
-                Text("Add or remove elements to see how a stack operates.")
-                    .appFont(AppTheme.Fonts.bodyRegular)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
+                ResponsiveTextView(text: "Add or remove elements to see how a stack operates.", style: .bodyRegular)
+                    .padding(.horizontal)
                 
                 if stack.isEmpty {
-                    Text("Stack is empty!")
-                        .appFont(AppTheme.Fonts.bodyBold)
+                    ResponsiveTextView(text: "Stack is empty!", style: .bodyBold)
                         .padding(.vertical)
                 } else {
                     ScrollView(showsIndicators: false) {
                         ForEach(stack.elements.reversed()) { element in
-                            Text("\(element.value)")
-                                .appFont(AppTheme.Fonts.bodyBold)
+                            ResponsiveTextView(text: "\(element.value)", style: .bodyBold, alignment: .center)
                                 .padding()
                                 .frame(maxWidth: 124)
                                 .background(peekElement?.id == element.id ? AppTheme.Colors.eletricBlue : AppTheme.Colors.lightLavender)

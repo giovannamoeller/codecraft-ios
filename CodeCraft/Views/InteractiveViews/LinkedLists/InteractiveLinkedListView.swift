@@ -31,22 +31,17 @@ struct InteractiveLinkedListView<T: LinkedListProtocol, NodeView: LinkedListNode
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text(title)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .appFont(AppTheme.Fonts.largeTitle)
-                    .padding(32)
+                ResponsiveTextView(text: title, style: .title)
+                    .padding()
                 
                 CCFlexibleGridView(data: usageExample)
                     .padding()
                 
-                Text(description)
-                    .appFont(AppTheme.Fonts.bodyRegular)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                ResponsiveTextView(text: description, style: .bodyRegular)
                     .padding()
                 
                 if linkedList.isEmpty {
-                    Text("\(title) is empty!")
-                        .appFont(AppTheme.Fonts.bodyBold)
+                    ResponsiveTextView(text: "\(title) is empty!", style: .bodyBold)
                         .padding(.vertical)
                 } else {
                     ScrollViewReader { proxy in

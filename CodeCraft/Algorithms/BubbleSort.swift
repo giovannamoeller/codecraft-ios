@@ -5,11 +5,11 @@
 //  Created by Giovanna Moeller on 03/10/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct BubbleSort: SortAlgorithmProtocol {
-    let name = "Bubble Sort"
-    let description = "Visualize how the bubble sort algorithm works"
+    let name: String = "Bubble Sort"
+    let description: String = "Visualize how the bubble sort algorithm works"
     
     func sort(items: [ArrayItem]) async -> AsyncStream<SortingStep> {
         return AsyncStream { continuation in

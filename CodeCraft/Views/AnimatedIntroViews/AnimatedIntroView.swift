@@ -38,37 +38,27 @@ struct AnimatedIntroView<Destination: View>: View {
                     .animation(.spring(response: 8, dampingFraction: 0.8, blendDuration: 0.5), value: circleOffset)
                 
                 VStack {
+                    ResponsiveTextView(text: "Section \(sectionNumber)".uppercased(),
+                                       style: .title,
+                                       foregroundStyle: .white)
+                    .kerning(2.5)
+                    .opacity(showContent ? 1 : 0)
+                    .scaleEffect(showContent ? 1 : 0.5)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5).delay(0.2), value: showContent)
+                    .padding(.vertical)
                     
-                    Text("Section \(sectionNumber)".uppercased())
-                        .appFont(AppTheme.Fonts.title)
-                        .kerning(2.5)
-                        .foregroundStyle(.white)
-                        .opacity(showContent ? 1 : 0)
-                        .scaleEffect(showContent ? 1 : 0.5)
-                        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5).delay(0.2), value: showContent)
-                        .padding(.vertical)
                     
-                    
-                    Text(title)
-                        .appFont(AppTheme.Fonts.extraLargeTitle)
-                        .foregroundStyle(.white)
-                        .opacity(showContent ? 1 : 0)
-                        .scaleEffect(showContent ? 1 : 0.5)
-                        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5).delay(0.5), value: showContent)
+                    ResponsiveTextView(text: title,
+                                       style: .extraLargeTitle,
+                                       foregroundStyle: .white)
+                    .opacity(showContent ? 1 : 0)
+                    .scaleEffect(showContent ? 1 : 0.5)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5).delay(0.5), value: showContent)
                     
                     NavigationLink {
                         destination
                     } label: {
-                        HStack {
-                            Text("Let's get started")
-                                .appFont(AppTheme.Fonts.title3)
-                            Image(systemName: "arrow.right")
-                        }
-                        .frame(minWidth: 188)
-                        .padding()
-                        .background(AppTheme.Colors.mediumLavender)
-                        .foregroundStyle(.white)
-                        .cornerRadius(28.0)
+                        CCSecondaryButtonView(text: title)
                     }
                     .opacity(showContent ? 1 : 0)
                     .scaleEffect(showContent ? 1 : 0.7)

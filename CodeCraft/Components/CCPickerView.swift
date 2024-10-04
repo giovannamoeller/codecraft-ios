@@ -31,10 +31,10 @@ struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
                         Button(action: {
                             selectedSegment = index
                         }) {
-                            Text(segment.rawValue)
-                                .font(AppTheme.Fonts.bodyRegular)
-                                .frame(width: geometry.size.width / CGFloat(array.count), height: geometry.size.height)
-                                .foregroundStyle(selectedSegment == index ? AppTheme.Colors.indigo : .white)
+                            ResponsiveTextView(text: segment.rawValue,
+                                               style: .bodyRegular)
+                            .frame(width: geometry.size.width / CGFloat(array.count), height: geometry.size.height)
+                            .foregroundStyle(selectedSegment == index ? AppTheme.Colors.indigo : .white)
                         }
                     }
                 }

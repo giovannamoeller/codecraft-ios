@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InteractiveQueueView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     @StateObject private var queue: Queue<Int> = Queue<Int>()
     @State private var isButtonDisabled = false
     @State private var scrollTarget: Int?
@@ -15,34 +17,32 @@ struct InteractiveQueueView: View {
     
     private let baseSeconds: Double = 0.5
     
+    private var itemSize: CGFloat {
+        return horizontalSizeClass == .compact ? 54.0 : 64.0
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text("Visualize how a queue works")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .appFont(AppTheme.Fonts.largeTitle)
-                    .padding(32)
+                ResponsiveTextView(text: "Visualize how a queue works", style: .title)
+                    .padding(.horizontal)
                 
                 CCFlexibleGridView(data: UsageExample.queue)
-                    .padding()
+                    .padding(.horizontal)
                 
-                Text("Add or remove elements to see how a queue operates.")
-                    .appFont(AppTheme.Fonts.bodyRegular)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
+                ResponsiveTextView(text: "Add or remove elements to see how a queue operates.", style: .bodyRegular)
+                    .padding(.horizontal)
                 
                 if queue.isEmpty {
-                    Text("Queue is empty!")
-                        .appFont(AppTheme.Fonts.bodyBold)
+                    ResponsiveTextView(text: "Queue is empty!", style: .bodyBold)
                         .padding(.vertical)
                 } else {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(queue.elements) { element in
-                                Text("\(element.value)")
-                                    .appFont(AppTheme.Fonts.bodyBold)
+                                ResponsiveTextView(text: "\(element.value)", style: .bodyBold, alignment: .center)
                                     .padding()
-                                    .frame(width: 64, height: 64)
+                                    .frame(width: itemSize, height: itemSize)
                                     .background(frontElement?.id == element.id ? AppTheme.Colors.eletricBlue : AppTheme.Colors.lightLavender)
                                     .foregroundStyle(frontElement?.id == element.id ? .white : .black)
                                     .cornerRadius(12.0)

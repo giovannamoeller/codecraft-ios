@@ -23,10 +23,8 @@ struct LinkedListNodeView<Element: Hashable>: View {
                 Circle()
                     .fill(AppTheme.Colors.lightLavender)
                     .frame(width: 64, height: 64)
-                Text("\(String(describing: element))")
-                    .appFont(AppTheme.Fonts.title3)
-                Text(headOrTailText)
-                    .foregroundStyle(.white)
+                ResponsiveTextView(text: "\(String(describing: element))", style: .subtitle, alignment: .center)
+                ResponsiveTextView(text: headOrTailText, style: .bodyRegular, alignment: .center, foregroundStyle: .white)
                     .offset(y: -52)
             }
             if !isTail {

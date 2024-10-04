@@ -28,6 +28,7 @@
       }
     },
     "A series of connected carriages." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -38,6 +39,7 @@
       }
     },
     "A singly linked list is a linear data structure where each element (node) contains data and a reference to the next node in the sequence. The last node points to null, indicating the end of the list." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -53,10 +55,8 @@
     "Add or remove elements to see how a stack operates." : {
 
     },
-    "Adjacent Comparisons" : {
-
-    },
     "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -67,6 +67,7 @@
       }
     },
     "arrays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -77,6 +78,7 @@
       }
     },
     "Arrays are zero-indexed: The first element is at index 0." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -87,6 +89,7 @@
       }
     },
     "Arrays have a fixed size in some languages, but can be dynamic in others." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -96,13 +99,8 @@
         }
       }
     },
-    "Best suited for sorting small arrays or lists where simplicity is more important than efficiency." : {
-
-    },
-    "Bidirectional" : {
-
-    },
     "Books arranged in order." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -113,6 +111,7 @@
       }
     },
     "Bookshelf" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -122,19 +121,8 @@
         }
       }
     },
-    "Browser History" : {
-
-    },
-    "Build Sorted Portion" : {
-
-    },
-    "Builds the final sorted array one item at a time, by inserting each element into its correct position." : {
-
-    },
-    "Bus Stop" : {
-
-    },
     "Calendar" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -145,6 +133,7 @@
       }
     },
     "Choose Your Adventure" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -155,6 +144,7 @@
       }
     },
     "Common operations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -165,6 +155,7 @@
       }
     },
     "Common operations: Insertion, deletion, and accessing elements." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -174,10 +165,8 @@
         }
       }
     },
-    "Computer memory uses a stack to manage function calls and returns." : {
-
-    },
     "Conga line" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -187,10 +176,8 @@
         }
       }
     },
-    "Data Buffer" : {
-
-    },
     "Days of the month in sequence." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -200,16 +187,8 @@
         }
       }
     },
-    "Doubly linked lists can grow or shrink dynamically as needed." : {
-
-    },
-    "Doubly linked lists consist of nodes, each containing data and references to both the next and previous nodes." : {
-
-    },
-    "Dynamic size" : {
-
-    },
     "Each car is connected to the next one." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -220,6 +199,7 @@
       }
     },
     "Each clue leads to the location of the next clue." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -230,6 +210,7 @@
       }
     },
     "Each element has a unique index: Used to access or modify the element." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -240,6 +221,7 @@
       }
     },
     "Each page points to the next part of the story." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -250,6 +232,7 @@
       }
     },
     "Each person holds the next person's shoulders." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -259,25 +242,8 @@
         }
       }
     },
-    "Efficient for Small Arrays" : {
-
-    },
-    "Efficient insertions" : {
-
-    },
-    "Efficient insertions and deletions" : {
-
-    },
-    "Elements are accessed sequentially, starting from the head." : {
-
-    },
-    "Elements can be traversed in both directions." : {
-
-    },
-    "First In, First Out (FIFO)" : {
-
-    },
     "Fixed and Dynamic" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -320,9 +286,6 @@
         }
       }
     },
-    "Function Call Stack" : {
-
-    },
     "Hello, World!" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -344,12 +307,6 @@
           }
         }
       }
-    },
-    "Ideal for Small Arrays" : {
-
-    },
-    "In computing, queues are used to manage data flow between processes." : {
-
     },
     "In scenarios where memory locality is important for performance." : {
       "extractionState" : "manual",
@@ -373,21 +330,6 @@
         }
       }
     },
-    "In-Place Algorithm" : {
-
-    },
-    "In-place Sorting" : {
-
-    },
-    "Inserting elements at the beginning or end is very efficient (O(1) time)." : {
-
-    },
-    "Inserting or removing elements at any position is very efficient (O(1) time)." : {
-
-    },
-    "Last In, First Out (LIFO)" : {
-
-    },
     "Learn More" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -409,25 +351,8 @@
         }
       }
     },
-    "Like a line of people waiting, the first person to join is the first to leave." : {
-
-    },
-    "Like a stack of plates, the last item added is the first one removed." : {
-
-    },
-    "Linked lists can grow or shrink dynamically as needed." : {
-
-    },
-    "Linked lists consist of nodes, each containing data and a reference to the next node." : {
-
-    },
-    "Navigating back through web pages works like a stack." : {
-
-    },
-    "Node-based" : {
-
-    },
     "Numbered spaces in a row." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -436,12 +361,6 @@
           }
         }
       }
-    },
-    "O(n^2) time complexity in the average and worst cases, but can be O(n) in the best case." : {
-
-    },
-    "O(n^2) time complexity in the average and worst cases, where n is the number of items." : {
-
     },
     "Observe how the array changes as you perform operations below." : {
       "localizations" : {
@@ -454,6 +373,7 @@
       }
     },
     "Parking Lot" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -462,12 +382,6 @@
           }
         }
       }
-    },
-    "People board the bus in the order they arrived at the stop." : {
-
-    },
-    "Performs well for small data sets or partially sorted arrays." : {
-
     },
     "Pop" : {
       "extractionState" : "manual",
@@ -492,12 +406,6 @@
       }
     },
     "Press 'start sorting' to see the algorithm in action." : {
-
-    },
-    "Print jobs are processed in the order they are received." : {
-
-    },
-    "Printer Queue" : {
 
     },
     "Push" : {
@@ -534,9 +442,6 @@
         }
       }
     },
-    "Repeatedly steps through the list, compares adjacent elements and swaps them if they're in the wrong order." : {
-
-    },
     "Reset" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -559,10 +464,8 @@
         }
       }
     },
-    "Sequential access" : {
-
-    },
     "singly linked lists" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -571,9 +474,6 @@
           }
         }
       }
-    },
-    "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space." : {
-
     },
     "Speed:" : {
 
@@ -603,13 +503,8 @@
         }
       }
     },
-    "The undo feature in many applications uses a stack to keep track of actions." : {
-
-    },
-    "Time Complexity" : {
-
-    },
     "Train" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -620,6 +515,7 @@
       }
     },
     "Train cars" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -630,6 +526,7 @@
       }
     },
     "Treasure Hunt" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -639,10 +536,8 @@
         }
       }
     },
-    "Undo Functionality" : {
-
-    },
     "Unique index" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -732,6 +627,7 @@
       }
     },
     "Zero-indexed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {

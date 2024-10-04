@@ -67,9 +67,7 @@ struct QuizView<Destination: View>: View {
         ZStack {
             ScrollView {
                 VStack(spacing: 16.0) {
-                    Text("\(title) Quiz")
-                        .appFont(AppTheme.Fonts.largeTitle)
-                        .padding()
+                    ResponsiveTextView(text: "\(title) Quiz", style: .title, alignment: .center)
                     
                     ForEach(0..<questions.count, id: \.self) { index in
                         CCQuestionView(question: questions[index], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswers[index])
@@ -139,14 +137,11 @@ struct QuizResultsModalView<Destination: View>: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Quiz completed!")
-                .appFont(AppTheme.Fonts.title)
+            ResponsiveTextView(text: "Quiz completed!", style: .title, alignment: .center)
             
-            Text("You got \(correctAnswers) out of \(totalQuestions) questions correct.")
-                .appFont(AppTheme.Fonts.bodyRegular)
+            ResponsiveTextView(text: "You got \(correctAnswers) out of \(totalQuestions) questions correct.", style: .bodyRegular, alignment: .center)
             
             HStack(spacing: 16) {
-                
                 Button {
                     isPresented = false
                 } label: {

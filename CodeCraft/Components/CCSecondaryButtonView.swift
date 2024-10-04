@@ -25,9 +25,10 @@ struct CCSecondaryButtonView: View {
     
     var body: some View {
         HStack {
-            Text(LocalizedStringKey(text))
-                .appFont(AppTheme.Fonts.bodyBold)
-                .foregroundStyle(isAlternateStyle ? .white : AppTheme.Colors.mediumLavender)
+            ResponsiveTextView(text: text,
+                               style: .bodyBold,
+                               alignment: .center,
+                               foregroundStyle: isAlternateStyle ? .white : AppTheme.Colors.mediumLavender)
         }
         .frame(maxWidth: .infinity)
         .padding()

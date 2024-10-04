@@ -22,8 +22,7 @@ struct CCPrimaryButtonView: View {
     
     var body: some View {
         HStack {
-            Text(LocalizedStringKey(text))
-                .appFont(AppTheme.Fonts.bodyBold)
+            ResponsiveTextView(text: text, style: .bodyBold, alignment: .center, foregroundStyle: .white)
             if displayIcon {
                 Image(systemName: "arrow.right")
             }

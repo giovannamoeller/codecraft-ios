@@ -37,18 +37,14 @@ struct DataStructureIntroductionView<Destination: View>: View {
                  )*/
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(dataStructure.title.capitalizedFirst())
-                        .appFont(AppTheme.Fonts.title)
-                        .foregroundStyle(AppTheme.Colors.indigo)
+                    ResponsiveTextView(text: dataStructure.title.capitalizedFirst(), style: .title, foregroundStyle: AppTheme.Colors.indigo)
                     
-                    Text(dataStructure.definition)
-                        .appFont(AppTheme.Fonts.bodyRegular)
+                    ResponsiveTextView(text: dataStructure.definition, style: .bodyRegular)
                 }
                 .padding(.horizontal)
                 
                 VStack(alignment: .leading, spacing: 15) {
-                    Text("Real world analogies")
-                        .appFont(AppTheme.Fonts.title2)
+                    ResponsiveTextView(text: "Real world analogies", style: .subtitle)
                     
                     CCFlexibleGridView(data: dataStructure.analogies)
                 }
@@ -56,17 +52,14 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 
                 VStack(alignment: .leading, spacing: 15) {
                     HStack(spacing: 3.0) {
-                        Text("When to use")
-                        Text(dataStructure.title)
+                        ResponsiveTextView(text: "When to use", style: .subtitle)
+                        ResponsiveTextView(text: dataStructure.title, style: .subtitle)
                     }
-                    .appFont(AppTheme.Fonts.title2)
-                    
                     
                     ForEach(dataStructure.useCases, id: \.self) { useCase in
                         HStack {
                             Image(systemName: "square.and.pencil")
-                            Text(LocalizedStringKey(useCase))
-                                .appFont(AppTheme.Fonts.bodyRegular)
+                            ResponsiveTextView(text: String(useCase), style: .bodyRegular)
                         }
                         .foregroundStyle(.black.opacity(0.75))
                     }

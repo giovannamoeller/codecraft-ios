@@ -5,7 +5,7 @@
 //  Created by Giovanna Moeller on 03/10/24.
 //
 
-import Foundation
+import SwiftUI
 
 protocol SortAlgorithmProtocol {
     func sort(items: [ArrayItem]) async -> AsyncStream<SortingStep>

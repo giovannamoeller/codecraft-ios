@@ -30,8 +30,7 @@ struct CodeCheatsheetView: View {
         ZStack {
             AppTheme.Colors.indigo.ignoresSafeArea()
             VStack(alignment: .leading) {
-                Text(text)
-                    .appFont(AppTheme.Fonts.largeTitle)
+                ResponsiveTextView(text: text, style: .title)
                 
                 CCPickerView(selectedSegment: $selectedSegment, array: programmingLanguages)
                     .padding(.vertical, 32)

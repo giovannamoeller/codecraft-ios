@@ -5,7 +5,7 @@
 //  Created by Giovanna Moeller on 25/09/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum CodeLanguage: String, CaseIterable {
     case python = "Python"

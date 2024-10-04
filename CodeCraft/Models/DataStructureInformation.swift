@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DataStructureInformation {
-    let title: LocalizedStringKey
+    let title: String
     let imageName: String
-    let definition: LocalizedStringKey
+    let definition: String
     let analogies: [GridData]
     let useCases: [String]
 }

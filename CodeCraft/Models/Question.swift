@@ -5,7 +5,7 @@
 //  Created by Giovanna Moeller on 26/09/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct Question {
     let title: String

@@ -18,6 +18,8 @@ enum SortStatus {
 }
 
 struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     @State private var items: [ArrayItem] = generateRandomArray().enumerated().map { ArrayItem(value: $1, position: CGFloat($0)) }
     @State private var sortStatus: SortStatus = .idle
     @State private var currentStep: SortingStep?
@@ -27,8 +29,12 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
     let algorithm: T
     let data: [GridData]
     
-    private let itemSize: CGFloat = 64
-    private let spacing: CGFloat = 16
+    private var itemSize: CGFloat {
+        return horizontalSizeClass == .compact ? 54.0 : 64.0
+    }
+    private var spacing: CGFloat {
+        return horizontalSizeClass == .compact ? 8.0 : 16.0
+    }
     
     init(algorithm: T,
          data: [GridData]) {
@@ -39,24 +45,19 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                Text(algorithm.description)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .appFont(AppTheme.Fonts.largeTitle)
-                    .padding(32)
+                ResponsiveTextView(text: algorithm.description, style: .title)
+                    .padding(.horizontal)
                 
                 CCFlexibleGridView(data: data)
-                    .padding()
+                    .padding(.horizontal)
                 
-                Text("Press 'start sorting' to see the algorithm in action.")
-                    .appFont(AppTheme.Fonts.bodyRegular)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
+                ResponsiveTextView(text: "Press 'start sorting' to see the algorithm in action.", style: .bodyRegular)
+                    .padding(.horizontal)
                 
                 GeometryReader { geometry in
                     ZStack {
                         ForEach(currentStep?.items ?? items) { item in
-                            Text("\(item.value)")
-                                .appFont(AppTheme.Fonts.bodyBold)
+                            ResponsiveTextView(text: "\(item.value)", style: .bodyBold, alignment: .center)
                                 .padding()
                                 .frame(width: itemSize, height: itemSize)
                                 .background(getBackgroundColor(for: Int(item.position)))
@@ -73,8 +74,7 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
                 .background(AppTheme.Colors.indigo)
                 
                 HStack {
-                    Text("Speed:")
-                        .appFont(AppTheme.Fonts.bodyRegular)
+                    ResponsiveTextView(text: "Speed", style: .bodyRegular, alignment: .trailing)
                     Picker("Velocity", selection: $selectedVelocity) {
                         ForEach(SortVelocity.allCases) { velocity in
                             Text(velocity.description)
@@ -108,7 +108,7 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
                 } label: {
                     CCPrimaryButtonView(text: "Let's check the code")
                 }
-                .frame(maxWidth: 240)
+                .frame(maxWidth: 280)
             }
         }
     }

@@ -8,24 +8,29 @@
 import SwiftUI
 
 struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     @StateObject private var array: DynamicArray<T> = DynamicArray<T>()
     @State private var isButtonDisabled = false
     @State private var scrollTarget: T?
     
     private let baseSeconds: Double = 0.5
     
+    private var itemSize: CGFloat {
+        return horizontalSizeClass == .compact ? 54.0 : 64.0
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 16.0) {
-                Text("Visualize how an array works")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .appFont(AppTheme.Fonts.largeTitle)
+                ResponsiveTextView(text: "Visualize how an array works", style: .title)
+                    .padding(.horizontal)
                 
                 CCFlexibleGridView(data: UsageExample.array)
+                    .padding(.horizontal)
                 
-                Text("Observe how the array changes as you perform operations below.")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .appFont(AppTheme.Fonts.bodyRegular)
+                ResponsiveTextView(text: "Observe how the array changes as you perform operations below.", style: .bodyRegular)
+                    .padding(.horizontal)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {
@@ -34,19 +39,16 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(AppTheme.Colors.lightLavender)
-                                        .frame(width: 60, height: 60)
-                                    Text("\(array.elements[index])")
-                                        .appFont(AppTheme.Fonts.title3)
+                                        .frame(width: itemSize, height: itemSize)
+                                    ResponsiveTextView(text: "\(array.elements[index])", style: .bodyBold, alignment: .center)
                                 }
-                                Text("\(index)")
-                                    .appFont(AppTheme.Fonts.bodyRegular)
-                                    .foregroundStyle(AppTheme.Colors.indigo)
+                                ResponsiveTextView(text: "\(index)", style: .bodyRegular, alignment: .center, foregroundStyle: AppTheme.Colors.indigo)
                             }
                         }
                         .transition(.asymmetric(insertion: .scale.combined(with: .opacity).combined(with: .slide), removal: .scale.combined(with: .opacity).combined(with: .offset(y: -50)).combined(with: .offset(x: -50))))
                     }
+                    .padding(.horizontal)
                     .frame(maxWidth: .infinity)
-                    .padding()
                 }
                 .padding(.vertical)
                 .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: array.count)
@@ -72,8 +74,8 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
                     CCPrimaryButtonView(text: "Practice")
                         .padding(.top)
                 }
+                .frame(maxWidth: 320)
             }
-            .padding()
             .onAppear {
                 initializeArray()
             }

@@ -10,6 +10,6 @@ import SwiftUI
 struct GridData: Identifiable {
     let id = UUID()
     let icon: String
-    let title: LocalizedStringKey
-    let description: LocalizedStringKey
+    let title: String
+    let description: String
 }
