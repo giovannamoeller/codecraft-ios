@@ -45,7 +45,7 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
                         }
                         .transition(.asymmetric(insertion: .scale.combined(with: .opacity).combined(with: .slide), removal: .scale.combined(with: .opacity).combined(with: .offset(y: -50)).combined(with: .offset(x: -50))))
                     }
-                    .frame(width: UIScreen.main.bounds.width - 32)
+                    .frame(maxWidth: .infinity)
                     .padding()
                 }
                 .padding(.vertical)

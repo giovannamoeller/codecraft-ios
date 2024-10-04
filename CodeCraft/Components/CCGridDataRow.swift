@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CCGridDataRow: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     let data: GridData
     
     var body: some View {
@@ -32,7 +34,7 @@ struct CCGridDataRow: View {
         .background(
             RoundedRectangle(cornerRadius: 12.0)
                 .fill(AppTheme.Colors.lightLavender)
-                .frame(height: 88.0)
+                //.frame(height: horizontalSizeClass == .regular ? 92.0 : .infinity)
                 .overlay {
                     RoundedRectangle(cornerRadius: 12.0)
                         .stroke(AppTheme.Colors.lightLavender, lineWidth: 2.0)

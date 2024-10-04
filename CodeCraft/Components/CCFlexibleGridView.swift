@@ -18,7 +18,7 @@ struct CCFlexibleGridView: View {
         layout {
             ForEach(data, id: \.id) { item in
                 CCGridDataRow(data: item)
-                    .frame(maxHeight: 420)
+                    .padding(.bottom, horizontalSizeClass == .compact ? 8.0 : 0.0)
             }
         }
     }
@@ -26,11 +26,11 @@ struct CCFlexibleGridView: View {
     @ViewBuilder
     private func layout<Content: View>(@ViewBuilder content: () -> Content) -> some View {
         if horizontalSizeClass == .compact {
-            VStack(spacing: 16) {
+            VStack(spacing: 8.0) {
                 content()
             }
         } else {
-            LazyVGrid(columns: columns, spacing: 16) {
+            LazyVGrid(columns: columns, spacing: 8.0) {
                 content()
             }
         }
