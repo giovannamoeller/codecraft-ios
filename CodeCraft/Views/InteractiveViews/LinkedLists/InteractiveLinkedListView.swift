@@ -31,14 +31,7 @@ struct InteractiveLinkedListView<T: LinkedListProtocol, NodeView: LinkedListNode
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                ResponsiveTextView(text: title, style: .title)
-                    .padding()
-                
-                CCFlexibleGridView(data: usageExample)
-                    .padding()
-                
-                ResponsiveTextView(text: description, style: .bodyRegular)
-                    .padding()
+                InteractiveHeaderView(text: title, data: usageExample, guideline: description)
                 
                 if linkedList.isEmpty {
                     ResponsiveTextView(text: "\(title) is empty!", style: .bodyBold)

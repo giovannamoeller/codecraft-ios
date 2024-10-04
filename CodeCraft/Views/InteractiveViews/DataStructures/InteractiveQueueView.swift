@@ -24,14 +24,7 @@ struct InteractiveQueueView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                ResponsiveTextView(text: "Visualize how a queue works", style: .title)
-                    .padding(.horizontal)
-                
-                CCFlexibleGridView(data: UsageExample.queue)
-                    .padding(.horizontal)
-                
-                ResponsiveTextView(text: "Add or remove elements to see how a queue operates.", style: .bodyRegular)
-                    .padding(.horizontal)
+                InteractiveHeaderView(text: "Visualize how a queue works", data: UsageExample.queue, guideline: "Add or remove elements to see how a queue operates.")
                 
                 if queue.isEmpty {
                     ResponsiveTextView(text: "Queue is empty!", style: .bodyBold)

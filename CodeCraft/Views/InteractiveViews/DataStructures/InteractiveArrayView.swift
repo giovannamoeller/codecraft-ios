@@ -23,14 +23,7 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 16.0) {
-                ResponsiveTextView(text: "Visualize how an array works", style: .title)
-                    .padding(.horizontal)
-                
-                CCFlexibleGridView(data: UsageExample.array)
-                    .padding(.horizontal)
-                
-                ResponsiveTextView(text: "Observe how the array changes as you perform operations below.", style: .bodyRegular)
-                    .padding(.horizontal)
+                InteractiveHeaderView(text: "Visualize how an array works", data: UsageExample.array, guideline: "Observe how the array changes as you perform operations below.")
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8.0) {

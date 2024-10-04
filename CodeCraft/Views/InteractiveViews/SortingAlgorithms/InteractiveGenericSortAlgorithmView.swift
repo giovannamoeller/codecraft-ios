@@ -45,14 +45,7 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16.0) {
-                ResponsiveTextView(text: algorithm.description, style: .title)
-                    .padding(.horizontal)
-                
-                CCFlexibleGridView(data: data)
-                    .padding(.horizontal)
-                
-                ResponsiveTextView(text: "Press 'start sorting' to see the algorithm in action.", style: .bodyRegular)
-                    .padding(.horizontal)
+                InteractiveHeaderView(text: algorithm.description, data: data, guideline: "Press 'start sorting' to see the algorithm in action.")
                 
                 GeometryReader { geometry in
                     ZStack {
