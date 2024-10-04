@@ -21,7 +21,7 @@ struct InteractiveHeaderView: View {
                 .padding(.horizontal)
             
             ResponsiveTextView(text: guideline, style: .bodyRegular)
-                .padding(.horizontal)
+                .padding()
         }
     }
 }
