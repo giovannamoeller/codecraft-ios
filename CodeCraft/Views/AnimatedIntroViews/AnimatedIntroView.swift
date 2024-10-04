@@ -39,7 +39,7 @@ struct AnimatedIntroView<Destination: View>: View {
                 
                 VStack {
                     ResponsiveTextView(text: "Section \(sectionNumber)".uppercased(),
-                                       style: .title,
+                                       style: .subtitle,
                                        alignment: .center,
                                        foregroundStyle: .white)
                     .kerning(2.5)
@@ -86,7 +86,8 @@ struct AnimatedIntroView<Destination: View>: View {
 }
 
 #Preview {
-    AnimatedIntroView(title: "Arrays", sectionNumber: 1) {
+    AnimatedIntroView(title: DataStructure.doublyLinkedList.title,
+                      sectionNumber: DataStructure.doublyLinkedList.sectionNumber) {
         ArrayIntroductionView()
     }
 }
