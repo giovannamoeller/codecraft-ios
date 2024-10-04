@@ -91,7 +91,7 @@ struct QuizView<Destination: View>: View {
                 }
                 .padding()
             }
-            .blur(radius: showResult ? 3 : 0)
+            .blur(radius: showResult || showMissingAnswerAlert ? 3 : 0)
             
             if showMissingAnswerAlert {
                 Color.black.opacity(0.4)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CodeCheatsheetView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     var text: String
     let codeSnippets: [CodeLanguage: String]
@@ -38,8 +39,8 @@ struct CodeCheatsheetView: View {
                 VStack {
                     ScrollView(showsIndicators: false) {
                         Text(codeSyntaxHighlight.highlightCode(for: code))
-                            .font(.system(size: 16, design: .monospaced))
-                            .padding(32)
+                            .font(.system(size: horizontalSizeClass == .compact ? 12.0 : 16.0, design: .monospaced))
+                            .padding()
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
@@ -49,8 +50,7 @@ struct CodeCheatsheetView: View {
                 .cornerRadius(16.0)
                 .shadow(color: AppTheme.Colors.darkGray.opacity(0.25), radius: 10.0, x: 0, y: 20)
             }
-            .padding(.horizontal, 32)
-            .padding(.vertical)
+            .padding()
         }
         .foregroundStyle(.white)
     }
