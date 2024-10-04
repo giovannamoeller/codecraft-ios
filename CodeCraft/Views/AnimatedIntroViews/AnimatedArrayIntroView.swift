@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct AnimatedArrayIntroView: View {
+    let dataStructure: DataStructure = .array
+    
     var body: some View {
-        AnimatedIntroView(title: "Arrays", sectionNumber: 1) {
+        AnimatedIntroView(title: dataStructure.title,
+                          sectionNumber: dataStructure.sectionNumber) {
             ArrayIntroductionView()
         }
     }

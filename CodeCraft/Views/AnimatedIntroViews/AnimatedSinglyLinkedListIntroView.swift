@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct AnimatedSinglyLinkedListIntroView: View {
+    let dataStructure: DataStructure = .singlyLinkedList
+
     var body: some View {
-        AnimatedIntroView(title: "Singly Linked List", sectionNumber: 2) {
+        AnimatedIntroView(title: dataStructure.title,
+                          sectionNumber: dataStructure.sectionNumber) {
             SinglyLinkedListIntroductionView()
         }
     }

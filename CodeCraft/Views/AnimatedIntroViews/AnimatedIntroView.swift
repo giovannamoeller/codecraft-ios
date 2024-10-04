@@ -40,6 +40,7 @@ struct AnimatedIntroView<Destination: View>: View {
                 VStack {
                     ResponsiveTextView(text: "Section \(sectionNumber)".uppercased(),
                                        style: .title,
+                                       alignment: .center,
                                        foregroundStyle: .white)
                     .kerning(2.5)
                     .opacity(showContent ? 1 : 0)
@@ -50,6 +51,7 @@ struct AnimatedIntroView<Destination: View>: View {
                     
                     ResponsiveTextView(text: title,
                                        style: .extraLargeTitle,
+                                       alignment: .center,
                                        foregroundStyle: .white)
                     .opacity(showContent ? 1 : 0)
                     .scaleEffect(showContent ? 1 : 0.5)
@@ -58,7 +60,9 @@ struct AnimatedIntroView<Destination: View>: View {
                     NavigationLink {
                         destination
                     } label: {
-                        SecondaryButtonView(text: title)
+                        SecondaryButtonView(text: "Let's get started!", isAlternateStyle: true)
+                            .padding()
+                            .frame(maxWidth: 234.0)
                     }
                     .opacity(showContent ? 1 : 0)
                     .scaleEffect(showContent ? 1 : 0.7)
