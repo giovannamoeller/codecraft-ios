@@ -33,7 +33,8 @@ public class Queue<T>: ObservableObject {
     }
     
     func dequeue() -> QueueElement<T>? {
-        elements.removeFirst()
+        if isEmpty { return nil }
+        return elements.removeFirst()
     }
     
     func front() -> QueueElement<T>? {
