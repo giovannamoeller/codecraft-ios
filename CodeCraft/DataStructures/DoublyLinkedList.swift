@@ -9,13 +9,29 @@ import SwiftUI
 
 public class DoublyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol {
     public typealias Element = T
-
+    
     @Published var head: DoublyNode<T>?
     @Published var tail: DoublyNode<T>?
     @Published var length: Int = 0
     
     public var isEmpty: Bool {
         head == nil
+    }
+    
+    public var description: String {
+        guard !isEmpty else { return "[]" }
+        var description = "["
+        var currentNode = head
+        var isFirst = true
+        while let node = currentNode {
+            if !isFirst {
+                description += " <-> "
+            }
+            description += "\(node.value)"
+            isFirst = false
+            currentNode = node.next
+        }
+        return description + "]"
     }
     
     public func insertAtHead(_ value: T) {
