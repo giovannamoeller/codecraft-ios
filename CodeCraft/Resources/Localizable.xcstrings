@@ -671,12 +671,6 @@
         }
       }
     },
-    "Visualize how the bubble sort algorithm works" : {
-
-    },
-    "Visualize how the insertion sort algorithm works" : {
-
-    },
     "When frequent insertion and deletion at the beginning is needed." : {
       "extractionState" : "manual",
       "localizations" : {

@@ -5,6 +5,7 @@
 //  Created by Giovanna Moeller on 26/09/24.
 //
 
+import Foundation
 
 struct Question {
     let title: String
