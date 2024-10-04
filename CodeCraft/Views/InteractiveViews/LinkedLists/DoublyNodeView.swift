@@ -24,13 +24,8 @@ struct DoublyNodeView<Element: Hashable>: View, LinkedListNodeViewProtocol {
             isHead: isHead,
             isTail: isTail,
             arrowView: AnyView(
-                VStack(spacing: 4) {
-                    Image(systemName: "arrow.right")
-                        .foregroundColor(.white)
-                    Image(systemName: "arrow.left")
-                        .foregroundColor(.white)
-                }
-                .padding(.horizontal, 4)
+                Image(systemName: "arrow.left.and.right")
+                    .foregroundColor(.white)
             )
         )
     }
