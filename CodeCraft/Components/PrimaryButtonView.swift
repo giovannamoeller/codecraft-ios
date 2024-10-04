@@ -1,5 +1,5 @@
 //
-//  CCPrimaryButtonView.swift
+//  PrimaryButtonView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 26/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCPrimaryButtonView: View {
+struct PrimaryButtonView: View {
     var text: String
     var displayIcon: Bool
     var isAlternateStyle: Bool
@@ -36,5 +36,5 @@ struct CCPrimaryButtonView: View {
 }
 
 #Preview {
-    CCPrimaryButtonView(text: "Hello, World!")
+    PrimaryButtonView(text: "Hello, World!")
 }

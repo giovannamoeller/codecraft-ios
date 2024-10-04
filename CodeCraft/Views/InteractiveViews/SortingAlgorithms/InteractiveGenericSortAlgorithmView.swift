@@ -99,7 +99,7 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
                 NavigationLink {
                     // CodeCheatsheetView(for: algorithm)
                 } label: {
-                    CCPrimaryButtonView(text: "Let's check the code")
+                    PrimaryButtonView(text: "Let's check the code")
                 }
                 .frame(maxWidth: 280)
             }

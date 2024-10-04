@@ -18,7 +18,7 @@ struct BubbleSortCodeCheatsheetView: View {
                 NavigationLink {
                     //ArrayQuizView()
                 } label: {
-                    CCPrimaryButtonView(text: "Next algorithm", isAlternateStyle: true)
+                    PrimaryButtonView(text: "Next algorithm", isAlternateStyle: true)
                         .frame(maxWidth: 240)
                         .padding(.top, 32)
                 }

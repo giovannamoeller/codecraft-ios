@@ -70,7 +70,7 @@ struct QuizView<Destination: View>: View {
                     ResponsiveTextView(text: "\(title) Quiz", style: .title, alignment: .center)
                     
                     ForEach(0..<questions.count, id: \.self) { index in
-                        CCQuestionView(question: questions[index], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswers[index])
+                        QuestionView(question: questions[index], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswers[index])
                             .padding(.bottom)
                     }
                     
@@ -78,7 +78,7 @@ struct QuizView<Destination: View>: View {
                         Button {
                             submitAnswers()
                         } label: {
-                            CCPrimaryButtonView(text: "Submit answers", displayIcon: false)
+                            PrimaryButtonView(text: "Submit answers", displayIcon: false)
                         }
                         Button {
                             resetAnswers()
@@ -95,7 +95,7 @@ struct QuizView<Destination: View>: View {
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
                 
-                CCAlertView(title: "Oops!",
+                AlertView(title: "Oops!",
                             message: "You need to answer all questions in order to proceed.",
                             buttonTitle: "Go back to quiz",
                             isPresented: $showMissingAnswerAlert)
@@ -145,7 +145,7 @@ struct QuizResultsModalView<Destination: View>: View {
                 Button {
                     isPresented = false
                 } label: {
-                    CCPrimaryButtonView(text: "View my results", displayIcon: false)
+                    PrimaryButtonView(text: "View my results", displayIcon: false)
                 }
                                 
                 NavigationLink {

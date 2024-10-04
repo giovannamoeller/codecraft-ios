@@ -32,7 +32,7 @@ struct CodeCheatsheetView: View {
             VStack(alignment: .leading) {
                 ResponsiveTextView(text: text, style: .title)
                 
-                CCPickerView(selectedSegment: $selectedSegment, array: programmingLanguages)
+                PickerView(selectedSegment: $selectedSegment, array: programmingLanguages)
                     .padding(.vertical, 32)
                 
                 VStack {

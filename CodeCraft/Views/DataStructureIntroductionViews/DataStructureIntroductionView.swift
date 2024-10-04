@@ -46,7 +46,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 VStack(alignment: .leading, spacing: 15) {
                     ResponsiveTextView(text: "Real world analogies", style: .subtitle)
                     
-                    CCFlexibleGridView(data: dataStructure.analogies)
+                    FlexibleGridView(data: dataStructure.analogies)
                 }
                 .padding(.horizontal)
                 
@@ -69,7 +69,7 @@ struct DataStructureIntroductionView<Destination: View>: View {
                 NavigationLink {
                     destination
                 } label: {
-                    CCPrimaryButtonView(text: "Learn More")
+                    PrimaryButtonView(text: "Learn More")
                         .frame(maxWidth: .infinity)
                 }
             }

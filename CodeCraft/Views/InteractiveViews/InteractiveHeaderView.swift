@@ -17,7 +17,7 @@ struct InteractiveHeaderView: View {
             ResponsiveTextView(text: text, style: .title)
                 .padding()
             
-            CCFlexibleGridView(data: data)
+            FlexibleGridView(data: data)
                 .padding(.horizontal)
             
             ResponsiveTextView(text: guideline, style: .bodyRegular)

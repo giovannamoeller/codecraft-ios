@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCGridDataRow: View {
+struct GridDataRow: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     let data: GridData
@@ -45,5 +45,5 @@ struct CCGridDataRow: View {
 }
 
 #Preview {
-    CCGridDataRow(data: GridData(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."))
+    GridDataRow(data: GridData(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."))
 }

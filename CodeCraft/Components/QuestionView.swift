@@ -1,5 +1,5 @@
 //
-//  CCQuestionView.swift
+//  QuestionView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 26/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCQuestionView: View {
+struct QuestionView: View {
     let question: Question
     
     @Binding var isSubmitted: Bool
@@ -111,5 +111,5 @@ struct OptionButton: View {
 }
 
 #Preview {
-    CCQuestionView(question: arrayQuestions[0], isSubmitted: .constant(true), selectedAnswer: .constant(1))
+    QuestionView(question: arrayQuestions[0], isSubmitted: .constant(true), selectedAnswer: .constant(1))
 }

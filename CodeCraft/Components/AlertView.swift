@@ -1,5 +1,5 @@
 //
-//  CCAlertView.swift
+//  AlertView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 27/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCAlertView: View {
+struct AlertView: View {
     let title: String
     let message: String
     let buttonTitle: String
@@ -26,7 +26,7 @@ struct CCAlertView: View {
             Button {
                 isPresented = false
             } label: {
-                CCPrimaryButtonView(text: buttonTitle, displayIcon: false)
+                PrimaryButtonView(text: buttonTitle, displayIcon: false)
                     .padding(.top)
             }
         }
@@ -39,5 +39,5 @@ struct CCAlertView: View {
 }
 
 #Preview {
-    CCAlertView(title: "Custom Alert", message: "Hello, World!", buttonTitle: "Ok", isPresented: .constant(true))
+    AlertView(title: "Custom Alert", message: "Hello, World!", buttonTitle: "Ok", isPresented: .constant(true))
 }

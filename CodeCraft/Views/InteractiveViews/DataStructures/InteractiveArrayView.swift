@@ -64,7 +64,7 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
                 NavigationLink {
                     ArrayCodeCheatsheetView()
                 } label: {
-                    CCPrimaryButtonView(text: "Practice")
+                    PrimaryButtonView(text: "Practice")
                         .padding(.top)
                 }
                 .frame(maxWidth: 320)

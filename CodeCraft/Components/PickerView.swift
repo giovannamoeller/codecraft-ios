@@ -1,5 +1,5 @@
 //
-//  CCPickerView.swift
+//  PickerView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 25/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
+struct PickerView<T: RawRepresentable>: View where T.RawValue == String {
     @Binding var selectedSegment: Int
     var array: [T]
     
@@ -46,5 +46,5 @@ struct CCPickerView<T: RawRepresentable>: View where T.RawValue == String {
 }
 
 #Preview {
-    CCPickerView(selectedSegment: .constant(0), array: CodeLanguage.allCases)
+    PickerView(selectedSegment: .constant(0), array: CodeLanguage.allCases)
 }

@@ -18,7 +18,7 @@ struct SinglyLinkedListCodeCheatsheetView: View {
                 NavigationLink {
                     //ArrayQuizView()
                 } label: {
-                    CCPrimaryButtonView(text: "Start quiz", isAlternateStyle: true)
+                    PrimaryButtonView(text: "Start quiz", isAlternateStyle: true)
                         .frame(maxWidth: 240)
                         .padding(.top, 32)
                 }

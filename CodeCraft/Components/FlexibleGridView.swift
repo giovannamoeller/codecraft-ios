@@ -1,5 +1,5 @@
 //
-//  CCFlexibleGridView.swift
+//  FlexibleGridView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 27/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCFlexibleGridView: View {
+struct FlexibleGridView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
@@ -17,7 +17,7 @@ struct CCFlexibleGridView: View {
     var body: some View {
         layout {
             ForEach(data, id: \.id) { item in
-                CCGridDataRow(data: item)
+                GridDataRow(data: item)
                     .padding(.bottom, horizontalSizeClass == .compact ? 8.0 : 0.0)
             }
         }
@@ -38,7 +38,7 @@ struct CCFlexibleGridView: View {
 }
 
 #Preview {
-    CCFlexibleGridView(data: [
+    FlexibleGridView(data: [
         GridData(icon: "car", title: "Parking Lot", description: "Numbered spaces in a row."),
         GridData(icon: "book", title: "Bookshelf", description: "Books arranged in order."),
         GridData(icon: "calendar", title: "Calendar", description: "Days of the month in sequence."),
