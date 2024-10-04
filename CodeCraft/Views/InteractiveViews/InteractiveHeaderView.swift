@@ -15,7 +15,7 @@ struct InteractiveHeaderView: View {
     var body: some View {
         VStack {
             ResponsiveTextView(text: text, style: .title)
-                .padding([.top, .horizontal])
+                .padding()
             
             CCFlexibleGridView(data: data)
                 .padding(.horizontal)
