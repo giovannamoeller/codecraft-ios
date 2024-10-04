@@ -83,7 +83,7 @@ struct QuizView<Destination: View>: View {
                         Button {
                             resetAnswers()
                         } label: {
-                            CCSecondaryButtonView(text: "Reset")
+                            SecondaryButtonView(text: "Reset")
                         }
                     }
                 }
@@ -151,7 +151,7 @@ struct QuizResultsModalView<Destination: View>: View {
                 NavigationLink {
                     destination()
                 } label: {
-                    CCSecondaryButtonView(text: "Next topic")
+                    SecondaryButtonView(text: "Next topic")
                 }
             }
         }

@@ -58,7 +58,7 @@ struct AnimatedIntroView<Destination: View>: View {
                     NavigationLink {
                         destination
                     } label: {
-                        CCSecondaryButtonView(text: title)
+                        SecondaryButtonView(text: title)
                     }
                     .opacity(showContent ? 1 : 0)
                     .scaleEffect(showContent ? 1 : 0.7)

@@ -69,12 +69,12 @@ struct InteractiveLinkedListView<T: LinkedListProtocol, NodeView: LinkedListNode
                 VStack {
                     HStack {
                         Button(action: { insertElement(linkedList.insertAtHead) }) {
-                            CCSecondaryButtonView(text: "Insert First",
+                            SecondaryButtonView(text: "Insert First",
                                                   isDisabled: isButtonDisabled)
                         }
                         
                         Button(action: { insertElement(linkedList.insertAtTail) }) {
-                            CCSecondaryButtonView(text: "Insert Last",
+                            SecondaryButtonView(text: "Insert Last",
                                                   isDisabled: isButtonDisabled)
                         }
                     }
@@ -82,12 +82,12 @@ struct InteractiveLinkedListView<T: LinkedListProtocol, NodeView: LinkedListNode
                     
                     HStack {
                         Button(action: { removeElement(linkedList.removeAtHead) }) {
-                            CCSecondaryButtonView(text: "Remove First",
+                            SecondaryButtonView(text: "Remove First",
                                                   isDisabled: isButtonDisabled || linkedList.isEmpty)
                         }
                         
                         Button(action: { removeElement(linkedList.removeAtTail) }) {
-                            CCSecondaryButtonView(text: "Remove Last",
+                            SecondaryButtonView(text: "Remove Last",
                                                   isDisabled: isButtonDisabled || linkedList.isEmpty)
                         }
                     }

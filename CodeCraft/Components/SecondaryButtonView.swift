@@ -1,5 +1,5 @@
 //
-//  CCSecondaryButtonView.swift
+//  SecondaryButtonView.swift
 //  CodeCraft
 //
 //  Created by Giovanna Moeller on 26/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CCSecondaryButtonView: View {
+struct SecondaryButtonView: View {
     var text: String
     var backgroundColor: Color
     var isAlternateStyle: Bool
@@ -44,5 +44,5 @@ struct CCSecondaryButtonView: View {
 }
 
 #Preview {
-    CCSecondaryButtonView(text: "Hello, World!")
+    SecondaryButtonView(text: "Hello, World!")
 }

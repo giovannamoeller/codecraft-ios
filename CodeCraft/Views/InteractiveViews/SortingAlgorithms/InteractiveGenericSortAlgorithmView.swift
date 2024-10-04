@@ -82,13 +82,13 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
                 
                 HStack {
                     Button(action: startSorting) {
-                        CCSecondaryButtonView(text: buttonText,
+                        SecondaryButtonView(text: buttonText,
                                               isDisabled: sortStatus == .sorting)
                     }
                     
                     if sortStatus == .stopped {
                         Button(action: resumeSorting) {
-                            CCSecondaryButtonView(text: "Resume",
+                            SecondaryButtonView(text: "Resume",
                                                   isDisabled: false)
                         }
                     }

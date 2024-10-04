@@ -50,13 +50,13 @@ struct InteractiveArrayView<T: Hashable & RandomElementGeneratable>: View {
                     Button {
                         push()
                     } label: {
-                        CCSecondaryButtonView(text: "Push")
+                        SecondaryButtonView(text: "Push")
                     }
                     
                     Button {
                         pop()
                     } label: {
-                        CCSecondaryButtonView(text: "Pop")
+                        SecondaryButtonView(text: "Pop")
                     }
                 }
                 .frame(maxWidth: 320)

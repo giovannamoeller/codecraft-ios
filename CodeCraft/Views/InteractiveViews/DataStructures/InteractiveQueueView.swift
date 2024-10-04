@@ -50,12 +50,12 @@ struct InteractiveQueueView: View {
                 
                 HStack {
                     Button(action: enqueue) {
-                        CCSecondaryButtonView(text: "Enqueue",
+                        SecondaryButtonView(text: "Enqueue",
                                               isDisabled: isButtonDisabled)
                     }
                     
                     Button(action: dequeue) {
-                        CCSecondaryButtonView(text: "Dequeue",
+                        SecondaryButtonView(text: "Dequeue",
                                               isDisabled: isButtonDisabled || queue.isEmpty)
                     }
                 }
@@ -63,7 +63,7 @@ struct InteractiveQueueView: View {
                 .frame(maxWidth: 320)
                 
                 Button(action: front) {
-                    CCSecondaryButtonView(text: "Front",
+                    SecondaryButtonView(text: "Front",
                                           isDisabled: isButtonDisabled || queue.isEmpty)
                 }
                 .frame(maxWidth: 320)

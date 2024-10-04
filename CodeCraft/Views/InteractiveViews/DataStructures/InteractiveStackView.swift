@@ -43,13 +43,13 @@ struct InteractiveStackView: View {
                 
                 HStack {
                     Button(action: push) {
-                        CCSecondaryButtonView(text: "Push")
+                        SecondaryButtonView(text: "Push")
                     }
                     .disabled(isButtonDisabled)
                     .opacity(isButtonDisabled ? 0.5 : 1)
                     
                     Button(action: pop) {
-                        CCSecondaryButtonView(text: "Pop")
+                        SecondaryButtonView(text: "Pop")
                     }
                     
                     .disabled(isButtonDisabled || stack.isEmpty)
@@ -58,7 +58,7 @@ struct InteractiveStackView: View {
                 .frame(maxWidth: 320)
                 
                 Button(action: peek) {
-                    CCSecondaryButtonView(text: "Peek")
+                    SecondaryButtonView(text: "Peek")
                 }
                 .disabled(isButtonDisabled || stack.isEmpty)
                 .opacity(isButtonDisabled || stack.isEmpty ? 0.5 : 1)
