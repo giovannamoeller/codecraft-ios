@@ -13,7 +13,7 @@ struct ArrayCodeCheatsheetView: View {
             AppTheme.Colors.indigo.ignoresSafeArea()
             
             ScrollView {
-                CodeCheatsheetView(text: "How to work with arrays", codeSnippets: Code.bubbleSortCode)
+                CodeCheatsheetView(text: "How to work with arrays", codeSnippets: Code.arrayCodeSnippet)
                 
                 NavigationLink {
                     ArrayQuizView()
