@@ -70,7 +70,7 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
                         }
                     }
                 }
-                .frame(height: 200)
+                .frame(height: 164)
                 .background(AppTheme.Colors.indigo)
                 
                 HStack {

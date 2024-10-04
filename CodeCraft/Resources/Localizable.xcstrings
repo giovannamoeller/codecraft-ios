@@ -1,13 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@" : {
-
-    },
-    "%@ is empty!" : {
-
-    },
     "%@ Quiz" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -18,6 +13,7 @@
       }
     },
     "%lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -48,12 +44,6 @@
           }
         }
       }
-    },
-    "Add or remove elements to see how a queue operates." : {
-
-    },
-    "Add or remove elements to see how a stack operates." : {
-
     },
     "An array is a data structure that stores a collection of elements of the same type in contiguous memory locations. Each element in an array is identified by an index or a key." : {
       "extractionState" : "stale",
@@ -342,6 +332,7 @@
       }
     },
     "Let's get started" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -363,6 +354,7 @@
       }
     },
     "Observe how the array changes as you perform operations below." : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -405,9 +397,6 @@
         }
       }
     },
-    "Press 'start sorting' to see the algorithm in action." : {
-
-    },
     "Push" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -419,10 +408,8 @@
         }
       }
     },
-    "Queue is empty!" : {
-
-    },
     "Quiz completed!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -433,6 +420,7 @@
       }
     },
     "Real world analogies" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -474,12 +462,6 @@
           }
         }
       }
-    },
-    "Speed:" : {
-
-    },
-    "Stack is empty!" : {
-
     },
     "Start Quiz" : {
       "extractionState" : "manual",
@@ -550,13 +532,8 @@
     "Velocity" : {
 
     },
-    "Visualize how a queue works" : {
-
-    },
-    "Visualize how a stack works" : {
-
-    },
     "Visualize how an array works" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -611,6 +588,7 @@
       }
     },
     "You got %lld out of %lld questions correct." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
