@@ -9,13 +9,27 @@ import Foundation
 
 public class SinglyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol {
     public typealias Element = T
-
+    
     @Published var head: SinglyNode<T>?
     @Published var tail: SinglyNode<T>?
     @Published var length: Int = 0
     
     public var isEmpty: Bool {
         head == nil
+    }
+    
+    public var description: String {
+        guard !isEmpty else { return "[]" }
+        var description: String = "["
+        var currentNode = head
+        while let node = currentNode {
+            description += "\(node.value)"
+            if node.next != nil {
+                description += " -> "
+            }
+            currentNode = node.next
+        }
+        return description + "]"
     }
     
     public func insertAtHead(_ value: T) {
@@ -46,16 +60,18 @@ public class SinglyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol
     
     public func removeAtHead() -> T? {
         guard !isEmpty else { return nil }
+        let removedValue = head?.value
         head = head?.next
         if head == nil {
             tail = nil
         }
         length -= 1
-        return head?.value
+        return removedValue
     }
     
     public func removeAtTail() -> T? {
         guard !isEmpty else { return nil }
+        let removedValue = tail?.value
         if head == tail {
             head = nil
             tail = nil
@@ -68,7 +84,7 @@ public class SinglyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol
             tail = current
         }
         length -= 1
-        return tail?.value
+        return removedValue
     }
     
     public func removeAll() {
@@ -76,16 +92,6 @@ public class SinglyLinkedList<T: Hashable>: ObservableObject, LinkedListProtocol
         head = nil
         tail = nil
         length = 0
-    }
-    
-    public func printList() {
-        var currentNode = head
-        while currentNode != nil {
-            if let value = currentNode?.value {
-                print("\(value) \(currentNode?.next == nil ? " " : " -> ")")
-            }
-            currentNode = currentNode?.next
-        }
     }
     
     public func toArray() -> [T] {
