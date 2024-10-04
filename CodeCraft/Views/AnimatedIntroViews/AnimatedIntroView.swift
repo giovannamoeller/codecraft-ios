@@ -12,15 +12,12 @@ struct AnimatedIntroView<Destination: View>: View {
     @State private var circleOffset: CGFloat = -300
     @State private var showContent: Bool = false
     
-    let title: String
-    let sectionNumber: Int
+    let dataStructure: DataStructure
     let destination: Destination
     
-    init(title: String,
-         sectionNumber: Int,
+    init(dataStructure: DataStructure,
          @ViewBuilder destination: @escaping () -> Destination) {
-        self.title = title
-        self.sectionNumber = sectionNumber
+        self.dataStructure = dataStructure
         self.destination = destination()
     }
     
@@ -38,7 +35,7 @@ struct AnimatedIntroView<Destination: View>: View {
                     .animation(.spring(response: 8, dampingFraction: 0.8, blendDuration: 0.5), value: circleOffset)
                 
                 VStack {
-                    ResponsiveTextView(text: "Section \(sectionNumber)".uppercased(),
+                    ResponsiveTextView(text: "Section \(dataStructure.sectionNumber)".uppercased(),
                                        style: .subtitle,
                                        alignment: .center,
                                        foregroundStyle: .white)
@@ -49,7 +46,7 @@ struct AnimatedIntroView<Destination: View>: View {
                     .padding(.vertical)
                     
                     
-                    ResponsiveTextView(text: title,
+                    ResponsiveTextView(text: dataStructure.title,
                                        style: .extraLargeTitle,
                                        alignment: .center,
                                        foregroundStyle: .white)
@@ -86,8 +83,7 @@ struct AnimatedIntroView<Destination: View>: View {
 }
 
 #Preview {
-    AnimatedIntroView(title: DataStructure.doublyLinkedList.title,
-                      sectionNumber: DataStructure.doublyLinkedList.sectionNumber) {
+    AnimatedIntroView(dataStructure: .array) {
         ArrayIntroductionView()
     }
 }

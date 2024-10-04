@@ -11,8 +11,7 @@ struct AnimatedDoublyLinkedListIntroView: View {
     let dataStructure: DataStructure = .doublyLinkedList
 
     var body: some View {
-        AnimatedIntroView(title: dataStructure.title,
-                          sectionNumber: dataStructure.sectionNumber) {
+        AnimatedIntroView(dataStructure: dataStructure) {
             //
         }
     }

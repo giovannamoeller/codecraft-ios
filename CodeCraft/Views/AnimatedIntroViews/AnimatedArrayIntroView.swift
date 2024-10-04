@@ -11,8 +11,7 @@ struct AnimatedArrayIntroView: View {
     let dataStructure: DataStructure = .array
     
     var body: some View {
-        AnimatedIntroView(title: dataStructure.title,
-                          sectionNumber: dataStructure.sectionNumber) {
+        AnimatedIntroView(dataStructure: dataStructure) {
             ArrayIntroductionView()
         }
     }

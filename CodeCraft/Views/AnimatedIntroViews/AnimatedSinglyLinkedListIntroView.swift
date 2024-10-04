@@ -11,8 +11,7 @@ struct AnimatedSinglyLinkedListIntroView: View {
     let dataStructure: DataStructure = .singlyLinkedList
 
     var body: some View {
-        AnimatedIntroView(title: dataStructure.title,
-                          sectionNumber: dataStructure.sectionNumber) {
+        AnimatedIntroView(dataStructure: dataStructure) {
             SinglyLinkedListIntroductionView()
         }
     }
