@@ -56,4 +56,11 @@ enum UsageExample {
         GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n^2) time complexity in the average and worst cases, but can be O(n) in the best case."),
         GridData(icon: "square.and.pencil", title: "In-Place Algorithm", description: "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space."),
     ]
+    
+    static let selectionSort: [GridData] = [
+        GridData(icon: "arrow.up.arrow.down", title: "Find Minimum", description: "Repeatedly finds the minimum element from the unsorted portion and places it at the beginning."),
+        GridData(icon: "chart.bar.fill", title: "Simple Implementation", description: "Easy to understand and implement, but not efficient for large data sets."),
+        GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n^2) time complexity in all cases, where n is the number of items."),
+        GridData(icon: "square.and.pencil", title: "In-Place Sorting", description: "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space."),
+    ]
 }
