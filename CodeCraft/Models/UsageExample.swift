@@ -63,4 +63,18 @@ enum UsageExample {
         GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n^2) time complexity in all cases, where n is the number of items."),
         GridData(icon: "square.and.pencil", title: "In-Place Sorting", description: "Sorts the array in-place, requiring only a constant amount O(1) of additional memory space."),
     ]
+    
+    static let linearSearch: [GridData] = [
+        GridData(icon: "arrow.forward", title: "Sequential Scan", description: "Iterates through each element in the list sequentially until the target is found or the end is reached."),
+        GridData(icon: "chart.bar", title: "Time Complexity", description: "O(n) time complexity in the worst case, where n is the number of items in the list."),
+        GridData(icon: "square.stack", title: "Unordered Data", description: "Works on both sorted and unsorted lists, making it versatile for various data structures."),
+        GridData(icon: "memorychip", title: "Memory Efficient", description: "Requires no additional memory space, making it space-efficient with O(1) space complexity."),
+    ]
+    
+    static let binarySearch: [GridData] = [
+        GridData(icon: "arrow.left.and.right", title: "Divide and Conquer", description: "Repeatedly divides the search interval in half, eliminating half of the remaining elements in each step."),
+        GridData(icon: "arrow.up.arrow.down", title: "Sorted Data Required", description: "Only works on sorted arrays or lists, as it relies on the order of elements to make decisions."),
+        GridData(icon: "chart.bar", title: "Time Complexity", description: "O(log n) time complexity, where n is the number of items, making it very efficient for large datasets."),
+        GridData(icon: "bolt", title: "Efficiency", description: "Significantly faster than linear search for large sorted datasets, especially as the size of the data increases."),
+    ]
 }

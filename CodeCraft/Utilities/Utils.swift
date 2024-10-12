@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-func generateRandomArray() -> [Int] {
-    (1...5).map( {_ in Int.random(in: 1..<100)} )
+func generateRandomArray(_ numberOfElements: Int = 5) -> [Int] {
+    (1...numberOfElements).map( {_ in Int.random(in: 1..<100)} )
 }
 
 func getRandomElement(from: Int = 1, to: Int = 100) -> Int {

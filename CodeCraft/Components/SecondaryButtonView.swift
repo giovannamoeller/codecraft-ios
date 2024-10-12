@@ -12,19 +12,22 @@ struct SecondaryButtonView: View {
     var backgroundColor: Color
     var isAlternateStyle: Bool
     var isDisabled: Bool
+    var action: () -> Void
     
     init(text: String,
          backgroundColor: Color = AppTheme.Colors.lightLavender,
          isAlternateStyle: Bool = false,
-         isDisabled: Bool = false) {
+         isDisabled: Bool = false,
+         action: @escaping () -> Void = {}) {
         self.text = text
         self.backgroundColor = backgroundColor
         self.isAlternateStyle = isAlternateStyle
         self.isDisabled = isDisabled
+        self.action = action
     }
     
     var body: some View {
-        HStack {
+        Button(action: action) {
             ResponsiveTextView(text: text,
                                style: .bodyBold,
                                alignment: .center,
@@ -44,5 +47,7 @@ struct SecondaryButtonView: View {
 }
 
 #Preview {
-    SecondaryButtonView(text: "Hello, World!")
+    SecondaryButtonView(text: "Hello, World!", action: {
+        print("Hello!")
+    })
 }

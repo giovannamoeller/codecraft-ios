@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct ArrayItem: Identifiable {
-    let id = UUID()
-    let value: Int
-    var position: CGFloat
-}
-
 enum SortStatus {
     case idle, sorting, stopped, sorted
 }
@@ -81,15 +75,12 @@ struct InteractiveGenericSortAlgorithmView<T: SortAlgorithmProtocol>: View {
                 .padding(8)
                 
                 HStack {
-                    Button(action: startSorting) {
-                        SecondaryButtonView(text: buttonText,
-                                              isDisabled: sortStatus == .sorting)
+                    SecondaryButtonView(text: buttonText, isDisabled: sortStatus == .sorting) {
+                        startSorting()
                     }
-                    
                     if sortStatus == .stopped {
-                        Button(action: resumeSorting) {
-                            SecondaryButtonView(text: "Resume",
-                                                  isDisabled: false)
+                        SecondaryButtonView(text: "Resume") {
+                            resumeSorting()
                         }
                     }
                 }
