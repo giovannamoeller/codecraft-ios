@@ -40,76 +40,82 @@ struct InteractiveLinearSearchView: View {
     }
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 16.0) {
-                InteractiveHeaderView(text: "Visualize how linear search works", data: UsageExample.linearSearch, guideline: "Press 'start searching' to see the algorithm in action.")
-                
-                VStack {
-                    ResponsiveTextView(text: "Enter the element to find in the array:", style: .bodyBold)
-                    TextField("Example: 18", text: $elementToFind)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+        ZStack {
+            if let _ = foundIndex {
+                ConfettiLottieView()
+            }
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 16.0) {
+                    InteractiveHeaderView(text: "Visualize how linear search works", data: UsageExample.linearSearch, guideline: "Press 'start searching' to see the algorithm in action.")
+                    
+                    VStack {
+                        ResponsiveTextView(text: "Enter the element to find in the array:", style: .bodyBold)
+                        TextField("Example: 18", text: $elementToFind)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+                    .padding()
+                    .frame(maxWidth: 420.0)
+                    
+                    if let foundIndex {
+                        ResponsiveTextView(text: "Element found on index \(Int(foundIndex.position))!", style: .bodyRegular, alignment: .center)
+                            .padding()
+                            .transition(.scale.combined(with: .opacity))
+                    } else if foundIndex == nil && searchStatus == .searched {
+                        ResponsiveTextView(text: "The element \(Int(elementToFind)) was not found in the array!", style: .bodyRegular)
+                    }
+                    
+                    HStack(spacing: 8.0) {
+                        ForEach(items) { item in
+                            ResponsiveTextView(text: "\(item.value)", style: .bodyBold, alignment: .center)
+                                .padding()
+                                .frame(width: itemSize, height: itemSize)
+                                .background(getBackgroundColor(for: item.id))
+                                .foregroundStyle(.black)
+                                .cornerRadius(12.0)
+                                .scaleEffect(comparingIndex?.id == item.id ? 1.1 : (foundIndex?.id == item.id ? 1.2 : 1.0))
+                                .offset(y: foundIndex?.id == item.id ? offsetY : 0)
+                                .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.3), value: comparingIndex?.id)
+                                .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: foundIndex?.id)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12.0)
+                                        .stroke(getStrokeColor(for: item.id), lineWidth: getStrokeWidth(for: item.id))
+                                        .scaleEffect(comparingIndex?.id == item.id ? 1.1 : (foundIndex?.id == item.id ? 1.1 : 1.0))
+                                )
+                                .zIndex(getZIndex(for: item.id))
+                        }
+                    }
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity)
+                    
+                    HStack {
+                        SecondaryButtonView(text: buttonText,
+                                            isDisabled: searchStatus == .searching || !isTextFieldValid) {
+                            linearSearch()
+                        }
+                    }
+                    .padding(.top)
+                    .frame(maxWidth: 240)
+                    
+                    NavigationLink {
+                        //CodeCheatsheetView(for: algorithm)
+                    } label: {
+                        PrimaryButtonView(text: "Let's check the code")
+                    }
+                    .frame(maxWidth: 280)
                 }
                 .padding()
-                .frame(maxWidth: 420.0)
-                
-                if let foundIndex {
-                    ResponsiveTextView(text: "Element found on index \(Int(foundIndex.position))!", style: .bodyRegular, alignment: .center)
-                        .padding()
-                        .transition(.scale.combined(with: .opacity))
-                } else if foundIndex == nil && searchStatus == .searched {
-                    ResponsiveTextView(text: "The element \(Int(elementToFind)) was not found in the array!", style: .bodyRegular)
-                }
-                
-                HStack(spacing: 8.0) {
-                    ForEach(items) { item in
-                        ResponsiveTextView(text: "\(item.value)", style: .bodyBold, alignment: .center)
-                            .padding()
-                            .frame(width: itemSize, height: itemSize)
-                            .background(getBackgroundColor(for: item.id))
-                            .foregroundStyle(.black)
-                            .cornerRadius(12.0)
-                            .scaleEffect(comparingIndex?.id == item.id ? 1.1 : (foundIndex?.id == item.id ? 1.2 : 1.0))
-                            .offset(y: foundIndex?.id == item.id ? offsetY : 0)
-                            .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.3), value: comparingIndex?.id)
-                            .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: foundIndex?.id)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12.0)
-                                    .stroke(getStrokeColor(for: item.id), lineWidth: getStrokeWidth(for: item.id))
-                                    .scaleEffect(comparingIndex?.id == item.id ? 1.1 : (foundIndex?.id == item.id ? 1.2 : 1.0))
-                            )
-                            .zIndex(getZIndex(for: item.id))
-                    }
-                }
-                .padding(.horizontal)
-                .frame(maxWidth: .infinity)
-                
-                HStack {
-                    SecondaryButtonView(text: buttonText,
-                                        isDisabled: searchStatus == .searching || !isTextFieldValid) {
-                        linearSearch()
-                    }
-                }
-                .padding(.top)
-                .frame(maxWidth: 240)
-                
-                NavigationLink {
-                    //CodeCheatsheetView(for: algorithm)
-                } label: {
-                    PrimaryButtonView(text: "Let's check the code")
-                }
-                .frame(maxWidth: 280)
             }
+            .animation(.easeInOut, value: foundIndex)
+            .onChange(of: foundIndex, { _, _ in
+                if foundIndex != nil {
+                    withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
+                        offsetY = -20
+                    }
+                } else {
+                    offsetY = 0
+                }
+            })
         }
-        .animation(.easeInOut, value: foundIndex)
-        .onChange(of: foundIndex, { _, _ in
-            if foundIndex != nil {
-                withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
-                    offsetY = -20
-                }
-            } else {
-                offsetY = 0
-            }
-        })
     }
     
     private func getBackgroundColor(for id: UUID) -> Color {
@@ -131,7 +137,7 @@ struct InteractiveLinearSearchView: View {
     }
     
     private func getStrokeWidth(for id: UUID) -> CGFloat {
-        if foundIndex?.id == id || comparingIndex?.id == id {
+        if comparingIndex?.id == id {
             return 2
         }
         return 0
@@ -168,7 +174,7 @@ struct InteractiveLinearSearchView: View {
                     break
                 }
             }
-            await delay(2.0)
+            await delay(0.5)
             await updateOnMainThread {
                 reset()
             }
