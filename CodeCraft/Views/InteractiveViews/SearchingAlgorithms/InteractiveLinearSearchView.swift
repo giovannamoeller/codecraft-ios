@@ -19,6 +19,7 @@ struct InteractiveLinearSearchView: View {
     @State private var foundIndex: ArrayItem?
     @State private var comparingIndex: ArrayItem?
     @State private var offsetY: CGFloat = 0
+    @State private var comparisonCounter: Int = 0
     
     private var isTextFieldValid: Bool {
         let trimmedInput = elementToFind.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -62,8 +63,12 @@ struct InteractiveLinearSearchView: View {
                             .padding()
                             .transition(.scale.combined(with: .opacity))
                     } else if foundIndex == nil && searchStatus == .searched {
-                        ResponsiveTextView(text: "The element \(Int(elementToFind)) was not found in the array!", style: .bodyRegular)
+                        ResponsiveTextView(text: "The element \(Int(elementToFind) ?? 0) was not found in the array!", style: .bodyRegular, alignment: .center)
                     }
+                    
+                    //if searchStatus == .searching {
+                        //ResponsiveTextView(text: "Comparison counter: \(comparisonCounter)", style: .bodyRegular, alignment: .center)
+                    //}
                     
                     HStack(spacing: 8.0) {
                         ForEach(items) { item in
@@ -77,11 +82,11 @@ struct InteractiveLinearSearchView: View {
                                 .offset(y: foundIndex?.id == item.id ? offsetY : 0)
                                 .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.3), value: comparingIndex?.id)
                                 .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: foundIndex?.id)
-                                .overlay(
+                                /*.overlay(
                                     RoundedRectangle(cornerRadius: 12.0)
                                         .stroke(getStrokeColor(for: item.id), lineWidth: getStrokeWidth(for: item.id))
                                         .scaleEffect(comparingIndex?.id == item.id ? 1.1 : (foundIndex?.id == item.id ? 1.1 : 1.0))
-                                )
+                                )*/
                                 .zIndex(getZIndex(for: item.id))
                         }
                     }
@@ -125,12 +130,15 @@ struct InteractiveLinearSearchView: View {
     }
     
     private func getBackgroundColor(for id: UUID) -> Color {
-        if foundIndex?.id == id {
-            return .green
-        } else if comparingIndex?.id == id {
-            return .yellow
+        withAnimation {
+            if foundIndex?.id == id {
+                return .green
+            } else if comparingIndex?.id == id {
+                return .yellow
+            }
+            return AppTheme.Colors.lightLavender
         }
-        return AppTheme.Colors.lightLavender
+        
     }
     
     private func getStrokeColor(for id: UUID) -> Color {
@@ -158,6 +166,7 @@ struct InteractiveLinearSearchView: View {
     
     private func shuffleArray() {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.3)) {
+            foundIndex = nil
             items.shuffle()
             for (index, _) in items.enumerated() {
                 items[index].position = CGFloat(index)
@@ -170,12 +179,14 @@ struct InteractiveLinearSearchView: View {
     
     private func linearSearch() {
         changeButtonStatus(to: .searching)
+        comparisonCounter = 0
         guard let element = Int(elementToFind) else { return }
         Task {
             for i in 0..<items.count {
                 await updateOnMainThread {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.3)) {
                         comparingIndex = items[i]
+                        comparisonCounter += 1
                     }
                 }
                 await delay(1.0)
@@ -201,7 +212,7 @@ struct InteractiveLinearSearchView: View {
         withAnimation(.spring(duration: 0.5, bounce: 0.3)) {
             comparingIndex = nil
             searchStatus = .searched
-            elementToFind = ""
+            //elementToFind = ""
         }
     }
     
