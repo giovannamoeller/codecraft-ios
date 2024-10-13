@@ -50,8 +50,9 @@ struct InteractiveLinearSearchView: View {
                     
                     VStack {
                         ResponsiveTextView(text: "Enter the element to find in the array:", style: .bodyBold)
-                        TextField("Example: 18", text: $elementToFind)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        HStack {
+                            NeumorphicStyleTextField(textField: TextField("Example: 18", text: $elementToFind), imageName: "magnifyingglass")
+                        }
                     }
                     .padding()
                     .frame(maxWidth: 420.0)
@@ -128,10 +129,8 @@ struct InteractiveLinearSearchView: View {
     }
     
     private func getStrokeColor(for id: UUID) -> Color {
-        if foundIndex?.id == id {
-            return .green
-        } else if comparingIndex?.id == id {
-            return .blue
+        if comparingIndex?.id == id {
+            return AppTheme.Colors.indigo
         }
         return .clear
     }
