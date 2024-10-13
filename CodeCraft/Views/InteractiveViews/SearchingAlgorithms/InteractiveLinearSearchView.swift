@@ -13,7 +13,7 @@ enum SearchStatus {
 
 struct InteractiveLinearSearchView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @State private var items: [ArrayItem] = generateRandomArray(10).enumerated().map { ArrayItem(value: $1, position: CGFloat($0)) }
+    @State private var items: [ArrayItem] = generateRandomArray(8).enumerated().map { ArrayItem(value: $1, position: CGFloat($0)) }
     @State private var searchStatus: SearchStatus = .idle
     @State private var elementToFind: String = ""
     @State private var foundIndex: ArrayItem?
@@ -93,9 +93,14 @@ struct InteractiveLinearSearchView: View {
                                             isDisabled: searchStatus == .searching || !isTextFieldValid) {
                             linearSearch()
                         }
+                        
+                        SecondaryButtonView(text: "Shuffle Array",
+                                            isDisabled: searchStatus == .searching) {
+                            shuffleArray()
+                        }
                     }
                     .padding(.top)
-                    .frame(maxWidth: 240)
+                    .frame(maxWidth: 420)
                     
                     NavigationLink {
                         //CodeCheatsheetView(for: algorithm)
@@ -149,6 +154,18 @@ struct InteractiveLinearSearchView: View {
             return 1
         }
         return 0
+    }
+    
+    private func shuffleArray() {
+        withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.3)) {
+            items.shuffle()
+            for (index, _) in items.enumerated() {
+                items[index].position = CGFloat(index)
+            }
+            searchStatus = .idle
+            comparingIndex = nil
+            elementToFind = ""
+        }
     }
     
     private func linearSearch() {
