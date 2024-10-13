@@ -14,12 +14,12 @@ struct NeumorphicStyleTextField: View {
     var body: some View {
         HStack {
             Image(systemName: imageName)
-                .foregroundColor(AppTheme.Colors.darkShadow)
+                .foregroundColor(AppTheme.Colors.lightShadow)
             textField
         }
         .padding()
-        .foregroundColor(AppTheme.Colors.neumorphictextColor)
-        .background(AppTheme.Colors.background)
+        .foregroundColor(AppTheme.Colors.lightShadow)
+        .background(AppTheme.Colors.indigo)
         .cornerRadius(6)
         .shadow(color: AppTheme.Colors.darkShadow, radius: 3, x: 2, y: 2)
         .shadow(color: AppTheme.Colors.lightShadow, radius: 3, x: -2, y: -2)

@@ -49,7 +49,7 @@ struct InteractiveLinearSearchView: View {
                     InteractiveHeaderView(text: "Visualize how linear search works", data: UsageExample.linearSearch, guideline: "Press 'start searching' to see the algorithm in action.")
                     
                     VStack {
-                        ResponsiveTextView(text: "Enter the element to find in the array:", style: .bodyBold)
+                        ResponsiveTextView(text: "Enter the element to find in the array:", style: .bodyBold, alignment: .center)
                         HStack {
                             NeumorphicStyleTextField(textField: TextField("Example: 18", text: $elementToFind), imageName: "magnifyingglass")
                         }
